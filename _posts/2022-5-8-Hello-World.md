@@ -7,7 +7,7 @@ published: true
 
 ## MathJax enviroment
 
-Este es un ejemplo para testear el entorno de $\LATEX$ adentro de Github
+Este es un ejemplo para testear el entorno de $\LaTeX$ adentro de Github
 
 Si pongo doble signo de dolar junto con $\texttt{<div>}$ me dará esto:
 
