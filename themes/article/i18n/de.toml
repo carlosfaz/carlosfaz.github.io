@@ -1,0 +1,20 @@
+[minutesRead]
+other = "min."
+
+[readMore]
+other = "weiterlesen"
+
+[words]
+other = "Wörter"
+
+[comments]
+one = "Reaktion"
+other = "Reaktionen"
+
+[quotes]
+one = "Zitate"
+other = "Zitate"
+
+[movies]
+one = "Artikel mit Bewertung"
+other = "Artikel mit Bewertungen"
