@@ -1,0 +1,30 @@
+---
+layout: post
+title: Mi primer post
+use_math: true
+published: true
+excerpt_separator: <!--more-->
+---
+
+## MathJax enviroment
+
+fasefase
+
+fosfo fosfo
+
+<div>
+$$
+fo = fosfo
+$$
+</div>
+
+<!--more-->
+
+<div>
+$$
+fo = fosfo \times fosfo
+$$
+</div>
+
+
+
