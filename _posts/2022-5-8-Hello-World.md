@@ -3,6 +3,7 @@ layout: post
 title: Mi primer post
 use_math: true
 published: true
+excerpt_separator: <!--more-->
 ---
 
 ## MathJax enviroment
@@ -16,6 +17,8 @@ $$
 K(a,b) = \int \mathcal{D}x(t) \exp(2\pi i S[x]/\hbar)
 $$
 </div>
+
+<!--more-->
 
 <div>
 $$
