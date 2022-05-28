@@ -12,19 +12,5 @@ fasefase
 
 fosfo fosfo
 
-<div>
-$$
-fo = fosfo
-$$
-</div>
-
-<!--more-->
-
-<div>
-$$
-fo = fosfo \times fosfo
-$$
-</div>
-
 
 
