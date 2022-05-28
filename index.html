@@ -1,6 +1,5 @@
 ---
 layout: default
-use_math: true
 ---
 
 <div class="posts">
@@ -13,11 +12,6 @@ use_math: true
         {{ post.excerpt }}
       </div>
 
-      <div class="entry">
-        <img class="alignright" src="{{ site.imagesurl }}{{ post.thumbnail }}" >
-        {{ post.content | split:"<!--more-->" | first }}
-      </div>
-      
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
   {% endfor %}
