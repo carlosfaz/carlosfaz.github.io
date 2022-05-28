@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mi primer post
+title: Post ejemplo 3
 use_math: true
 published: true
 excerpt_separator: <!--more-->
