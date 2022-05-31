@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 1Post ejemplo 1
+use_math: true
 published: true
 excerpt_separator: <!--more-->
 ---
-
-{% include mathjax_support.html %}
 
 ## MathJax enviroment 2
 
