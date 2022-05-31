@@ -15,3 +15,5 @@ Este es un ejemplo para testear el entorno de $\LaTeX$ adentro de Github
 
 Apoco hay mas? xD
 
+
+$$x^2$$
