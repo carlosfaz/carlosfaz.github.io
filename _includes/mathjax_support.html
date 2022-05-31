@@ -21,23 +21,31 @@
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 -->
+<!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
-var font = "Neo-Euler";
 MathJax.Hub.Config({
-	tex2jax: {
-		inlineMath: [['$','$']],
-		displayMath: [['\\[','\\]']],
-		processEscapes: true,
-	},
-	"SVG":{ 
-		font:font
-	},
-	"HTML-CSS": {
-		webFont: font,
-		imageFont: font,
-		preferredFont: font,
-		availableFonts: [],
-		scale: 85,
-		mtextFontInherit: true
-	}
-}); </script> <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    CommonHTML: {
+      scale: 15
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
