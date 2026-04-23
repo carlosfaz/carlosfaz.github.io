@@ -19,7 +19,7 @@ permalink: /portfolio/
     width: 97vw; /* Reducido un 3% */
     position: fixed;
     top: 0;
-    left: 0.5vw; /* Centrado: 1.5% de margen a cada lado */
+    left: 0.1vw; /* Centrado: 1.5% de margen a cada lado */
     right: 1.5vw;
     bottom: 0;
     z-index: 1000;
