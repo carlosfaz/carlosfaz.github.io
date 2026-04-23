@@ -153,99 +153,12 @@ La volatilidad se anualiza como:
 
 $\displaystyle \sigma_{anual} = \sigma_{diario} \times \sqrt{252}$
 
-## Paridad de Riesgo (Risk Parity)
+## Temas Relacionados
 
-La Paridad de Riesgo propone que la verdadera seguridad viene de asegurar que ninguna inversión tenga el poder de hundir todo el proyecto por sí sola.
+Este artículo forma parte de una serie sobre optimización moderna de portafolios:
 
-### Contribución Marginal al Riesgo (MRC)
-
-$\displaystyle MRC_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\Sigma w)_i}{\sigma_p}$
-
-### Contribución Total al Riesgo (TRC)
-
-$\displaystyle TRC_i = w_i \times MRC_i = \frac{w_i (\Sigma w)_i}{\sigma_p}$
-
-En Risk Parity, buscamos:
-
-$\displaystyle TRC_i = \frac{\sigma_p}{n}, \quad \forall i$
-
-### Implementación
-
-```python
-def risk_parity_objective(w, cov):
-    """
-    Función objetivo para Risk Parity.
-    Minimiza la suma de cuadrados de las desviaciones de las contribuciones al riesgo.
-    """
-    pv = np.sqrt(w.T @ cov @ w)           # Volatilidad del portafolio
-    rc = w * (cov @ w) / pv               # Contribución al riesgo (TRC)
-    return np.sum((rc - pv / len(w)) ** 2) # Suma de cuadrados de desviaciones
-```
-
-## Gestión de Riesgos Avanzada
-
-### Value at Risk (VaR) Histórico
-
-El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado:
-
-$\displaystyle VaR_{0.95} = percentil_{5}(retornos\ históricos)$
-
-```python
-def calculate_var_cvar_historical(returns, confidence_level=0.95):
-    """
-    Calcula VaR y CVaR (Expected Shortfall) históricos.
-    """
-    var = np.percentile(returns, (1 - confidence_level) * 100)
-    cvar = returns[returns <= var].mean()  # Expected Shortfall
-    return {'var': var, 'cvar': cvar}
-```
-
-### CVaR (Expected Shortfall)
-
-El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
-
-$\displaystyle CVaR_\alpha = E[R \mid R \leq VaR_\alpha]$
-
-El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), satisfaciendo:
-- **Subaditividad**: $CVaR(X+Y) \leq CVaR(X) + CVaR(Y)$
-- **Monotonicidad**: Si $X \leq Y$, entonces $CVaR(X) \geq CVaR(Y)$
-- **Homogeneidad positiva**: $CVaR(\lambda X) = \lambda CVaR(X)$ para $\lambda > 0$
-- **Invarianza traslacional**: $CVaR(X + c) = CVaR(X) - c$
-
-## Simulación Monte Carlo con Descomposición de Cholesky
-
-Para generar retornos correlacionados, descomponemos la matriz de covarianza:
-
-$\displaystyle \Sigma = L L^T$
-
-donde $L$ es una matriz triangular inferior.
-
-```python
-def monte_carlo_var(weights, mean_returns, cov_matrix, n_simulations=10000, horizon=10):
-    """
-    Calcula VaR usando simulación Monte Carlo con descomposición de Cholesky.
-    """
-    # Descomposición de Cholesky
-    try:
-        L = np.linalg.cholesky(cov_matrix)
-    except np.linalg.LinAlgError:
-        # Regularización si no es definida positiva
-        cov_matrix += np.eye(len(weights)) * 1e-6
-        L = np.linalg.cholesky(cov_matrix)
-    
-    # Generar retornos correlacionados
-    random_returns = np.random.normal(0, 1, (n_simulations, len(weights)))
-    correlated_returns = random_returns @ L.T + mean_returns.values
-    
-    # Retornos del portafolio para el horizonte deseado
-    portfolio_returns = correlated_returns @ weights * np.sqrt(horizon)
-    
-    # Calcular VaR y CVaR
-    var_95 = np.percentile(portfolio_returns, 5)
-    cvar_95 = portfolio_returns[portfolio_returns <= var_95].mean()
-    
-    return var_95, cvar_95
-```
+- **[Paridad de Riesgo (Risk Parity)](/paridad-riesgo-risk-parity/)**: Descubre cómo equilibrar el riesgo de manera equitativa entre todos los activos.
+- **[Gestión de Riesgos Avanzada](/gestion-riesgos-avanzada/)**: Profundiza en VaR, CVaR, Stress Testing y simulaciones Monte Carlo.
 
 ## Conclusión
 
