@@ -6,7 +6,7 @@ published: true
 date: 2024-04-17
 category: "Risk Parity"
 tags: ["Risk Parity", "Portfolio Optimization", "Risk Management", "Python", "Diversification"]
-thumbnail: "/images/first-post.png"
+thumbnail: "/images/risk-parity-comparison.png"
 ---
 
 La Paridad de Riesgo (Risk Parity) es una filosofía de inversión que propone que la verdadera seguridad no viene de tener muchas cosas distintas, sino de asegurar que ninguna de ellas tenga el poder de hundir todo el proyecto por sí sola.

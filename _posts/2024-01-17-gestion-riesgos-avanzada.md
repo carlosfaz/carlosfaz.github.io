@@ -6,7 +6,7 @@ published: true
 date: 2024-04-18
 category: "Gestión de Riesgos"
 tags: ["Risk Management", "VaR", "CVaR", "Expected Shortfall", "Stress Testing", "Monte Carlo", "Python"]
-thumbnail: "/images/first-post.png"
+thumbnail: "/images/risk-management-advanced.png"
 ---
 
 La gestión avanzada de riesgos busca responder a una pregunta vital: "¿Qué es lo peor que podría pasar?". Históricamente, las instituciones financieras intentaron resumir el peligro en un solo número, pero pronto descubrieron que los desastres suelen ser más complejos de lo que parece a simple vista.
