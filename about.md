@@ -12,22 +12,23 @@ permalink: /about/
     <div class="profile-info">
       <h1>{{ site.name }}</h1>
       <h2>{{ site.description }}</h2>
-      <p>Soy un apasionado desarrollador web con experiencia en tecnologías modernas y frameworks. Me encanta crear soluciones digitales que combinen funcionalidad, belleza y rendimiento.</p>
-      <p>En este blog comparto mis conocimientos, proyectos personales y reflexiones sobre el mundo del desarrollo web y la tecnología.</p>
+      <p>Soy Ingeniero en Física Industrial graduado del Tecnológico de Monterrey (2020). Tengo experiencia profesional en óptica y física de láseres debido a estancias de investigación. Soy apasionado de las ciencias exactas, los números y los análisis.</p>
+      <p>En este blog comparto mis conocimientos, proyectos personales y reflexiones sobre matemáticas aplicadas, física, análisis cuantitativo y tecnología.</p>
+      <p>Mis habilidades incluyen análisis de datos, softwares estadísticos y lenguajes de programación numéricos. Me especializo en la aplicación de métodos cuantitativos para resolver problemas complejos en diferentes áreas, combinando la rigurosidad científica con herramientas computacionales avanzadas.</p>
     </div>
   </div>
 
   <div class="skills-section">
-    <h3>Mis tecnologías</h3>
+    <h3>Mis áreas de conocimiento</h3>
     <div class="skills-grid">
-      <span class="skill-tag">HTML5</span>
-      <span class="skill-tag">CSS3</span>
-      <span class="skill-tag">JavaScript</span>
-      <span class="skill-tag">React</span>
-      <span class="skill-tag">Node.js</span>
-      <span class="skill-tag">Git</span>
-      <span class="skill-tag">Jekyll</span>
-      <span class="skill-tag">GitHub Pages</span>
+      <span class="skill-tag">Matemáticas</span>
+      <span class="skill-tag">Física</span>
+      <span class="skill-tag">Análisis Cuantitativo</span>
+      <span class="skill-tag">Optimización</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Ciencia de Datos</span>
+      <span class="skill-tag">Machine Learning</span>
+      <span class="skill-tag">Simulación Numérica</span>
     </div>
   </div>
 

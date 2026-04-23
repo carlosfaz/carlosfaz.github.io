@@ -3,7 +3,7 @@ layout: post
 title: "Gestión de Riesgos Avanzada: VaR, CVaR y Stress Testing"
 use_math: true
 published: true
-date: 2024-01-17
+date: 2024-01-10
 category: "Gestión de Riesgos"
 tags: ["Risk Management", "VaR", "CVaR", "Expected Shortfall", "Stress Testing", "Monte Carlo", "Python"]
 thumbnail: "/images/first-post.png"
@@ -25,7 +25,7 @@ Podemos entender estas herramientas comparándolas con la planificación ante in
 
 El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado, sin asumir distribución normal. Para un nivel de confianza del 95%:
 
-$$ \text{VaR}_{0.95} = \text{percentil}_{5}(\text{retornos históricos}) $$
+$ \displaystyle \text{VaR}_{0.95} = \text{percentil}_{5}(\text{retornos históricos}) $
 
 ### Implementación en Python
 
@@ -50,16 +50,16 @@ def calculate_var_cvar_historical(returns, confidence_level=0.95):
 
 El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
 
-$$ \text{CVaR}_\alpha = E[R \mid R \leq \text{VaR}_\alpha] $$
+$ \displaystyle \text{CVaR}_\alpha = E[R \mid R \leq \text{VaR}_\alpha] $
 
 ### Propiedades de Coherencia
 
 El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), ya que satisface:
 
-- **Subaditividad**: $\text{CVaR}(X+Y) \leq \text{CVaR}(X) + \text{CVaR}(Y)$
-- **Monotonicidad**: Si $X \leq Y$, entonces $\text{CVaR}(X) \geq \text{CVaR}(Y)$
-- **Homogeneidad positiva**: $\text{CVaR}(\lambda X) = \lambda \text{CVaR}(X)$ para $\lambda > 0$
-- **Invarianza traslacional**: $\text{CVaR}(X + c) = \text{CVaR}(X) - c$
+- **Subaditividad**: $ \displaystyle \text{CVaR}(X+Y) \leq \text{CVaR}(X) + \text{CVaR}(Y) $
+- **Monotonicidad**: Si $ \displaystyle X \leq Y $, entonces $ \displaystyle \text{CVaR}(X) \geq \text{CVaR}(Y) $
+- **Homogeneidad positiva**: $ \displaystyle \text{CVaR}(\lambda X) = \lambda \text{CVaR}(X) $ para $ \displaystyle \lambda > 0 $
+- **Invarianza traslacional**: $ \displaystyle \text{CVaR}(X + c) = \text{CVaR}(X) - c $
 
 **Nota importante:** El VaR **no es coherente** porque no satisface subaditividad en general.
 
@@ -71,11 +71,11 @@ Se asume que los retornos siguen una distribución normal multivariada con la me
 
 Para generar retornos correlacionados, se descompone la matriz de covarianza:
 
-$$ \boldsymbol{\Sigma} = \boldsymbol{L} \boldsymbol{L}^T $$
+$ \displaystyle \boldsymbol{\Sigma} = \boldsymbol{L} \boldsymbol{L}^T $
 
-donde $\boldsymbol{L}$ es una matriz triangular inferior.
+donde $ \displaystyle \boldsymbol{L} $ es una matriz triangular inferior.
 
-Si $\boldsymbol{Z} \sim N(\boldsymbol{0}, \boldsymbol{I})$, entonces $\boldsymbol{L}\boldsymbol{Z} \sim N(\boldsymbol{0}, \boldsymbol{\Sigma})$.
+Si $ \displaystyle \boldsymbol{Z} \sim N(\boldsymbol{0}, \boldsymbol{I}) $, entonces $ \displaystyle \boldsymbol{L}\boldsymbol{Z} \sim N(\boldsymbol{0}, \boldsymbol{\Sigma}) $.
 
 ### Implementación en Python
 
@@ -159,13 +159,13 @@ def define_stress_scenarios(tickers):
 
 El ajuste de correlación se aplica como:
 
-$$ \boldsymbol{C}_{\text{ajustada}} = \alpha \boldsymbol{C}_{\text{base}} + (1-\alpha)\boldsymbol{1} $$
+$ \displaystyle \boldsymbol{C}_{\text{ajustada}} = \alpha \boldsymbol{C}_{\text{base}} + (1-\alpha)\boldsymbol{1} $
 
-donde $\boldsymbol{1}$ es la matriz de unos (correlación perfecta), modelando el fenómeno de que en crisis las correlaciones convergen a 1.
+donde $ \displaystyle \boldsymbol{1} $ es la matriz de unos (correlación perfecta), modelando el fenómeno de que en crisis las correlaciones convergen a 1.
 
 ### Pérdida del Portafolio bajo Escenarios
 
-$$ \text{Pérdida} = \sum_{i=1}^n w_i \times \text{shock}_i $$
+$ \displaystyle \text{Pérdida} = \sum_{i=1}^n w_i \times \text{shock}_i $
 
 ### Implementación del Stress Testing
 

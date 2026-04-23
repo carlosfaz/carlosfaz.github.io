@@ -3,7 +3,7 @@ layout: post
 title: "Frontera Eficiente de Markowitz: Optimización Moderna de Portafolios"
 use_math: true
 published: true
-date: 2024-01-15
+date: 2024-01-08
 category: "Finanzas Cuantitativas"
 tags: ["Markowitz", "Portfolio Optimization", "Risk Management", "Python"]
 thumbnail: "/images/first-post.png"
@@ -27,38 +27,38 @@ El ratio de Sharpe mide el exceso de retorno por unidad de riesgo:
 $ \displaystyle \frac{E[R_{p}] - R_{f}}{\sigma_{p}} $
 
 donde:
-- $E[R_p]$ es el retorno esperado del portafolio
-- $R_f$ es la tasa libre de riesgo (típicamente 5% anual)
-- $\sigma_p$ es la volatilidad anualizada del portafolio
+- $ \displaystyle E[R_p] $ es el retorno esperado del portafolio
+- $ \displaystyle R_f $ es la tasa libre de riesgo (típicamente 5% anual)
+- $ \displaystyle \sigma_p $ es la volatilidad anualizada del portafolio
 
 ## Fundamento Matemático
 
-Sea $w = (w_1, ..., w_n)$ el vector de pesos, $\mu$ el vector de retornos esperados anualizados, y $\Sigma$ la matriz de covarianza anualizada.
+Sea $ \displaystyle w = (w_1, ..., w_n) $ el vector de pesos, $ \displaystyle \mu $ el vector de retornos esperados anualizados, y $ \displaystyle \Sigma $ la matriz de covarianza anualizada.
 
 ### Retorno del Portafolio
 
-$\displaystyle E[R_p] = w^T \mu = \sum_{i=1}^{n} w_i \mu_i$
+$ \displaystyle E[R_p] = w^T \mu = \sum_{i=1}^{n} w_i \mu_i $
 
 ### Varianza del Portafolio
 
-$\displaystyle \sigma_p^2 = w^T \Sigma w = \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \sigma_{ij}$
+$ \displaystyle \sigma_p^2 = w^T \Sigma w = \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \sigma_{ij} $
 
 ### Problema de Optimización
 
-$\displaystyle \max_{w} \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}$
+$ \displaystyle \max_{w} \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} $
 
 sujeto a:
-$\displaystyle \sum_{i=1}^{n} w_i = 1, \quad 0 \leq w_i \leq 0.40$
+$ \displaystyle \sum_{i=1}^{n} w_i = 1, \quad 0 \leq w_i \leq 0.40 $
 
 ## Solución Analítica
 
 El Lagrangiano del problema es:
 
-$\displaystyle \mathcal{L}(w, \lambda) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} - \lambda \left(\sum_{i=1}^{n} w_i - 1\right)$
+$ \displaystyle \mathcal{L}(w, \lambda) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} - \lambda \left(\sum_{i=1}^{n} w_i - 1\right) $
 
 La solución analítica (sin restricciones de caja) es:
 
-$\displaystyle w^* = \frac{\Sigma^{-1}(\mu - R_f \mathbf{1})}{\mathbf{1}^T \Sigma^{-1}(\mu - R_f \mathbf{1})}$
+$ \displaystyle w^* = \frac{\Sigma^{-1}(\mu - R_f \mathbf{1})}{\mathbf{1}^T \Sigma^{-1}(\mu - R_f \mathbf{1})} $
 
 ## Implementación en Python
 
@@ -145,13 +145,13 @@ def generate_efficient_frontier(expected_returns, cov_matrix, n_portfolios=200):
 
 Los retornos diarios se anualizan multiplicando por 252 (días hábiles):
 
-$\displaystyle \mu_{anual} = \bar{r}_{diario} \times 252$
+$ \displaystyle \mu_{anual} = \bar{r}_{diario} \times 252 $
 
-$\displaystyle \Sigma_{anual} = \Sigma_{diario} \times 252$
+$ \displaystyle \Sigma_{anual} = \Sigma_{diario} \times 252 $
 
 La volatilidad se anualiza como:
 
-$\displaystyle \sigma_{anual} = \sigma_{diario} \times \sqrt{252}$
+$ \displaystyle \sigma_{anual} = \sigma_{diario} \times \sqrt{252} $
 
 ## Temas Relacionados
 

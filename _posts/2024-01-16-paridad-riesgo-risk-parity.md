@@ -3,7 +3,7 @@ layout: post
 title: "Paridad de Riesgo (Risk Parity): El Equilibrio Perfecto de Portafolios"
 use_math: true
 published: true
-date: 2024-01-16
+date: 2024-01-09
 category: "Risk Parity"
 tags: ["Risk Parity", "Portfolio Optimization", "Risk Management", "Python", "Diversification"]
 thumbnail: "/images/first-post.png"
@@ -27,27 +27,27 @@ Si la Frontera Eficiente de Markowitz nos enseñó a repartir nuestras piezas, l
 
 ### Contribución Marginal al Riesgo (MRC)
 
-Mide cuánto cambia la volatilidad del portafolio ante un cambio marginal en el peso del activo $i$:
+Mide cuánto cambia la volatilidad del portafolio ante un cambio marginal en el peso del activo $ \displaystyle i $:
 
-$$ \text{MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p} $$
+$ \displaystyle \text{MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p} $
 
 ### Contribución Total al Riesgo (TRC)
 
-$$ \text{TRC}_i = w_i \times \text{MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p} $$
+$ \displaystyle \text{TRC}_i = w_i \times \text{MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p} $
 
 En Risk Parity, se busca:
 
-$$ \text{TRC}_i = \frac{\sigma_p}{n}, \quad \forall i $$
+$ \displaystyle \text{TRC}_i = \frac{\sigma_p}{n}, \quad \forall i $
 
-es decir, cada activo contribuye con $1/n$ del riesgo total.
+es decir, cada activo contribuye con $ \displaystyle 1/n $ del riesgo total.
 
 ## Problema de Optimización
 
 Se minimiza la suma de cuadrados de las desviaciones de las contribuciones al riesgo respecto al objetivo de paridad:
 
-$$ \min_{\mathbf{w}} \sum_{i=1}^n \left( \text{TRC}_i - \frac{\sigma_p}{n} \right)^2 $$
+$ \displaystyle \min_{\mathbf{w}} \sum_{i=1}^n \left( \text{TRC}_i - \frac{\sigma_p}{n} \right)^2 $
 
-sujeto a $\sum w_i = 1$ y $0.01 \leq w_i \leq 0.30$.
+sujeto a $ \displaystyle \sum w_i = 1 $ y $ \displaystyle 0.01 \leq w_i \leq 0.30 $.
 
 ## Implementación en Python
 
@@ -133,7 +133,7 @@ def compute_drawdown(series):
 
 ### Ratio de Sharpe
 
-$$ \text{Sharpe} = \frac{\bar{r}_p \times \sqrt{252}}{s_p} $$
+$ \displaystyle \text{Sharpe} = \frac{\bar{r}_p \times \sqrt{252}}{s_p} $
 
 Implementado como:
 
