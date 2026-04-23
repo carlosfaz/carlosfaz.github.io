@@ -1,0 +1,260 @@
+---
+layout: post
+title: "Frontera Eficiente de Markowitz: Optimización Moderna de Portafolios"
+use_math: true
+published: true
+date: 2024-01-15
+category: "Finanzas Cuantitativas"
+tags: ["Markowitz", "Portfolio Optimization", "Risk Management", "Python"]
+thumbnail: "/images/first-post.png"
+---
+
+La teoría moderna de portafolios, desarrollada por Harry Markowitz en 1952, revolucionó la forma en que entendemos la inversión y el riesgo. En este artículo exploraremos los fundamentos matemáticos y su implementación práctica.
+
+## Introducción: La Filosofía de la Diversificación
+
+Imagine que está preparando una receta culinaria compleja. No busca que un solo ingrediente sea el protagonista absoluto, sino que la combinación de sabores cree un plato equilibrado. Markowitz transformó el mundo de las finanzas al aplicar esta misma lógica a las inversiones.
+
+**Conceptos fundamentales:**
+- **Portafolio**: Su "bolsa" de inversiones; el conjunto total de activos que posee
+- **Retorno**: El beneficio o ganancia que espera obtener de su dinero
+- **Riesgo**: La posibilidad de que los resultados reales sean diferentes a lo esperado
+
+## El Ratio de Sharpe
+
+El ratio de Sharpe mide el exceso de retorno por unidad de riesgo:
+
+$$\text{Sharpe Ratio} = \frac{E[R_p] - R_f}{\sigma_p}$$
+
+donde:
+- $E[R_p]$ es el retorno esperado del portafolio
+- $R_f$ es la tasa libre de riesgo (típicamente 5% anual)
+- $\sigma_p$ es la volatilidad anualizada del portafolio
+
+## Fundamento Matemático
+
+Sea $\boldsymbol{w} = (w_1, \ldots, w_n)^T$ el vector de pesos, $\boldsymbol{\mu}$ el vector de retornos esperados anualizados, y $\boldsymbol{\Sigma}$ la matriz de covarianza anualizada.
+
+### Retorno del Portafolio
+
+$$E[R_p] = \boldsymbol{w}^T \boldsymbol{\mu} = \sum_{i=1}^n w_i \mu_i$$
+
+### Varianza del Portafolio
+
+$$\sigma_p^2 = \boldsymbol{w}^T \boldsymbol{\Sigma} \boldsymbol{w} = \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij}$$
+
+### Problema de Optimización
+
+$$\max_{\boldsymbol{w}} \frac{\boldsymbol{w}^T \boldsymbol{\mu} - R_f}{\sqrt{\boldsymbol{w}^T \boldsymbol{\Sigma} \boldsymbol{w}}}$$
+
+sujeto a:
+$$\sum_{i=1}^n w_i = 1, \quad 0 \leq w_i \leq 0.40$$
+
+## Solución Analítica
+
+El Lagrangiano del problema es:
+
+$$\mathcal{L}(\boldsymbol{w}, \lambda) = \frac{\boldsymbol{w}^T \boldsymbol{\mu} - R_f}{\sqrt{\boldsymbol{w}^T \boldsymbol{\Sigma} \boldsymbol{w}}} - \lambda \left(\sum_{i=1}^n w_i - 1\right)$$
+
+La solución analítica (sin restricciones de caja) es:
+
+$$\boldsymbol{w}^* = \frac{\boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu} - R_f \boldsymbol{1})}{\boldsymbol{1}^T \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu} - R_f \boldsymbol{1})}$$
+
+## Implementación en Python
+
+### Función Objetivo
+
+```python
+def neg_sharpe_ratio(weights, expected_returns, cov_matrix, risk_free_rate):
+    """
+    Calcula el negativo del ratio de Sharpe para minimización.
+    
+    Args:
+        weights: Vector de pesos del portafolio
+        expected_returns: Vector de retornos esperados anualizados
+        cov_matrix: Matriz de covarianza anualizada
+        risk_free_rate: Tasa libre de riesgo anual
+    
+    Returns:
+        Negativo del ratio de Sharpe
+    """
+    portfolio_return = np.sum(expected_returns * weights)
+    portfolio_vol = np.sqrt(weights.T @ cov_matrix @ weights)
+    sharpe = (portfolio_return - risk_free_rate) / (portfolio_vol + 1e-10)
+    return -sharpe  # Se minimiza el negativo
+```
+
+### Optimización con SLSQP
+
+```python
+from scipy.optimize import minimize
+
+def optimize_maximum_sharpe(expected_returns, cov_matrix, risk_free_rate=0.05):
+    """
+    Encuentra los pesos óptimos que maximizan el ratio de Sharpe.
+    """
+    n_assets = len(expected_returns)
+    
+    # Restricciones
+    constraints = {'type': 'eq', 'fun': lambda x: np.sum(x) - 1}
+    
+    # Límites: sin short selling, máximo 40% por activo
+    bounds = tuple((0.0, 0.40) for _ in range(n_assets))
+    
+    # Pesos iniciales: distribución uniforme
+    initial_weights = np.ones(n_assets) / n_assets
+    
+    # Optimización
+    result = minimize(
+        neg_sharpe_ratio,
+        initial_weights,
+        args=(expected_returns, cov_matrix, risk_free_rate),
+        method='SLSQP',
+        bounds=bounds,
+        constraints=constraints
+    )
+    
+    return result.x
+```
+
+## Generación de la Frontera Eficiente
+
+Para visualizar la frontera, generamos múltiples portafolios aleatorios:
+
+```python
+def generate_efficient_frontier(expected_returns, cov_matrix, n_portfolios=200):
+    """
+    Genera la frontera eficiente usando la distribución Dirichlet.
+    """
+    np.random.seed(42)
+    
+    # Generar pesos aleatorios que sumen 1
+    w_mat = np.random.dirichlet(np.ones(len(expected_returns)), size=n_portfolios)
+    
+    # Calcular retornos y volatilidades
+    frontier_returns = w_mat @ expected_returns.values
+    frontier_vols = np.sqrt(np.einsum("ij,jk,ik->i", w_mat, cov_matrix.values, w_mat))
+    
+    # Calcular ratios de Sharpe
+    sharpe_ratios = (frontier_returns - risk_free_rate) / frontier_vols
+    
+    return w_mat, frontier_returns, frontier_vols, sharpe_ratios
+```
+
+## Anualización de Datos
+
+Los retornos diarios se anualizan multiplicando por 252 (días hábiles):
+
+$$\boldsymbol{\mu}_{\text{anual}} = \bar{\mathbf{r}}_{\text{diario}} \times 252$$
+
+$$\boldsymbol{\Sigma}_{\text{anual}} = \boldsymbol{\Sigma}_{\text{diario}} \times 252$$
+
+La volatilidad se anualiza como:
+
+$$\sigma_{\text{anual}} = \sigma_{\text{diario}} \times \sqrt{252}$$
+
+## Paridad de Riesgo (Risk Parity)
+
+La Paridad de Riesgo propone que la verdadera seguridad viene de asegurar que ninguna inversión tenga el poder de hundir todo el proyecto por sí sola.
+
+### Contribución Marginal al Riesgo (MRC)
+
+$$\text{MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
+
+### Contribución Total al Riesgo (TRC)
+
+$$\text{TRC}_i = w_i \times \text{MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
+
+En Risk Parity, buscamos:
+
+$$\text{TRC}_i = \frac{\sigma_p}{n}, \quad \forall i$$
+
+### Implementación
+
+```python
+def risk_parity_objective(w, cov):
+    """
+    Función objetivo para Risk Parity.
+    Minimiza la suma de cuadrados de las desviaciones de las contribuciones al riesgo.
+    """
+    pv = np.sqrt(w.T @ cov @ w)           # Volatilidad del portafolio
+    rc = w * (cov @ w) / pv               # Contribución al riesgo (TRC)
+    return np.sum((rc - pv / len(w)) ** 2) # Suma de cuadrados de desviaciones
+```
+
+## Gestión de Riesgos Avanzada
+
+### Value at Risk (VaR) Histórico
+
+El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado:
+
+$$\text{VaR}_{0.95} = \text{percentil}_{5}(\text{retornos históricos})$$
+
+```python
+def calculate_var_cvar_historical(returns, confidence_level=0.95):
+    """
+    Calcula VaR y CVaR (Expected Shortfall) históricos.
+    """
+    var = np.percentile(returns, (1 - confidence_level) * 100)
+    cvar = returns[returns <= var].mean()  # Expected Shortfall
+    return {'var': var, 'cvar': cvar}
+```
+
+### CVaR (Expected Shortfall)
+
+El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
+
+$$\text{CVaR}_\alpha = E[R \mid R \leq \text{VaR}_\alpha]$$
+
+El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), satisfaciendo:
+- **Subaditividad**: $\text{CVaR}(X+Y) \leq \text{CVaR}(X) + \text{CVaR}(Y)$
+- **Monotonicidad**: Si $X \leq Y$, entonces $\text{CVaR}(X) \geq \text{CVaR}(Y)$
+- **Homogeneidad positiva**: $\text{CVaR}(\lambda X) = \lambda \text{CVaR}(X)$ para $\lambda > 0$
+- **Invarianza traslacional**: $\text{CVaR}(X + c) = \text{CVaR}(X) - c$
+
+## Simulación Monte Carlo con Descomposición de Cholesky
+
+Para generar retornos correlacionados, descomponemos la matriz de covarianza:
+
+$$\boldsymbol{\Sigma} = \boldsymbol{L} \boldsymbol{L}^T$$
+
+donde $\boldsymbol{L}$ es una matriz triangular inferior.
+
+```python
+def monte_carlo_var(weights, mean_returns, cov_matrix, n_simulations=10000, horizon=10):
+    """
+    Calcula VaR usando simulación Monte Carlo con descomposición de Cholesky.
+    """
+    # Descomposición de Cholesky
+    try:
+        L = np.linalg.cholesky(cov_matrix)
+    except np.linalg.LinAlgError:
+        # Regularización si no es definida positiva
+        cov_matrix += np.eye(len(weights)) * 1e-6
+        L = np.linalg.cholesky(cov_matrix)
+    
+    # Generar retornos correlacionados
+    random_returns = np.random.normal(0, 1, (n_simulations, len(weights)))
+    correlated_returns = random_returns @ L.T + mean_returns.values
+    
+    # Retornos del portafolio para el horizonte deseado
+    portfolio_returns = correlated_returns @ weights * np.sqrt(horizon)
+    
+    # Calcular VaR y CVaR
+    var_95 = np.percentile(portfolio_returns, 5)
+    cvar_95 = portfolio_returns[portfolio_returns <= var_95].mean()
+    
+    return var_95, cvar_95
+```
+
+## Conclusión
+
+La optimización moderna de portafolios combina teoría matemática rigurosa con implementación práctica. Las técnicas presentadas - desde la frontera eficiente de Markowitz hasta la paridad de riesgo y las simulaciones Monte Carlo - proporcionan herramientas poderosas para la gestión profesional de inversiones.
+
+La clave del éxito está en entender que:
+1. **La diversificación es el único "almuerzo gratis"** en finanzas
+2. **El riesgo debe medirse y gestionarse sistemáticamente**
+3. **Las restricciones realistas mejoran la robustez** de las soluciones
+4. **El rebalanceo periódico** mantiene la asignación objetivo
+
+¿Te interesa implementar estas técnicas en tus propias inversiones? ¡Explora el código completo en mi repositorio de GitHub!

@@ -712,6 +712,223 @@ table {
   }
 }
 
+// Portfolio page styles
+.portfolio-page {
+  .portfolio-header {
+    text-align: center;
+    margin-bottom: $space8;
+    
+    h1 {
+      font-size: $font3xl;
+      margin-bottom: $space2;
+    }
+    
+    .portfolio-subtitle {
+      color: $gray;
+      font-size: $fontLg;
+    }
+  }
+  
+  .portfolio-description {
+    background: $lighterGray;
+    padding: $space6;
+    border-radius: $radiusLg;
+    margin-bottom: $space8;
+  }
+  
+  .portfolio-features {
+    margin-bottom: $space8;
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: $space4;
+    }
+    
+    .feature-card {
+      background: $white;
+      border: 1px solid $lightGray;
+      border-radius: $radiusMd;
+      padding: $space6;
+      text-align: center;
+      transition: all $transitionBase;
+      
+      &:hover {
+        border-color: $blue;
+        box-shadow: $shadowMd;
+        transform: translateY(-2px);
+      }
+      
+      .feature-icon {
+        font-size: 32px;
+        margin-bottom: $space3;
+      }
+      
+      h3 {
+        font-size: $fontLg;
+        margin-bottom: $space2;
+      }
+      
+      p {
+        color: $gray;
+        font-size: $fontSm;
+        margin: 0;
+      }
+    }
+  }
+  
+  .portfolio-tech {
+    margin-bottom: $space8;
+    
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space2;
+    }
+    
+    .tech-tag {
+      background: $blueLight;
+      color: $blue;
+      padding: $space2 $space4;
+      border-radius: $radiusFull;
+      font-size: $fontSm;
+      font-weight: 500;
+    }
+  }
+  
+  .portfolio-metrics {
+    margin-bottom: $space8;
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $space4;
+    }
+    
+    .metric-card {
+      background: $white;
+      border: 1px solid $lightGray;
+      border-radius: $radiusMd;
+      padding: $space6;
+      text-align: center;
+      
+      &.highlight {
+        border-color: $blue;
+        background: $blueLight;
+      }
+      
+      .metric-label {
+        display: block;
+        color: $gray;
+        font-size: $fontSm;
+        margin-bottom: $space2;
+      }
+      
+      .metric-value {
+        font-size: $font2xl;
+        color: $darkerGray;
+        
+        &.positive {
+          color: $green;
+        }
+      }
+    }
+  }
+  
+  .portfolio-assets {
+    margin-bottom: $space8;
+    
+    .assets-table-wrapper {
+      overflow-x: auto;
+    }
+    
+    .assets-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: $fontSm;
+      
+      th, td {
+        padding: $space3 $space4;
+        text-align: left;
+        border-bottom: 1px solid $lightGray;
+      }
+      
+      th {
+        background: $lighterGray;
+        font-weight: 600;
+        color: $darkerGray;
+        position: sticky;
+        top: 0;
+      }
+      
+      .positive {
+        color: $green;
+        font-weight: 500;
+      }
+      
+      .negative {
+        color: $red;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .portfolio-methodology {
+    margin-bottom: $space8;
+    
+    .methodology-content {
+      background: $white;
+      border: 1px solid $lightGray;
+      border-radius: $radiusMd;
+      padding: $space6;
+      
+      h3 {
+        font-size: $fontLg;
+        margin-top: $space6;
+        
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      
+      ul {
+        margin: $space3 0;
+      }
+    }
+  }
+  
+  .portfolio-cta {
+    text-align: center;
+    background: linear-gradient(135deg, $blueLight 0%, $lighterGray 100%);
+    padding: $space8;
+    border-radius: $radiusLg;
+    
+    h2 {
+      margin-bottom: $space3;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      background: $blue;
+      color: $white;
+      padding: $space4 $space6;
+      border-radius: $radiusMd;
+      font-weight: 600;
+      font-size: $fontLg;
+      transition: all $transitionBase;
+      
+      &:hover {
+        background: $blueDark;
+        color: $white;
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: $shadowLg;
+      }
+    }
+  }
+}
+
 // Import syntax highlighting
 @import "highlights";
 @import "svg-icons";
