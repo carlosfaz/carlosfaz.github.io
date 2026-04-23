@@ -3,7 +3,7 @@ layout: post
 title: "Frontera Eficiente de Markowitz: Optimización Moderna de Portafolios"
 use_math: true
 published: true
-date: 2024-01-08
+date: 2024-04-16
 category: "Finanzas Cuantitativas"
 tags: ["Markowitz", "Portfolio Optimization", "Risk Management", "Python"]
 thumbnail: "/images/first-post.png"

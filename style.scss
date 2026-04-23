@@ -624,6 +624,9 @@ footer {
 
 // About page
 .about-page {
+  font-size: $fontBase;
+  line-height: 1.6;
+  
   .profile-section {
     display: flex;
     gap: $space8;

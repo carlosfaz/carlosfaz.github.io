@@ -3,7 +3,7 @@ layout: post
 title: "Paridad de Riesgo (Risk Parity): El Equilibrio Perfecto de Portafolios"
 use_math: true
 published: true
-date: 2024-01-09
+date: 2024-04-17
 category: "Risk Parity"
 tags: ["Risk Parity", "Portfolio Optimization", "Risk Management", "Python", "Diversification"]
 thumbnail: "/images/first-post.png"

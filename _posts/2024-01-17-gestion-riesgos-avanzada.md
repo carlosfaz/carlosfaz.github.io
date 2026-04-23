@@ -3,7 +3,7 @@ layout: post
 title: "Gestión de Riesgos Avanzada: VaR, CVaR y Stress Testing"
 use_math: true
 published: true
-date: 2024-01-10
+date: 2024-04-18
 category: "Gestión de Riesgos"
 tags: ["Risk Management", "VaR", "CVaR", "Expected Shortfall", "Stress Testing", "Monte Carlo", "Python"]
 thumbnail: "/images/first-post.png"
@@ -23,9 +23,9 @@ Podemos entender estas herramientas comparándolas con la planificación ante in
 
 ## Value at Risk (VaR) Histórico
 
-El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado, sin asumir distribución normal. Para un nivel de confianza del 95%:
+El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado, sin asumir distribución normal. Para un nivel de confianza del 95%, el VaR corresponde al percentil 5 de los retornos históricos:
 
-$ \displaystyle \text{VaR}_{0.95} = \text{percentil}_{5}(\text{retornos históricos}) $
+$ \displaystyle \text{VaR}_{95\%} = \text{percentil}_5(\text{retornos históricos}) $
 
 ### Implementación en Python
 
@@ -48,9 +48,9 @@ def calculate_var_cvar_historical(returns, confidence_level=0.95):
 
 ## CVaR (Expected Shortfall)
 
-El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
+El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR. Es decir, el valor esperado de los retornos condicionados a que estén por debajo del VaR:
 
-$ \displaystyle \text{CVaR}_\alpha = E[R \mid R \leq \text{VaR}_\alpha] $
+$ \displaystyle \text{CVaR} = E[R \mid R \leq \text{VaR}] $
 
 ### Propiedades de Coherencia
 
@@ -157,11 +157,11 @@ def define_stress_scenarios(tickers):
 
 ### Ajuste de Correlación en Crisis
 
-El ajuste de correlación se aplica como:
+El ajuste de correlación se aplica mediante una combinación convexa entre la matriz base y la matriz de correlación perfecta:
 
-$ \displaystyle \boldsymbol{C}_{\text{ajustada}} = \alpha \boldsymbol{C}_{\text{base}} + (1-\alpha)\boldsymbol{1} $
+$ \displaystyle C_{\text{ajustada}} = \alpha \cdot C_{\text{base}} + (1 - \alpha) \cdot J $
 
-donde $ \displaystyle \boldsymbol{1} $ es la matriz de unos (correlación perfecta), modelando el fenómeno de que en crisis las correlaciones convergen a 1.
+donde $ \displaystyle J $ es la matriz de unos (correlación perfecta), modelando el fenómeno de que en crisis las correlaciones convergen a 1.
 
 ### Pérdida del Portafolio bajo Escenarios
 

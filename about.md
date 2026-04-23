@@ -12,8 +12,7 @@ permalink: /about/
     <div class="profile-info">
       <h1>{{ site.name }}</h1>
       <h2>{{ site.description }}</h2>
-      <p>Soy Ingeniero en Física Industrial graduado del Tecnológico de Monterrey (2020). Tengo experiencia profesional en óptica y física de láseres debido a estancias de investigación. Soy apasionado de las ciencias exactas, los números y los análisis.</p>
-      <p>En este blog comparto mis conocimientos, proyectos personales y reflexiones sobre matemáticas aplicadas, física, análisis cuantitativo y tecnología.</p>
+      <p>Soy Ingeniero en Física Industrial, apasionado de las ciencias exactas, los números y los análisis. En este blog comparto mis conocimientos, proyectos personales y reflexiones sobre matemáticas aplicadas, física, análisis cuantitativo y tecnología.</p>
       <p>Mis habilidades incluyen análisis de datos, softwares estadísticos y lenguajes de programación numéricos. Me especializo en la aplicación de métodos cuantitativos para resolver problemas complejos en diferentes áreas, combinando la rigurosidad científica con herramientas computacionales avanzadas.</p>
     </div>
   </div>
