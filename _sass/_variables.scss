@@ -3,25 +3,101 @@
 // VARIABLES
 //
 
-// Colors
-$blue: #4183C4;
+// Colors - Professional palette
+$blue: #2563eb;
+$blueDark: #1d4ed8;
+$blueLight: #dbeafe;
+$indigo: #4f46e5;
+$purple: #7c3aed;
 
-// Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
-$white: #fff;
+// Accent colors
+$green: #059669;
+$red: #dc2626;
+$orange: #ea580c;
+$yellow: #f59e0b;
 
-// Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$georgia: Georgia, serif;
+// Grays - Modern neutral palette
+$black: #0f172a;
+$darkerGray: #1e293b;
+$darkGray: #334155;
+$gray: #64748b;
+$mediumGray: #94a3b8;
+$lightGray: #e2e8f0;
+$lighterGray: #f1f5f9;
+$white: #ffffff;
+
+// Background colors
+$bgPrimary: $white;
+$bgSecondary: $lighterGray;
+$bgDark: $darkerGray;
+
+// Font stacks - Professional typography
+$fontSans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+$fontSerif: Georgia, 'Times New Roman', serif;
+$fontMono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+// Legacy font variables for compatibility
+$helvetica: $fontSans;
+$helveticaNeue: $fontSans;
+$georgia: $fontSerif;
+
+// Typography scale
+$fontXs: 12px;
+$fontSm: 14px;
+$fontBase: 16px;
+$fontMd: 18px;
+$fontLg: 20px;
+$fontXl: 24px;
+$font2xl: 30px;
+$font3xl: 36px;
+
+// Spacing scale
+$space1: 4px;
+$space2: 8px;
+$space3: 12px;
+$space4: 16px;
+$space5: 20px;
+$space6: 24px;
+$space8: 32px;
+$space10: 40px;
+$space12: 48px;
+$space16: 64px;
+
+// Border radius
+$radiusSm: 4px;
+$radiusMd: 8px;
+$radiusLg: 12px;
+$radiusXl: 16px;
+$radiusFull: 9999px;
+
+// Shadows
+$shadowSm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadowMd: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadowLg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadowXl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Transitions
+$transitionFast: 150ms ease;
+$transitionBase: 200ms ease;
+$transitionSlow: 300ms ease;
 
 // Mobile breakpoints
 @mixin mobile {
   @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+// Tablet breakpoint
+@mixin tablet {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Desktop breakpoint
+@mixin desktop {
+  @media screen and (min-width: 1025px) {
     @content;
   }
 }

@@ -7,6 +7,7 @@
 
 @import "reset";
 @import "variables";
+
 // Syntax highlighting @import is at the bottom of this file
 
 /**************/
@@ -15,275 +16,702 @@
 
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $helvetica;
+  background: $bgPrimary;
+  font: $fontMd/1.6 $fontSans;
   color: $darkGray;
+  line-height: 1.6;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
+  max-width: 800px;
+  padding: 0 $space4;
   width: 100%;
 }
 
+// Typography
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: $fontSans;
   color: $darkerGray;
-  font-weight: bold;
-
-  line-height: 1.7;
-  margin: 1em 0 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: $space8 0 $space4;
   padding: 0;
+  letter-spacing: -0.02em;
 
   @include mobile {
-    line-height: 1.4;
+    line-height: 1.3;
   }
 }
 
 h1 {
-  font-size: 30px;
+  font-size: $font2xl;
+  
+  @include mobile {
+    font-size: $fontXl;
+  }
+  
   a {
     color: inherit;
+    text-decoration: none;
+    
+    &:hover {
+      color: $blue;
+    }
   }
 }
 
 h2 {
-  font-size: 24px;
+  font-size: $fontXl;
+  
+  @include mobile {
+    font-size: $fontLg;
+  }
 }
 
 h3 {
-  font-size: 20px;
+  font-size: $fontLg;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: $fontMd;
   color: $gray;
 }
 
 p {
-  margin: 15px 0;
+  margin: $space4 0;
 }
 
+// Links
 a {
   color: $blue;
   text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
-    color: $blue;
+  cursor: pointer;
+  transition: color $transitionFast;
+  
+  &:hover {
+    color: $blueDark;
+    text-decoration: underline;
+  }
+  
+  &:active {
+    color: $blueDark;
   }
 }
 
+// Lists
 ul, ol {
-  margin: 15px 0;
-  padding-left: 30px;
+  margin: $space4 0;
+  padding-left: $space6;
 }
 
 ul {
   list-style-type: disc;
+  
+  li {
+    margin-bottom: $space2;
+  }
 }
 
 ol {
   list-style-type: decimal;
+  
+  li {
+    margin-bottom: $space2;
+  }
 }
 
-ol ul, ul ol, ul ul, ol ol {
-  margin: 0;
+ul ul, ol ol, ul ol, ol ul {
+  margin: $space2 0;
 }
 
 ul ul, ol ul {
   list-style-type: circle;
 }
 
+// Text formatting
 em, i {
   font-style: italic;
 }
 
 strong, b {
-  font-weight: bold;
+  font-weight: 700;
+}
+
+code {
+  font-family: $fontMono;
+  font-size: 0.9em;
+  padding: 2px 6px;
+  background: $lighterGray;
+  border-radius: $radiusSm;
+  color: $indigo;
+}
+
+pre {
+  background: $darkerGray;
+  color: $lighterGray;
+  padding: $space6;
+  border-radius: $radiusMd;
+  overflow-x: auto;
+  margin: $space6 0;
+  font-size: $fontSm;
+  line-height: 1.5;
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
 }
 
 img {
   max-width: 100%;
-}
-
-// Fixes images in popup boxes from Google Translate
-.gmnoprint img {
-  max-width: none;
+  height: auto;
+  border-radius: $radiusMd;
 }
 
 .date {
   font-style: italic;
   color: $gray;
+  font-size: $fontSm;
 }
 
-// Specify the color of the selection
-::-moz-selection {
-  color: $black;
-  background: $lightGray;
-}
+// Selection
 ::selection {
-  color: $black;
-  background: $lightGray;
+  color: $white;
+  background: $blue;
 }
 
-// Nicolas Gallagher's micro clearfix hack
-// http://nicolasgallagher.com/micro-clearfix-hack/
+::-moz-selection {
+  color: $white;
+  background: $blue;
+}
+
+// Clearfix
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
-/*********************/
-/* LAYOUT / SECTIONS */
-/*********************/
-
-//
-// .masthead
-//
+/******************/
+/* MASTHEAD / HEADER */
+/******************/
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin-bottom: $space12;
+  background: $white;
+  border-bottom: 1px solid $lightGray;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: $shadowSm;
 }
 
 .masthead {
-  padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  padding: $space6 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   @include mobile {
+    flex-direction: column;
     text-align: center;
+    padding: $space5 0;
   }
 }
 
 .site-avatar {
-  float: left;
-  width: 70px;
-  height: 70px;
-  margin-right: 15px;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
+  flex-shrink: 0;
+  
+  img {
+    width: 56px;
+    height: 56px;
+    border-radius: $radiusFull;
+    object-fit: cover;
+    border: 2px solid $lightGray;
+    transition: border-color $transitionBase;
+    
+    &:hover {
+      border-color: $blue;
+    }
   }
 
-  img {
-    border-radius: 5px;
+  @include mobile {
+    margin-bottom: $space3;
   }
 }
 
 .site-info {
-  float: left;
+  flex: 1;
+  margin: 0 $space6;
 
   @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
+    margin: 0 0 $space3 0;
   }
 }
 
 .site-name {
   margin: 0;
-  color: $darkGray;
-  cursor: pointer;
-  font-family: $helveticaNeue;
-  font-weight: 300;
-  font-size: 28px;
-  letter-spacing: 1px;
-}
-
-.site-description {
-  margin: -5px 0 0 0;
-  color: $gray;
-  font-size: 16px;
-
-  @include mobile {
-    margin: 3px 0;
-  }
-}
-
-nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
-  font-size: 18px;
-
-  @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
-  }
-
+  color: $darkerGray;
+  font-family: $fontSans;
+  font-weight: 700;
+  font-size: $fontLg;
+  letter-spacing: -0.02em;
+  
   a {
-    margin-left: 20px;
-    color: $darkGray;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    @include mobile {
-      margin: 0 10px;
+    color: inherit;
+    text-decoration: none;
+    
+    &:hover {
       color: $blue;
     }
   }
 }
 
-//
-// .main
-//
-
-.posts > .post {
-  padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+.site-description {
+  margin: $space1 0 0 0;
+  color: $gray;
+  font-size: $fontSm;
+  font-weight: 400;
 }
 
-.posts > .post:last-child {
-  padding-bottom: 1em;
-  border-bottom: none;
+// Navigation
+nav {
+  display: flex;
+  align-items: center;
+  gap: $space4;
+
+  @include mobile {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space2;
+  }
+
+  a {
+    color: $gray;
+    font-weight: 500;
+    font-size: $fontSm;
+    padding: $space2 $space3;
+    border-radius: $radiusSm;
+    transition: all $transitionFast;
+    white-space: nowrap;
+    
+    &:hover {
+      color: $blue;
+      background: $blueLight;
+      text-decoration: none;
+    }
+    
+    &.active {
+      color: $blue;
+      background: $blueLight;
+    }
+  }
+}
+
+/*************/
+/* MAIN CONTENT */
+/*************/
+
+#main {
+  min-height: 60vh;
+}
+
+// Posts list
+.posts > .post {
+  padding-bottom: $space8;
+  margin-bottom: $space8;
+  border-bottom: 1px solid $lightGray;
+  
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .post {
-  blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
+  // Post header
+  .post-header {
+    margin-bottom: $space4;
+  }
+  
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: $space3;
+    margin-bottom: $space3;
+    font-size: $fontSm;
     color: $gray;
-    font-size: 22px;
-    font-style: italic;
+    
+    .date {
+      display: flex;
+      align-items: center;
+      gap: $space2;
+    }
+    
+    .category {
+      background: $blueLight;
+      color: $blue;
+      padding: $space1 $space3;
+      border-radius: $radiusFull;
+      font-weight: 500;
+      font-size: $fontXs;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
   }
-
-  .comments {
-    margin-top: 10px;
+  
+  // Post title
+  h1 {
+    margin-bottom: $space3;
+    
+    a {
+      background: linear-gradient(to bottom, transparent 50%, $blueLight 50%);
+      background-size: 0% 100%;
+      background-repeat: no-repeat;
+      transition: background-size $transitionBase;
+      
+      &:hover {
+        background-size: 100% 100%;
+        text-decoration: none;
+      }
+    }
   }
-
+  
+  // Post content
+  .entry {
+    color: $darkGray;
+    font-size: $fontBase;
+    line-height: 1.7;
+    
+    p {
+      margin-bottom: $space4;
+    }
+    
+    img {
+      margin: $space6 0;
+    }
+    
+    blockquote {
+      margin: $space6 0;
+      padding: $space4 $space6;
+      border-left: 4px solid $blue;
+      background: $lighterGray;
+      border-radius: 0 $radiusMd $radiusMd 0;
+      color: $gray;
+      font-style: italic;
+      font-size: $fontLg;
+      
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  // Read more link
   .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: $space2;
+    margin-top: $space4;
+    font-size: $fontSm;
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 15px;
+    letter-spacing: 0.05em;
+    color: $blue;
+    padding: $space2 $space4;
+    border: 1px solid $blue;
+    border-radius: $radiusSm;
+    transition: all $transitionFast;
+    
+    &:hover {
+      background: $blue;
+      color: $white;
+      text-decoration: none;
+    }
+    
+    &::after {
+      content: "→";
+      transition: transform $transitionFast;
+    }
+    
+    &:hover::after {
+      transform: translateX(4px);
+    }
+  }
+  
+  // Comments section
+  .comments {
+    margin-top: $space8;
+    padding-top: $space6;
+    border-top: 1px solid $lightGray;
   }
 }
 
+// Single post page
+.post-full {
+  .post-header {
+    margin-bottom: $space8;
+    text-align: center;
+  }
+  
+  .post-title {
+    font-size: $font3xl;
+    margin-bottom: $space4;
+    
+    @include mobile {
+      font-size: $font2xl;
+    }
+  }
+  
+  .post-meta {
+    justify-content: center;
+  }
+  
+  .post-content {
+    margin-top: $space8;
+    
+    h2 {
+      margin-top: $space12;
+      padding-bottom: $space3;
+      border-bottom: 2px solid $lightGray;
+    }
+    
+    h3 {
+      margin-top: $space8;
+    }
+  }
+  
+  .post-tags {
+    margin-top: $space8;
+    padding-top: $space6;
+    border-top: 1px solid $lightGray;
+    
+    .tag {
+      display: inline-block;
+      background: $lighterGray;
+      color: $gray;
+      padding: $space1 $space3;
+      border-radius: $radiusFull;
+      font-size: $fontXs;
+      margin-right: $space2;
+      margin-bottom: $space2;
+      transition: all $transitionFast;
+      
+      &:hover {
+        background: $blueLight;
+        color: $blue;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Footer
 .wrapper-footer {
-  margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  margin-top: $space16;
+  border-top: 1px solid $lightGray;
+  background: $bgSecondary;
 }
 
 footer {
-  padding: 20px 0;
+  padding: $space8 0;
   text-align: center;
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: $space4;
+    margin-bottom: $space4;
+    
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: $radiusFull;
+      background: $white;
+      color: $gray;
+      transition: all $transitionFast;
+      box-shadow: $shadowSm;
+      
+      &:hover {
+        background: $blue;
+        color: $white;
+        transform: translateY(-2px);
+        box-shadow: $shadowMd;
+      }
+    }
+  }
+  
+  .copyright {
+    color: $gray;
+    font-size: $fontSm;
+  }
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+// Pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space3;
+  margin: $space12 0;
+  
+  a, span {
+    padding: $space2 $space4;
+    border-radius: $radiusSm;
+    font-weight: 500;
+    transition: all $transitionFast;
+  }
+  
+  a {
+    background: $white;
+    border: 1px solid $lightGray;
+    color: $darkGray;
+    
+    &:hover {
+      background: $blueLight;
+      border-color: $blue;
+      color: $blue;
+    }
+  }
+  
+  .active {
+    background: $blue;
+    color: $white;
+    border-color: $blue;
+  }
+  
+  .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// 404 page
+.page-404 {
+  text-align: center;
+  padding: $space16 0;
+  
+  h1 {
+    font-size: 72px;
+    color: $lightGray;
+    margin-bottom: $space4;
+  }
+  
+  p {
+    font-size: $fontLg;
+    color: $gray;
+    margin-bottom: $space8;
+  }
+}
+
+// About page
+.about-page {
+  .profile-section {
+    display: flex;
+    gap: $space8;
+    margin-bottom: $space8;
+    padding: $space8;
+    background: $lighterGray;
+    border-radius: $radiusLg;
+    
+    @include mobile {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .profile-image {
+      flex-shrink: 0;
+      
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: $radiusFull;
+        object-fit: cover;
+        border: 4px solid $white;
+        box-shadow: $shadowMd;
+      }
+    }
+    
+    .profile-info {
+      flex: 1;
+    }
+  }
+  
+  .skills-section {
+    margin: $space8 0;
+    
+    h3 {
+      margin-bottom: $space4;
+    }
+    
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space2;
+    }
+    
+    .skill-tag {
+      background: $blueLight;
+      color: $blue;
+      padding: $space2 $space4;
+      border-radius: $radiusFull;
+      font-size: $fontSm;
+      font-weight: 500;
+    }
+  }
+}
+
+// Code blocks in highlights
+.highlight {
+  background: $darkerGray;
+  border-radius: $radiusMd;
+  margin: $space6 0;
+  overflow: hidden;
+  
+  pre {
+    margin: 0;
+    padding: $space6;
+    background: none;
+  }
+}
+
+// Table styles
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: $space6 0;
+  font-size: $fontSm;
+  
+  th, td {
+    padding: $space3 $space4;
+    text-align: left;
+    border-bottom: 1px solid $lightGray;
+  }
+  
+  th {
+    background: $lighterGray;
+    font-weight: 600;
+    color: $darkerGray;
+  }
+  
+  tr:hover {
+    background: $lighterGray;
+  }
+}
+
+// Import syntax highlighting
 @import "highlights";
 @import "svg-icons";

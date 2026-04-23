@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-
-    {% include meta.html %}
-    {% if page.use_math %}
-    {% include mathjax_support.html %}
-    {% endif %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="author" content="{{ site.name }}">
     
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}">
+    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url | prepend: site.baseurl }}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@{{ site.footer-links.twitter }}">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}">
+    <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
+
+    {% if page.use_math %}
+      {% include mathjax_support.html %}
+    {% endif %}
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/feed.xml" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ site.avatar }}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ site.avatar }}">
   </head>
 
   <body>
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+          <a href="{{ site.baseurl }}/" class="site-avatar">
+            <img src="{{ site.avatar }}" alt="{{ site.name }}" loading="lazy" />
+          </a>
 
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
@@ -31,8 +48,8 @@
           </div>
 
           <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
+            <a href="{{ site.baseurl }}/" {% if page.url == '/' %}class="active"{% endif %}>Blog</a>
+            <a href="{{ site.baseurl }}/about" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
           </nav>
         </header>
       </div>
@@ -45,7 +62,12 @@
     <div class="wrapper-footer">
       <div class="container">
         <footer class="footer">
-          {% include svg-icons.html %}
+          <div class="social-icons">
+            {% include svg-icons.html %}
+          </div>
+          <p class="copyright">
+            &copy; {{ site.time | date: '%Y' }} {{ site.name }}. Hecho con Jekyll.
+          </p>
         </footer>
       </div>
     </div>
