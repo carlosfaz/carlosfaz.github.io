@@ -24,7 +24,7 @@ Imagine que está preparando una receta culinaria compleja. No busca que un solo
 
 El ratio de Sharpe mide el exceso de retorno por unidad de riesgo:
 
-$${\rm Sharpe\ Ratio} = \frac{E[R_p] - R_f}{\sigma_p}$$
+$$ \frac{E[R_p] - R_f}{\sigma_p} $$
 
 donde:
 - $E[R_p]$ es el retorno esperado del portafolio
@@ -33,32 +33,32 @@ donde:
 
 ## Fundamento Matemático
 
-Sea $\boldsymbol{w} = (w_1, \ldots, w_n)^T$ el vector de pesos, $\boldsymbol{\mu}$ el vector de retornos esperados anualizados, y $\boldsymbol{\Sigma}$ la matriz de covarianza anualizada.
+Sea $w = (w_1, ..., w_n)$ el vector de pesos, $\mu$ el vector de retornos esperados anualizados, y $\Sigma$ la matriz de covarianza anualizada.
 
 ### Retorno del Portafolio
 
-$$E[R_p] = \boldsymbol{w}^T \boldsymbol{\mu} = \sum_{i=1}^n w_i \mu_i$$
+$$ E[R_p] = w^T \mu = \sum_{i=1}^{n} w_i \mu_i $$
 
 ### Varianza del Portafolio
 
-$$\sigma_p^2 = \boldsymbol{w}^T \boldsymbol{\Sigma} \boldsymbol{w} = \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij}$$
+$$ \sigma_p^2 = w^T \Sigma w = \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \sigma_{ij} $$
 
 ### Problema de Optimización
 
-$$\max_{\boldsymbol{w}} \frac{\boldsymbol{w}^T \boldsymbol{\mu} - R_f}{\sqrt{\boldsymbol{w}^T \boldsymbol{\Sigma} \boldsymbol{w}}}$$
+$$ \max_{w} \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} $$
 
 sujeto a:
-$$\sum_{i=1}^n w_i = 1, \quad 0 \leq w_i \leq 0.40$$
+$$ \sum_{i=1}^{n} w_i = 1, \quad 0 \leq w_i \leq 0.40 $$
 
 ## Solución Analítica
 
 El Lagrangiano del problema es:
 
-$$\mathcal{L}(\boldsymbol{w}, \lambda) = \frac{\boldsymbol{w}^T \boldsymbol{\mu} - R_f}{\sqrt{\boldsymbol{w}^T \boldsymbol{\Sigma} \boldsymbol{w}}} - \lambda \left(\sum_{i=1}^n w_i - 1\right)$$
+$$ \mathcal{L}(w, \lambda) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} - \lambda \left(\sum_{i=1}^{n} w_i - 1\right) $$
 
 La solución analítica (sin restricciones de caja) es:
 
-$$\boldsymbol{w}^* = \frac{\boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu} - R_f \boldsymbol{1})}{\boldsymbol{1}^T \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu} - R_f \boldsymbol{1})}$$
+$$ w^* = \frac{\Sigma^{-1}(\mu - R_f \mathbf{1})}{\mathbf{1}^T \Sigma^{-1}(\mu - R_f \mathbf{1})} $$
 
 ## Implementación en Python
 
@@ -145,13 +145,13 @@ def generate_efficient_frontier(expected_returns, cov_matrix, n_portfolios=200):
 
 Los retornos diarios se anualizan multiplicando por 252 (días hábiles):
 
-$$\boldsymbol{\mu}_{\rm anual} = \bar{\mathbf{r}}_{\rm diario} \times 252$$
+$$ \mu_{anual} = \bar{r}_{diario} \times 252 $$
 
-$$\boldsymbol{\Sigma}_{\rm anual} = \boldsymbol{\Sigma}_{\rm diario} \times 252$$
+$$ \Sigma_{anual} = \Sigma_{diario} \times 252 $$
 
 La volatilidad se anualiza como:
 
-$$\sigma_{\rm anual} = \sigma_{\rm diario} \times \sqrt{252}$$
+$$ \sigma_{anual} = \sigma_{diario} \times \sqrt{252} $$
 
 ## Paridad de Riesgo (Risk Parity)
 
@@ -159,15 +159,15 @@ La Paridad de Riesgo propone que la verdadera seguridad viene de asegurar que ni
 
 ### Contribución Marginal al Riesgo (MRC)
 
-$${\rm MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
+$$ MRC_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\Sigma w)_i}{\sigma_p} $$
 
 ### Contribución Total al Riesgo (TRC)
 
-$${\rm TRC}_i = w_i \times {\rm MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
+$$ TRC_i = w_i \times MRC_i = \frac{w_i (\Sigma w)_i}{\sigma_p} $$
 
 En Risk Parity, buscamos:
 
-$${\rm TRC}_i = \frac{\sigma_p}{n}, \quad \forall i$$
+$$ TRC_i = \frac{\sigma_p}{n}, \quad \forall i $$
 
 ### Implementación
 
@@ -188,7 +188,7 @@ def risk_parity_objective(w, cov):
 
 El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado:
 
-$${\rm VaR}_{0.95} = {\rm percentil}_{5}({\rm retornos\ hist\'oricos})$$
+$$ VaR_{0.95} = percentil_{5}(retornos\ históricos) $$
 
 ```python
 def calculate_var_cvar_historical(returns, confidence_level=0.95):
@@ -204,21 +204,21 @@ def calculate_var_cvar_historical(returns, confidence_level=0.95):
 
 El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
 
-$${\rm CVaR}_\alpha = E[R \mid R \leq {\rm VaR}_\alpha]$$
+$$ CVaR_\alpha = E[R \mid R \leq VaR_\alpha] $$
 
 El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), satisfaciendo:
-- **Subaditividad**: ${\rm CVaR}(X+Y) \leq {\rm CVaR}(X) + {\rm CVaR}(Y)$
-- **Monotonicidad**: Si $X \leq Y$, entonces ${\rm CVaR}(X) \geq {\rm CVaR}(Y)$
-- **Homogeneidad positiva**: ${\rm CVaR}(\lambda X) = \lambda {\rm CVaR}(X)$ para $\lambda > 0$
-- **Invarianza traslacional**: ${\rm CVaR}(X + c) = {\rm CVaR}(X) - c$
+- **Subaditividad**: $CVaR(X+Y) \leq CVaR(X) + CVaR(Y)$
+- **Monotonicidad**: Si $X \leq Y$, entonces $CVaR(X) \geq CVaR(Y)$
+- **Homogeneidad positiva**: $CVaR(\lambda X) = \lambda CVaR(X)$ para $\lambda > 0$
+- **Invarianza traslacional**: $CVaR(X + c) = CVaR(X) - c$
 
 ## Simulación Monte Carlo con Descomposición de Cholesky
 
 Para generar retornos correlacionados, descomponemos la matriz de covarianza:
 
-$$\boldsymbol{\Sigma} = \boldsymbol{L} \boldsymbol{L}^T$$
+$$ \Sigma = L L^T $$
 
-donde $\boldsymbol{L}$ es una matriz triangular inferior.
+donde $L$ es una matriz triangular inferior.
 
 ```python
 def monte_carlo_var(weights, mean_returns, cov_matrix, n_simulations=10000, horizon=10):
