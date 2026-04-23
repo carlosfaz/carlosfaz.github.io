@@ -6,7 +6,7 @@ permalink: /portfolio/
 
 <div class="portfolio-embed-container">
   <iframe src="{{ site.baseurl }}/portfolio-embed.html" 
-          style="width: 90vw; min-height: 100vh; border: none; overflow: hidden;"
+          style="width: 95vw; min-height: 100vh; border: none; overflow: hidden;"
           onload="this.style.height = (this.contentWindow.document.body.scrollHeight + 50) + 'px'">
   </iframe>
 </div>
@@ -16,7 +16,7 @@ permalink: /portfolio/
     margin: 0 auto; /* Centra el contenedor horizontalmente */
     padding: 0;
     max-width: none;
-    width: 90vw; /* Reducido un 10% (de 100vw a 90vw) */
+    width: 95vw; /* Reducido un 10% (de 100vw a 95vw) */
     position: fixed;
     top: 0;
     left: 5vw; /* Desplazamiento para que quede centrado (5% a cada lado) */
@@ -28,7 +28,7 @@ permalink: /portfolio/
   
   .portfolio-embed-container iframe {
     display: block;
-    width: 90vw;
+    width: 95vw;
     height: 100vh;
   }
   
