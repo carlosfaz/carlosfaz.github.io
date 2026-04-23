@@ -24,7 +24,7 @@ Imagine que está preparando una receta culinaria compleja. No busca que un solo
 
 El ratio de Sharpe mide el exceso de retorno por unidad de riesgo:
 
-$ \frac{E[R_{p}] - R_{f}}{\sigma_{p}} $
+$ \displaystyle \frac{E[R_{p}] - R_{f}}{\sigma_{p}} $
 
 donde:
 - $E[R_p]$ es el retorno esperado del portafolio
