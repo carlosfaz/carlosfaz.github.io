@@ -37,28 +37,28 @@ Sea $w = (w_1, ..., w_n)$ el vector de pesos, $\mu$ el vector de retornos espera
 
 ### Retorno del Portafolio
 
-$$ E[R_p] = w^T \mu = \sum_{i=1}^{n} w_i \mu_i $$
+$E[R_p] = w^T \mu = \sum_{i=1}^{n} w_i \mu_i$
 
 ### Varianza del Portafolio
 
-$$ \sigma_p^2 = w^T \Sigma w = \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \sigma_{ij} $$
+$\sigma_p^2 = w^T \Sigma w = \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \sigma_{ij}$
 
 ### Problema de Optimización
 
-$$ \max_{w} \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} $$
+$\max_{w} \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}$
 
 sujeto a:
-$$ \sum_{i=1}^{n} w_i = 1, \quad 0 \leq w_i \leq 0.40 $$
+$\sum_{i=1}^{n} w_i = 1, \quad 0 \leq w_i \leq 0.40$
 
 ## Solución Analítica
 
 El Lagrangiano del problema es:
 
-$$ \mathcal{L}(w, \lambda) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} - \lambda \left(\sum_{i=1}^{n} w_i - 1\right) $$
+$\mathcal{L}(w, \lambda) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}} - \lambda \left(\sum_{i=1}^{n} w_i - 1\right)$
 
 La solución analítica (sin restricciones de caja) es:
 
-$$ w^* = \frac{\Sigma^{-1}(\mu - R_f \mathbf{1})}{\mathbf{1}^T \Sigma^{-1}(\mu - R_f \mathbf{1})} $$
+$w^* = \frac{\Sigma^{-1}(\mu - R_f \mathbf{1})}{\mathbf{1}^T \Sigma^{-1}(\mu - R_f \mathbf{1})}$
 
 ## Implementación en Python
 
@@ -145,13 +145,13 @@ def generate_efficient_frontier(expected_returns, cov_matrix, n_portfolios=200):
 
 Los retornos diarios se anualizan multiplicando por 252 (días hábiles):
 
-$$ \mu_{anual} = \bar{r}_{diario} \times 252 $$
+$\mu_{anual} = \bar{r}_{diario} \times 252$
 
-$$ \Sigma_{anual} = \Sigma_{diario} \times 252 $$
+$\Sigma_{anual} = \Sigma_{diario} \times 252$
 
 La volatilidad se anualiza como:
 
-$$ \sigma_{anual} = \sigma_{diario} \times \sqrt{252} $$
+$\sigma_{anual} = \sigma_{diario} \times \sqrt{252}$
 
 ## Paridad de Riesgo (Risk Parity)
 
@@ -159,15 +159,15 @@ La Paridad de Riesgo propone que la verdadera seguridad viene de asegurar que ni
 
 ### Contribución Marginal al Riesgo (MRC)
 
-$$ MRC_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\Sigma w)_i}{\sigma_p} $$
+$MRC_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\Sigma w)_i}{\sigma_p}$
 
 ### Contribución Total al Riesgo (TRC)
 
-$$ TRC_i = w_i \times MRC_i = \frac{w_i (\Sigma w)_i}{\sigma_p} $$
+$TRC_i = w_i \times MRC_i = \frac{w_i (\Sigma w)_i}{\sigma_p}$
 
 En Risk Parity, buscamos:
 
-$$ TRC_i = \frac{\sigma_p}{n}, \quad \forall i $$
+$TRC_i = \frac{\sigma_p}{n}, \quad \forall i$
 
 ### Implementación
 
@@ -188,7 +188,7 @@ def risk_parity_objective(w, cov):
 
 El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado:
 
-$$ VaR_{0.95} = percentil_{5}(retornos\ históricos) $$
+$VaR_{0.95} = percentil_{5}(retornos\ históricos)$
 
 ```python
 def calculate_var_cvar_historical(returns, confidence_level=0.95):
@@ -204,7 +204,7 @@ def calculate_var_cvar_historical(returns, confidence_level=0.95):
 
 El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
 
-$$ CVaR_\alpha = E[R \mid R \leq VaR_\alpha] $$
+$CVaR_\alpha = E[R \mid R \leq VaR_\alpha]$
 
 El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), satisfaciendo:
 - **Subaditividad**: $CVaR(X+Y) \leq CVaR(X) + CVaR(Y)$
@@ -216,7 +216,7 @@ El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), satisfacie
 
 Para generar retornos correlacionados, descomponemos la matriz de covarianza:
 
-$$ \Sigma = L L^T $$
+$\Sigma = L L^T$
 
 donde $L$ es una matriz triangular inferior.
 
