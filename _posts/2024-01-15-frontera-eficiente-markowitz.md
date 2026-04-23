@@ -24,7 +24,7 @@ Imagine que está preparando una receta culinaria compleja. No busca que un solo
 
 El ratio de Sharpe mide el exceso de retorno por unidad de riesgo:
 
-$$\text{Sharpe Ratio} = \frac{E[R_p] - R_f}{\sigma_p}$$
+$${\rm Sharpe\ Ratio} = \frac{E[R_p] - R_f}{\sigma_p}$$
 
 donde:
 - $E[R_p]$ es el retorno esperado del portafolio
@@ -145,13 +145,13 @@ def generate_efficient_frontier(expected_returns, cov_matrix, n_portfolios=200):
 
 Los retornos diarios se anualizan multiplicando por 252 (días hábiles):
 
-$$\boldsymbol{\mu}_{\text{anual}} = \bar{\mathbf{r}}_{\text{diario}} \times 252$$
+$$\boldsymbol{\mu}_{\rm anual} = \bar{\mathbf{r}}_{\rm diario} \times 252$$
 
-$$\boldsymbol{\Sigma}_{\text{anual}} = \boldsymbol{\Sigma}_{\text{diario}} \times 252$$
+$$\boldsymbol{\Sigma}_{\rm anual} = \boldsymbol{\Sigma}_{\rm diario} \times 252$$
 
 La volatilidad se anualiza como:
 
-$$\sigma_{\text{anual}} = \sigma_{\text{diario}} \times \sqrt{252}$$
+$$\sigma_{\rm anual} = \sigma_{\rm diario} \times \sqrt{252}$$
 
 ## Paridad de Riesgo (Risk Parity)
 
@@ -159,15 +159,15 @@ La Paridad de Riesgo propone que la verdadera seguridad viene de asegurar que ni
 
 ### Contribución Marginal al Riesgo (MRC)
 
-$$\text{MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
+$${\rm MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
 
 ### Contribución Total al Riesgo (TRC)
 
-$$\text{TRC}_i = w_i \times \text{MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
+$${\rm TRC}_i = w_i \times {\rm MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p}$$
 
 En Risk Parity, buscamos:
 
-$$\text{TRC}_i = \frac{\sigma_p}{n}, \quad \forall i$$
+$${\rm TRC}_i = \frac{\sigma_p}{n}, \quad \forall i$$
 
 ### Implementación
 
@@ -188,7 +188,7 @@ def risk_parity_objective(w, cov):
 
 El VaR histórico estima la pérdida máxima esperada con un nivel de confianza dado:
 
-$$\text{VaR}_{0.95} = \text{percentil}_{5}(\text{retornos históricos})$$
+$${\rm VaR}_{0.95} = {\rm percentil}_{5}({\rm retornos\ hist\'oricos})$$
 
 ```python
 def calculate_var_cvar_historical(returns, confidence_level=0.95):
@@ -204,13 +204,13 @@ def calculate_var_cvar_historical(returns, confidence_level=0.95):
 
 El CVaR mide la pérdida promedio en los peores escenarios más allá del VaR:
 
-$$\text{CVaR}_\alpha = E[R \mid R \leq \text{VaR}_\alpha]$$
+$${\rm CVaR}_\alpha = E[R \mid R \leq {\rm VaR}_\alpha]$$
 
 El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), satisfaciendo:
-- **Subaditividad**: $\text{CVaR}(X+Y) \leq \text{CVaR}(X) + \text{CVaR}(Y)$
-- **Monotonicidad**: Si $X \leq Y$, entonces $\text{CVaR}(X) \geq \text{CVaR}(Y)$
-- **Homogeneidad positiva**: $\text{CVaR}(\lambda X) = \lambda \text{CVaR}(X)$ para $\lambda > 0$
-- **Invarianza traslacional**: $\text{CVaR}(X + c) = \text{CVaR}(X) - c$
+- **Subaditividad**: ${\rm CVaR}(X+Y) \leq {\rm CVaR}(X) + {\rm CVaR}(Y)$
+- **Monotonicidad**: Si $X \leq Y$, entonces ${\rm CVaR}(X) \geq {\rm CVaR}(Y)$
+- **Homogeneidad positiva**: ${\rm CVaR}(\lambda X) = \lambda {\rm CVaR}(X)$ para $\lambda > 0$
+- **Invarianza traslacional**: ${\rm CVaR}(X + c) = {\rm CVaR}(X) - c$
 
 ## Simulación Monte Carlo con Descomposición de Cholesky
 
