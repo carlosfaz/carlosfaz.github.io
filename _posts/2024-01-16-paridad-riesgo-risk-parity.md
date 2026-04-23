@@ -29,11 +29,11 @@ Si la Frontera Eficiente de Markowitz nos enseñó a repartir nuestras piezas, l
 
 Mide cuánto cambia la volatilidad del portafolio ante un cambio marginal en el peso del activo $ \displaystyle i $:
 
-$ \displaystyle \text{MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p} $
+$ \displaystyle \text{MRC}_i = \frac{\partial \sigma_p}{\partial w_i} = \frac{(\Sigma w)_i}{\sigma_p} $
 
 ### Contribución Total al Riesgo (TRC)
 
-$ \displaystyle \text{TRC}_i = w_i \times \text{MRC}_i = \frac{w_i (\boldsymbol{\Sigma} \boldsymbol{w})_i}{\sigma_p} $
+$ \displaystyle \text{TRC}_i = w_i \times \text{MRC}_i = \frac{w_i (\Sigma w)_i}{\sigma_p} $
 
 En Risk Parity, se busca:
 
@@ -45,7 +45,7 @@ es decir, cada activo contribuye con $ \displaystyle 1/n $ del riesgo total.
 
 Se minimiza la suma de cuadrados de las desviaciones de las contribuciones al riesgo respecto al objetivo de paridad:
 
-$ \displaystyle \min_{\mathbf{w}} \sum_{i=1}^n \left( \text{TRC}_i - \frac{\sigma_p}{n} \right)^2 $
+$ \displaystyle \min_{w} \sum_{i=1}^n \left( \text{TRC}_i - \frac{\sigma_p}{n} \right)^2 $
 
 sujeto a $ \displaystyle \sum w_i = 1 $ y $ \displaystyle 0.01 \leq w_i \leq 0.30 $.
 

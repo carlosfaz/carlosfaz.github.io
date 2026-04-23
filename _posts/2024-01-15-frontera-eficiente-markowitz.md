@@ -58,7 +58,7 @@ $ \displaystyle \mathcal{L}(w, \lambda) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma 
 
 La solución analítica (sin restricciones de caja) es:
 
-$ \displaystyle w^* = \frac{\Sigma^{-1}(\mu - R_f \mathbf{1})}{\mathbf{1}^T \Sigma^{-1}(\mu - R_f \mathbf{1})} $
+$ \displaystyle w^* = \frac{\Sigma^{-1}(\mu - R_f 1)}{1^T \Sigma^{-1}(\mu - R_f 1)} $
 
 ## Implementación en Python
 

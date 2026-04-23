@@ -71,11 +71,11 @@ Se asume que los retornos siguen una distribución normal multivariada con la me
 
 Para generar retornos correlacionados, se descompone la matriz de covarianza:
 
-$ \displaystyle \boldsymbol{\Sigma} = \boldsymbol{L} \boldsymbol{L}^T $
+$ \displaystyle \Sigma = L L^T $
 
-donde $ \displaystyle \boldsymbol{L} $ es una matriz triangular inferior.
+donde $ \displaystyle L $ es una matriz triangular inferior.
 
-Si $ \displaystyle \boldsymbol{Z} \sim N(\boldsymbol{0}, \boldsymbol{I}) $, entonces $ \displaystyle \boldsymbol{L}\boldsymbol{Z} \sim N(\boldsymbol{0}, \boldsymbol{\Sigma}) $.
+Si $ \displaystyle Z \sim N(0, I) $, entonces $ \displaystyle LZ \sim N(0, \Sigma) $.
 
 ### Implementación en Python
 
