@@ -186,5 +186,3 @@ La Paridad de Riesgo representa un enfoque complementario a la optimización tra
 1. **La diversificación por peso no es diversificación real** si un solo activo domina el riesgo
 2. **El equilibrio de riesgo** proporciona mayor estabilidad en períodos volátiles
 3. **La combinación de ambos enfoques** puede ofrecer beneficios significativos
-
-¿Te interesa implementar estas técnicas en tus propias inversiones? ¡Explora el código completo en mi repositorio de GitHub!

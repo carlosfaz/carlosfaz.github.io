@@ -169,5 +169,3 @@ La clave del éxito está en entender que:
 2. **El riesgo debe medirse y gestionarse sistemáticamente**
 3. **Las restricciones realistas mejoran la robustez** de las soluciones
 4. **El rebalanceo periódico** mantiene la asignación objetivo
-
-¿Te interesa implementar estas técnicas en tus propias inversiones? ¡Explora el código completo en mi repositorio de GitHub!

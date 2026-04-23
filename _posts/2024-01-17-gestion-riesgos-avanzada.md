@@ -294,5 +294,3 @@ La gestión avanzada de riesgos proporciona herramientas esenciales para entende
 4. **Múltiples métodos** - usar diferentes enfoques proporciona una visión más robusta
 
 **Advertencia importante:** Ningún modelo de riesgo es perfecto. La clave está en entender las limitaciones de cada método y usarlos de manera complementaria.
-
-¿Te interesa implementar estas técnicas en tus propias inversiones? ¡Explora el código completo en mi repositorio de GitHub!
