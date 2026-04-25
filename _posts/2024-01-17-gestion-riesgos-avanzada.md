@@ -9,10 +9,6 @@ tags: ["Risk Management", "VaR", "CVaR", "Expected Shortfall", "Stress Testing",
 thumbnail: "/images/risk-management-advanced.png"
 ---
 
-**En 2008, muchos portafolios tenían un VaR "seguro". Igual quebraron.**
-
-**Tu modelo dice que perderás como máximo 5%. El problema: ese número es mentira.**
-
 Imagina que saltas de un avión. El **Value at Risk (VaR)** es saber a qué altura se abre tu paracaídas. El **CVaR** es preguntarte: *"Si el paracaídas tiene un agujero, ¿qué tan fuerte me golpearé las piernas al llegar al suelo?"*.
 
 Esta es la esencia de la gestión avanzada de riesgos: no basta con conocer el escenario más probable, hay que entender la **fragilidad humana** frente a lo inesperado. Como escribe Nassim Taleb en *The Black Swan*, el VaR a veces nos da una falsa sensación de seguridad, como el pavo de Acción de Gracias que cree que el carnicero es su mejor amigo... hasta el día de la cena.
@@ -28,16 +24,6 @@ Podemos entender estas herramientas comparándolas con la planificación ante in
 - **Stress Testing**: Es como realizar un simulacro de terremoto o huracán. Probamos cómo resistiría nuestra estructura financiera si ocurriera una catástrofe similar a las grandes crisis del pasado (como la de 2008).
 
 **Idea principal:** Gestionar el riesgo no es evitar el peligro, sino conocer exactamente la profundidad del abismo antes de decidir caminar cerca del borde.
-
-## Un Caso Real: Cuando el Modelo Falló
-
-> **Octubre de 2008.** Un portafolio diversificado tenía un VaR del 95% de -2% diario. Según el modelo, solo debería perder más de eso 1 de cada 20 días.
->
-> El 10 de octubre de 2008, el S&P 500 cayó **-9% en un solo día**.
->
-> Ese día no estaba en el modelo. Pero sí en la realidad.
-
-Este es el problema central: **el VaR no distingue entre una caída suave y un precipicio**. Dos portafolios pueden tener el mismo VaR. Uno pierde suavemente. El otro cae por un acantilado. El VaR no ve la diferencia.
 
 ## Value at Risk (VaR) Histórico
 
@@ -62,16 +48,7 @@ def calculate_var_cvar_historical(returns, confidence_level=0.95):
     var = np.percentile(returns, (1 - confidence_level) * 100)
     cvar = returns[returns <= var].mean()  # Expected Shortfall
     return {'var': var, 'cvar': cvar}
-
-# Ejemplo práctico
-returns = np.random.normal(0, 0.02, 1000)  # 1000 días de retornos
-result = calculate_var_cvar_historical(returns)
-
-print(f"VaR 95%: {result['var']:.2%}")
-print(f"CVaR 95%: {result['cvar']:.2%}")
 ```
-
-**Interpretación:** Si obtienes `VaR = -3%` y `CVaR = -7%`, significa que cuando las cosas salen mal (más allá del VaR), salen **más del doble de mal** de lo que el VaR sugería. Ese es el verdadero riesgo.
 
 ## CVaR (Expected Shortfall)
 
@@ -97,43 +74,11 @@ El CVaR es una **medida coherente de riesgo** (Artzner et al., 1999), ya que sat
 
 **Nota importante:** El VaR **no es coherente** porque no satisface subaditividad en general. Es como un amigo que a veces te dice que juntar dos caminos es más peligroso que tomarlos por separado, lo cual no tiene sentido cuando buscas seguridad en números.
 
----
-
-⚠️ **Insight clave**
-
-> El VaR no mide pérdidas extremas. **Mide dónde empiezan.**
->
-> El CVaR describe lo que viene después.
-
----
-
 ## El VaR como "Mentira Piadosa"
 
-David Einhorn comparó el VaR con *"un airbag que funciona perfectamente, excepto cuando tienes un accidente de coche"*.
-
-Frases que duelen pero son ciertas:
-
-- **"El VaR funciona… hasta que importa."**
-- **"El VaR ignora exactamente lo que te destruye."**
-- **"El VaR no falla. Está diseñado para ignorar el desastre."**
-
-El VaR es un **umbral de ignorancia**: nos dice dónde termina el mapa que conocemos. El CVaR, en cambio, es la descripción del territorio de los monstruos que hay más allá del borde.
+David Einhorn comparó el VaR con *"un airbag que funciona perfectamente, excepto cuando tienes un accidente de coche"*. El VaR es un **umbral de ignorancia**: nos dice dónde termina el mapa que conocemos. El CVaR, en cambio, es la descripción del territorio de los monstruos que hay más allá del borde.
 
 Como advierte Benoit Mandelbrot en *The (Mis)behavior of Markets*, la "normalidad" que asume el VaR paramétrico es un mito peligroso. Los mercados tienen colas gruesas, fractales y comportamientos que una campana de Gauss nunca capturará.
-
-## Los Tres Personajes del Riesgo
-
-Piensa en estos modelos como personajes con personalidad:
-
-| Modelo | Personalidad | Lo que te dice |
-|--------|-------------|----------------|
-| **VaR** | Optimista ingenuo | "Todo está bien" |
-| **CVaR** | Pesimista realista | "Sí… hasta que deja de estarlo" |
-| **Stress Testing** | Paranoico útil | "¿Y si TODO sale mal?" |
-
-El VaR te dice: *"Con 95% de confianza, no perderás más de X"*.  
-El CVaR responde: *"Pero cuando pierdas más de X, prepárate para el infierno"*.  
-El Stress Testing añade: *"¿Y si el infierno es peor de lo que imaginas?"*.
 
 ## VaR por Simulación Monte Carlo
 
@@ -275,16 +220,6 @@ def run_stress_test(weights, current_prices, scenarios):
         }
     
     return results
-
-# Ejemplo: ¿Qué pasa en una crisis tipo 2008?
-# Si tienes 60% acciones, 40% bonos:
-weights = [0.6, 0.4]
-tickers = ['SPY', 'TLT']
-scenarios = define_stress_scenarios(tickers)
-resultados = run_stress_test(weights, None, scenarios)
-
-print(f"Pérdida en Crisis 2008: {resultados['Crisis 2008']['portfolio_loss']:.2%}")
-# Resultado típico: -32% (más grave que el VaR diario sugeriría)
 ```
 
 ## Correlación Dinámica
@@ -330,18 +265,6 @@ La máscara triangular superior extrae solo los elementos por encima de la diago
 | **VaR Paramétrico** | Rápido, analítico | Asume normalidad (irreal) |
 | **Monte Carlo** | Flexible, modela no-linealidades | Computacionalmente intensivo |
 | **CVaR** | Medida coherente, captura colas | Más complejo de calcular |
-
----
-
-⚠️ **Errores Comunes al Usar VaR**
-
-1. **Creer que es la pérdida máxima** → No lo es. Solo es un percentil.
-2. **Usarlo sin CVaR** → Es como saber que hay un acantilado, pero no cuán profundo es.
-3. **Confiar en datos históricos tranquilos** → El pasado no predice las crisis.
-4. **Ignorar correlaciones en crisis** → Todo se correlaciona cuando hay pánico.
-5. **No hacer backtesting** → Un modelo no validado es una opinión disfrazada de ciencia.
-
----
 
 ## Backtesting del VaR
 
@@ -404,8 +327,8 @@ Si este tema te intriga, estas lecturas cambiarán tu forma de ver el riesgo:
 - **Artzner, Delbaen, Eber & Heath (1999)**: *Coherent Measures of Risk* - El Génesis de la gestión de riesgos moderna.
 - **Daniel Kahneman**: *Thinking, Fast and Slow* - Cómo nuestros sesgos cognitivos nos hacen subestimar el riesgo.
 
-### Una Pregunta Incómoda
+### Una Pregunta para Llevar
 
-> *"Si tu modelo nunca ha visto una crisis real… ¿estás gestionando riesgo o solo midiendo tranquilidad?"*
+> *"Si pudieras saber el minuto exacto en que tu fortuna se reducirá a la mitad, ¿cambiarías tu estrategia hoy o confiarías en que eres el único que sabe dónde está la salida de emergencia?"*
 
 Esta pregunta transforma un ejercicio técnico en una meditación sobre la incertidumbre. Al final, gestionar riesgos no es sobre controlar el futuro, sino sobre respetar lo desconocido.
