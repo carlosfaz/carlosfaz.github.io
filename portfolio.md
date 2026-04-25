@@ -30,7 +30,7 @@ permalink: /portfolio/
     transform-origin: top center; 
     
     /* Compensamos el tamaño para que el contenido ocupe el espacio correcto */
-    width: 111.11%; /* 100 / 0.9  */
+    width: 97.%; /* 100 / 0.9  */
     height: 111.11%; /* 100 / 0.9  */
     
     display: block;
