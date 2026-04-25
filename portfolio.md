@@ -24,17 +24,16 @@ permalink: /portfolio/
   }
   
   .portfolio-embed-container iframe {
-    /* Escalado al 90% */
+    /* Mantenemos el escalado al 90% */
     transform: scale(0.9);
     
-    /* Cambiamos el origen a la izquierda para facilitar el control lateral */
+    /* Origen en la esquina superior izquierda */
     transform-origin: top left; 
     
-    /* Ajuste de posición: desplaza un poco más a la izquierda */
-    /* Puedes ajustar el -2% según qué tan a la izquierda lo necesites */
-    margin-left: -1%; 
+    /* AJUSTE: Movimiento casi imperceptible hacia la izquierda */
+    margin-left: -0.2%; 
     
-    /* Compensación de tamaño */
+    /* Compensación de tamaño para cubrir la pantalla */
     width: 111.11%; 
     height: 111.11%;
     
