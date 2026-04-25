@@ -19,19 +19,24 @@ permalink: /portfolio/
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #fff; /* O el color de fondo de tu sitio */
+    background: #fff; 
     z-index: 1000;
   }
   
   .portfolio-embed-container iframe {
-    /* Escalamos al 90% */
+    /* Escalado al 90% */
     transform: scale(0.9);
-    /* Ajustamos el origen de la transformación al centro superior */
-    transform-origin: top center; 
     
-    /* Compensamos el tamaño para que el contenido ocupe el espacio correcto */
-    width: 111.%; /* 100 / 0.9  */
-    height: 111.11%; /* 100 / 0.9  */
+    /* Cambiamos el origen a la izquierda para facilitar el control lateral */
+    transform-origin: top left; 
+    
+    /* Ajuste de posición: desplaza un poco más a la izquierda */
+    /* Puedes ajustar el -2% según qué tan a la izquierda lo necesites */
+    margin-left: -1%; 
+    
+    /* Compensación de tamaño */
+    width: 111.11%; 
+    height: 111.11%;
     
     display: block;
     border: none;
