@@ -17,7 +17,9 @@ En este artículo presentamos un desarrollo analítico completo para la integral
 
 Definimos la función $\text{piso}(n)$ como una torre finita de potencias (tetración truncada) de orden $n$, para un dominio unificado en la variable real $x \in (0, \infty)$, donde el argumento $n \in \mathbb{N}$ representa el número de niveles o "elevaciones":
 
-$ \displaystyle \begin{align*} \text{piso}(1) &= x \\ \text{piso}(2) &= x^{x} \\ \text{piso}(3) &= x^{x^{x}} \end{align*} $
+$$ \text{piso}(1) = x $$
+$$ \text{piso}(2) = x^{x} $$
+$$ \text{piso}(3) = x^{x^{x}} $$
 
 Para un orden genérico $n \ge 2$, la función se estructura de manera recursiva mediante la relación:
 
