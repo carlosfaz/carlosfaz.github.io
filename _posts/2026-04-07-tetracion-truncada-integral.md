@@ -6,6 +6,7 @@ published: true
 date: 2026-04-07
 category: "Matemáticas"
 tags: ["Tetración", "Integrales", "Series Infinitas", "Función Gamma"]
+thumbnail: "/images/tetration-truncated.png"
 ---
 
 En este artículo presentamos un desarrollo analítico completo para la integral de la tetración truncada, una función recursiva que representa torres finitas de potencias. Demostraremos mediante inducción matemática una representación en series múltiples y resolveremos analíticamente la integral utilizando la Función Gamma incompleta inferior.
