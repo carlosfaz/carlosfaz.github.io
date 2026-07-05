@@ -57,7 +57,7 @@ Queremos evaluar la integral $I_2 = \int \text{piso}(2) \, dx = \int x^x \, dx$.
 
 $ \displaystyle x^{x} = e^{x\ln x} = \sum_{k_{1}=0}^{\infty} \frac{1}{k_{1}!}x^{k_{1}}(\ln x)^{k_{1}} $
 
-Para justificar rigurosamente el intercambio entre el operador integral y la sumatoria infinita, definimos las sumas parciales $S_N(x) = \sum_{k_1=0}^{N} \frac{1}{k_1!} x^{k_1} (\ln x)^{k_1}$. En cualquier intervalo compacto $[a, b] \subset (0, \infty)$, la función $|x \ln x|$ está acotada superiormente por una constante $M > 0$. Por lo tanto, el término general está acotado por $\frac{M^{k_1}}{k_1!}$. Dado que $\sum_{k_1=0}^{\infty} \frac{M^{k_1}}{k_1!} = e^M < \infty$, por el test de M-Weierstrass, la serie converge uniformemente en $[a, b]$.
+Para justificar rigurosamente el intercambio entre el operador integral y la sumatoria infinita, definimos las sumas parciales $S_N(x) = \sum_{k_1=0}^{N} \frac{1}{k_1!} x^{k_1} (\ln x)^{k_1}$. En cualquier intervalo compacto $[a, b] \subset (0, \infty)$, la función $\|x \ln x|$ está acotada superiormente por una constante $M > 0$. Por lo tanto, el término general está acotado por $\frac{M^{k_1}}{k_1!}$. Dado que $\sum_{k_1=0}^{\infty} \frac{M^{k_1}}{k_1!} = e^M < \infty$, por el test de M-Weierstrass, la serie converge uniformemente en $[a, b]$.
 
 Por el teorema de convergencia uniforme para integrales en intervalos compactos, el intercambio de la suma y la integral es plenamente válido:
 
