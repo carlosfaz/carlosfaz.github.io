@@ -10,7 +10,7 @@ tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico", "Simetrías"
 
 El grafo de Cayley presentado para el grupo diédrico $D_4$ es matemáticamente correcto y modela con total precisión la estructura del grupo de simetrías de un cuadrado (de orden 8). A continuación se desglosa la verificación formal de cada uno de sus componentes basados en la presentación algebraica:
 
-$D_4 = \langle r, f \mid r^4 = e, \, f^2 = e, \, fr = r^{-1}f \rangle$
+$D_4 = \langle r, f \mid r^4 = e,  f^2 = e,  fr = r^{-1}f \rangle$
 
 ## Definición de los Generadores y Relaciones
 
