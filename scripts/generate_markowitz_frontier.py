@@ -68,7 +68,7 @@ frontier_vols = np.sqrt(np.einsum("ij,jk,ik->i", w_mat, cov_matrix, w_mat))
 sharpe_ratios = (frontier_returns - risk_free_rate) / frontier_vols
 
 # Crear la figura
-fig, ax = plt.subplots(figsize=(12, 8))
+fig, ax = plt.subplots(figsize=(16, 12))
 
 # Scatter de portafolios aleatorios coloreados por Sharpe
 scatter = ax.scatter(frontier_vols, frontier_returns, c=sharpe_ratios,
@@ -102,7 +102,7 @@ ax.set_xlim(0, 0.25)
 ax.set_ylim(0.02, 0.16)
 
 plt.tight_layout()
-plt.savefig('images/markowitz-frontier.png', dpi=150, bbox_inches='tight')
+plt.savefig('images/markowitz-frontier.png', dpi=200, bbox_inches='tight')
 plt.close()
 
 print("Imagen guardada: images/markowitz-frontier.png")

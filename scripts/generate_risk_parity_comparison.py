@@ -90,7 +90,7 @@ mw_trc, mw_total_vol = calculate_trc(mw_weights, cov_matrix)
 rp_trc, rp_total_vol = calculate_trc(rp_weights, cov_matrix)
 
 # Crear figura con 2 subgráficos
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
 
 # Gráfico 1: Frontera eficiente con ambos portafolios
 n_portfolios = 400
@@ -136,7 +136,7 @@ ax2.legend(fontsize=10)
 ax2.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()
-plt.savefig('images/risk-parity-comparison.png', dpi=150, bbox_inches='tight')
+plt.savefig('images/risk-parity-comparison.png', dpi=200, bbox_inches='tight')
 plt.close()
 
 print("Imagen guardada: images/risk-parity-comparison.png")

@@ -31,7 +31,7 @@ colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
 labels = [f'$^{{{n}}}x$ (orden {n})' for n in orders]
 
 # Crear figura con 2 subgráficos
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
 
 # === Gráfico 1: Funciones de tetración truncada ===
 for i, n in enumerate(orders):
@@ -119,7 +119,7 @@ fig.text(0.5, 0.02, note_text, ha='center', fontsize=10, style='italic',
          bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
-plt.savefig('images/tetration-truncated.png', dpi=150, bbox_inches='tight')
+plt.savefig('images/tetration-truncated.png', dpi=200, bbox_inches='tight')
 plt.close()
 
 print("Imagen guardada: images/tetration-truncated.png")

@@ -22,7 +22,7 @@ var_95 = np.percentile(returns, (1 - confidence_level) * 100)
 cvar_95 = returns[returns <= var_95].mean()
 
 # Crear figura con 3 subgráficos
-fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+fig, axes = plt.subplots(1, 3, figsize=(24, 8))
 ax1, ax2, ax3 = axes
 
 # === Gráfico 1: Distribución de retornos con VaR y CVaR ===
@@ -128,7 +128,7 @@ fig.text(0.5, -0.02,
          ha='center', fontsize=10, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
-plt.savefig('images/risk-management-advanced.png', dpi=150, bbox_inches='tight')
+plt.savefig('images/risk-management-advanced.png', dpi=200, bbox_inches='tight')
 plt.close()
 
 print("Imagen guardada: images/risk-management-advanced.png")
