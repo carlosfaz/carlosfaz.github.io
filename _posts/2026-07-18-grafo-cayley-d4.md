@@ -10,9 +10,7 @@ tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico", "Simetrías"
 
 El grafo de Cayley presentado para el grupo diédrico $D_4$ es matemáticamente correcto y modela con total precisión la estructura del grupo de simetrías de un cuadrado (de orden 8). A continuación se desglosa la verificación formal de cada uno de sus componentes basados en la presentación algebraica:
 
-$$
-D_4 = \langle r, f \mid r^4 = e, \, f^2 = e, \, fr = r^{-1}f \rangle
-$$
+$D_4 = \langle r, f \mid r^4 = e, \, f^2 = e, \, fr = r^{-1}f \rangle$
 
 ## Definición de los Generadores y Relaciones
 
@@ -28,9 +26,7 @@ La acción de la rotación se define multiplicando por la derecha por el generad
 
 Para los elementos sin reflexión (ciclo exterior), el avance sigue un sentido horario estándar:
 
-$$
-e \xrightarrow{\cdot r} r \xrightarrow{\cdot r} r^2 \xrightarrow{\cdot r} r^3 \xrightarrow{\cdot r} e
-$$
+$e \xrightarrow{\cdot r} r \xrightarrow{\cdot r} r^2 \xrightarrow{\cdot r} r^3 \xrightarrow{\cdot r} e$
 
 Esto coincide perfectamente con las flechas exteriores continuas de color azul-verde.
 
@@ -38,27 +34,17 @@ Esto coincide perfectamente con las flechas exteriores continuas de color azul-v
 
 Al multiplicar por la derecha por $r$ a un elemento que ya posee una componente de reflexión ($xf \xrightarrow{\cdot r} xfr$), la relación $fr = r^3f$ altera el sentido de la rotación:
 
-- **Partiendo de $f$:** 
-$$ f \cdot r = r^3f $$
-La flecha dirigida va desde el nodo $f$ hasta el nodo $r^3f$.
+- **Partiendo de $f$:** $f \cdot r = r^3f$. La flecha dirigida va desde el nodo $f$ hasta el nodo $r^3f$.
 
-- **Partiendo de $r^3f$:** 
-$$ r^3f \cdot r = r^3(fr) = r^3(r^3f) = r^6f = r^2f $$
-La flecha va desde $r^3f$ hasta $r^2f$ (ya que $r^4 = e$, por lo que $r^6 = r^2$).
+- **Partiendo de $r^3f$:** $r^3f \cdot r = r^3(fr) = r^3(r^3f) = r^6f = r^2f$. La flecha va desde $r^3f$ hasta $r^2f$ (ya que $r^4 = e$, por lo que $r^6 = r^2$).
 
-- **Partiendo de $r^2f$:** 
-$$ r^2f \cdot r = r^2(fr) = r^2(r^3f) = r^5f = rf $$
-La flecha va desde $r^2f$ hasta $rf$ (dado que $r^5 = r$).
+- **Partiendo de $r^2f$:** $r^2f \cdot r = r^2(fr) = r^2(r^3f) = r^5f = rf$. La flecha va desde $r^2f$ hasta $rf$ (dado que $r^5 = r$).
 
-- **Partiendo de $rf$:** 
-$$ rf \cdot r = r(fr) = r(r^3f) = r^4f = f $$
-La flecha va desde $rf$ hasta $f$.
+- **Partiendo de $rf$:** $rf \cdot r = r(fr) = r(r^3f) = r^4f = f$. La flecha va desde $rf$ hasta $f$.
 
 Esta secuencia matemática genera el ciclo interno:
 
-$$
-f \xrightarrow{\cdot r} r^3f \xrightarrow{\cdot r} r^2f \xrightarrow{\cdot r} rf \xrightarrow{\cdot r} f
-$$
+$f \xrightarrow{\cdot r} r^3f \xrightarrow{\cdot r} r^2f \xrightarrow{\cdot r} rf \xrightarrow{\cdot r} f$
 
 El cual se desplaza de forma **antihoraria**, ilustrando visualmente cómo la reflexión invierte la orientación del plano.
 
@@ -66,14 +52,7 @@ El cual se desplaza de forma **antihoraria**, ilustrando visualmente cómo la re
 
 Las aristas punteadas representan la multiplicación por la derecha por el generador $f$ ($x \xrightarrow{\cdot f} xf$). Dado que $f$ es una involución ($f^2 = e$), estas conexiones son bidireccionales, actuando como puentes de doble sentido entre los ciclos interior y exterior:
 
-$$
-\begin{aligned}
-    e \cdot f = f &\iff f \cdot f = e \\
-    r \cdot f = rf &\iff rf \cdot f = r \\
-    r^2 \cdot f = r^2f &\iff r^2f \cdot f = r^2 \\
-    r^3 \cdot f = r^3f &\iff r^3f \cdot f = r^3
-\end{aligned}
-$$
+$e \cdot f = f \iff f \cdot f = e$, $r \cdot f = rf \iff rf \cdot f = r$, $r^2 \cdot f = r^2f \iff r^2f \cdot f = r^2$, $r^3 \cdot f = r^3f \iff r^3f \cdot f = r^3$
 
 El grafo plasma con absoluta fidelidad estos pares de conexiones simétricas mediante los puentes naranjas.
 
