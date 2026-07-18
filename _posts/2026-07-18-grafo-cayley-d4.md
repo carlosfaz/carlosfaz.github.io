@@ -79,69 +79,10 @@ El grafo plasma con absoluta fidelidad estos pares de conexiones simétricas med
 
 ## Representación Visual del Grafo de Cayley
 
-A continuación se presenta la representación gráfica del grafo de Cayley para $D_4$:
+A continuación se presenta la representación gráfica del grafo de Cayley para $D_4$, generada directamente desde el código TikZ original:
 
 <figure style="text-align: center; margin: 2em 0;">
-  <svg width="400" height="400" viewBox="-2.5 -2.5 5 5" style="max-width: 100%; height: auto; background: #fafafa; border-radius: 8px;">
-    <!-- Estilos -->
-    <defs>
-      <marker id="arrowhead-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-        <polygon points="0 0, 10 3.5, 0 7" fill="#008080"/>
-      </marker>
-      <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-        <polygon points="0 0, 10 3.5, 0 7" fill="#FF8C00"/>
-      </marker>
-    </defs>
-    
-    <!-- Aristas de rotación (ciclo exterior) -->
-    <path d="M 0.99,-0.99 Q 0.71,0 0.99,0.99" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M 0.99,0.99 Q 0,1.4  -0.99,0.99" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M -0.99,0.99 Q -0.71,0 -0.99,-0.99" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M -0.99,-0.99 Q 0,-1.4 0.99,-0.99" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    
-    <!-- Aristas de rotación (ciclo interior) -->
-    <path d="M -0.5,0.5 Q -0.35,0.71 -0.71,0.35" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M -0.71,0.35 Q -0.5,0 -0.35,-0.35" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M -0.35,-0.35 Q 0,-0.5 0.5,-0.5" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M 0.5,-0.5 Q 0.71,-0.35 0.35,0.35" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    <path d="M 0.35,0.35 Q 0.5,0.5 -0.5,0.5" stroke="#008080" stroke-width="0.03" fill="none" marker-end="url(#arrowhead-teal)"/>
-    
-    <!-- Aristas de reflexión (punteadas) -->
-    <line x1="0.71" y1="-0.71" x2="-0.35" y2="0.35" stroke="#FF8C00" stroke-width="0.025" stroke-dasharray="0.1,0.05"/>
-    <line x1="0.99" y1="0" x2="-0.5" y2="0" stroke="#FF8C00" stroke-width="0.025" stroke-dasharray="0.1,0.05"/>
-    <line x1="0.71" y1="0.71" x2="-0.35" y2="-0.35" stroke="#FF8C00" stroke-width="0.025" stroke-dasharray="0.1,0.05"/>
-    <line x1="0" y1="1.4" x2="0" y2="-0.5" stroke="#FF8C00" stroke-width="0.025" stroke-dasharray="0.1,0.05"/>
-    
-    <!-- Nodos (círculo exterior) -->
-    <circle cx="0" cy="1.4" r="0.12" fill="white" stroke="black" stroke-width="0.02"/>
-    <circle cx="0.99" cy="0.71" r="0.12" fill="white" stroke="black" stroke-width="0.02"/>
-    <circle cx="0.99" cy="-0.71" r="0.12" fill="white" stroke="black" stroke-width="0.02"/>
-    <circle cx="0" cy="-1.4" r="0.12" fill="white" stroke="black" stroke-width="0.02"/>
-    
-    <!-- Nodos (círculo interior) -->
-    <circle cx="-0.5" cy="0.5" r="0.1" fill="white" stroke="black" stroke-width="0.02"/>
-    <circle cx="-0.71" cy="0.35" r="0.1" fill="white" stroke="black" stroke-width="0.02"/>
-    <circle cx="-0.35" cy="-0.35" r="0.1" fill="white" stroke="black" stroke-width="0.02"/>
-    <circle cx="0.5" cy="-0.5" r="0.1" fill="white" stroke="black" stroke-width="0.02"/>
-    
-    <!-- Etiquetas -->
-    <text x="0" y="1.55" text-anchor="middle" font-size="0.25" font-family="serif">$e$</text>
-    <text x="1.15" y="0.71" text-anchor="middle" font-size="0.25" font-family="serif">$r$</text>
-    <text x="1.15" y="-0.71" text-anchor="middle" font-size="0.25" font-family="serif">$r^2$</text>
-    <text x="0" y="-1.55" text-anchor="middle" font-size="0.25" font-family="serif">$r^3$</text>
-    
-    <text x="-0.65" y="0.65" text-anchor="middle" font-size="0.2" font-family="serif">$f$</text>
-    <text x="-0.85" y="0.35" text-anchor="middle" font-size="0.2" font-family="serif">$rf$</text>
-    <text x="-0.2" y="-0.5" text-anchor="middle" font-size="0.2" font-family="serif">$r^2f$</text>
-    <text x="0.65" y="-0.65" text-anchor="middle" font-size="0.2" font-family="serif">$r^3f$</text>
-    
-    <!-- Leyenda -->
-    <rect x="-1.8" y="1.2" width="1.2" height="0.6" fill="white" stroke="gray" stroke-width="0.02" stroke-dasharray="0.05,0.02"/>
-    <line x1="-1.7" y1="1.5" x2="-1.3" y2="1.5" stroke="#008080" stroke-width="0.03" marker-end="url(#arrowhead-teal)"/>
-    <text x="-1.05" y="1.55" font-size="0.15" font-family="serif">Rotación $r$</text>
-    <line x1="-1.7" y1="1.35" x2="-1.3" y2="1.35" stroke="#FF8C00" stroke-width="0.025" stroke-dasharray="0.1,0.05"/>
-    <text x="-1.05" y="1.4" font-size="0.15" font-family="serif">Reflexión $f$</text>
-  </svg>
+  <img src="/images/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
   <figcaption style="margin-top: 0.5em; font-style: italic; color: #666; font-size: 0.9em;">
     Grafo de Cayley del grupo diédrico $D_4 = \langle r, f \mid r^4 = e, f^2 = e, fr = r^{-1}f \rangle$. 
     El ciclo exterior azul-verde representa las rotaciones puras del cuadrado, mientras que el ciclo interior refleja 
