@@ -68,15 +68,15 @@ frontier_vols = np.sqrt(np.einsum("ij,jk,ik->i", w_mat, cov_matrix, w_mat))
 sharpe_ratios = (frontier_returns - risk_free_rate) / frontier_vols
 
 # Crear la figura
-fig, ax = plt.subplots(figsize=(16, 12))
+fig, ax = plt.subplots(figsize=(14, 10))
 
 # Scatter de portafolios aleatorios coloreados por Sharpe
 scatter = ax.scatter(frontier_vols, frontier_returns, c=sharpe_ratios,
-                     cmap='viridis', alpha=0.6, s=30, edgecolors='none')
+                     cmap='viridis', alpha=0.6, s=80, edgecolors='none')
 
 # Portafolio de máximo Sharpe
-ax.scatter(optimal_vol, optimal_return, color='red', s=200, 
-           marker='*', edgecolors='black', linewidth=2, zorder=5, label='Máximo Sharpe')
+ax.scatter(optimal_vol, optimal_return, color='red', s=400, 
+           marker='*', edgecolors='black', linewidth=3, zorder=5, label='Máximo Sharpe')
 
 # Línea de la tasa libre de riesgo
 ax.axhline(y=risk_free_rate, color='gray', linestyle='--', alpha=0.7, label=f'Tasa Libre de Riesgo ({risk_free_rate*100}%)')
@@ -87,15 +87,16 @@ cal = risk_free_rate + optimal_sharpe * vol_range
 ax.plot(vol_range, cal, 'r-', alpha=0.5, linewidth=2, label='Capital Allocation Line')
 
 # Configurar el gráfico
-ax.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=14)
-ax.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$)', fontsize=14)
-ax.set_title('Frontera Eficiente de Markowitz\nOptimización Moderna de Portafolios', fontsize=16, fontweight='bold')
-ax.legend(fontsize=12, loc='upper left')
+ax.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=18)
+ax.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$)', fontsize=18)
+ax.set_title('Frontera Eficiente de Markowitz\nOptimización Moderna de Portafolios', fontsize=22, fontweight='bold')
+ax.legend(fontsize=16, loc='upper left')
 ax.grid(True, alpha=0.3)
 
 # Agregar barra de color
 cbar = plt.colorbar(scatter, ax=ax)
-cbar.set_label('Ratio de Sharpe', fontsize=12)
+cbar.set_label('Ratio de Sharpe', fontsize=16)
+cbar.ax.tick_params(labelsize=14)
 
 # Límites
 ax.set_xlim(0, 0.25)

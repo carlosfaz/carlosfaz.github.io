@@ -90,7 +90,7 @@ mw_trc, mw_total_vol = calculate_trc(mw_weights, cov_matrix)
 rp_trc, rp_total_vol = calculate_trc(rp_weights, cov_matrix)
 
 # Crear figura con 2 subgráficos
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
 
 # Gráfico 1: Frontera eficiente con ambos portafolios
 n_portfolios = 400
@@ -100,17 +100,17 @@ frontier_vols = np.sqrt(np.einsum("ij,jk,ik->i", w_mat, cov_matrix, w_mat))
 sharpe_ratios = (frontier_returns - risk_free_rate) / frontier_vols
 
 ax1.scatter(frontier_vols, frontier_returns, c=sharpe_ratios, cmap='viridis', 
-            alpha=0.5, s=25, edgecolors='none')
-ax1.scatter(mw_vol, mw_return, color='red', s=200, marker='*', 
-            edgecolors='black', linewidth=2, zorder=5, label='Markowitz (Max Sharpe)')
-ax1.scatter(rp_vol, rp_return, color='blue', s=180, marker='D', 
-            edgecolors='black', linewidth=2, zorder=5, label='Risk Parity')
+            alpha=0.5, s=60, edgecolors='none')
+ax1.scatter(mw_vol, mw_return, color='red', s=350, marker='*', 
+            edgecolors='black', linewidth=3, zorder=5, label='Markowitz (Max Sharpe)')
+ax1.scatter(rp_vol, rp_return, color='blue', s=300, marker='D', 
+            edgecolors='black', linewidth=3, zorder=5, label='Risk Parity')
 ax1.axhline(y=risk_free_rate, color='gray', linestyle='--', alpha=0.5, label='Tasa Libre de Riesgo')
 
-ax1.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=12)
-ax1.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$', fontsize=12)
-ax1.set_title('Frontera Eficiente: Markowitz vs Risk Parity', fontsize=14, fontweight='bold')
-ax1.legend(fontsize=10)
+ax1.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=16)
+ax1.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$', fontsize=16)
+ax1.set_title('Frontera Eficiente: Markowitz vs Risk Parity', fontsize=18, fontweight='bold')
+ax1.legend(fontsize=13)
 ax1.grid(True, alpha=0.3)
 ax1.set_xlim(0, 0.22)
 ax1.set_ylim(0.04, 0.15)
@@ -120,19 +120,19 @@ x_pos = np.arange(n_assets)
 width = 0.35
 
 # Barras de pesos
-ax2.bar(x_pos - width/2, mw_weights, width, label='Markowitz Pesos', alpha=0.8, color='red')
-ax2.bar(x_pos + width/2, rp_weights, width, label='Risk Parity Pesos', alpha=0.8, color='blue')
+ax2.bar(x_pos - width/2, mw_weights, width, label='Markowitz Pesos', alpha=0.8, color='red', edgecolor='black', linewidth=1.5)
+ax2.bar(x_pos + width/2, rp_weights, width, label='Risk Parity Pesos', alpha=0.8, color='blue', edgecolor='black', linewidth=1.5)
 
 # Líneas de contribución al riesgo objetivo
 ax2.axhline(y=rp_total_vol/n_assets, color='blue', linestyle=':', alpha=0.7, 
             label=f'Risk Parity TRC Objetivo ({rp_total_vol/n_assets:.2%})')
 
-ax2.set_xlabel('Activos', fontsize=12)
-ax2.set_ylabel('Peso / Contribución al Riesgo', fontsize=12)
-ax2.set_title('Distribución de Pesos y Riesgo', fontsize=14, fontweight='bold')
+ax2.set_xlabel('Activos', fontsize=16)
+ax2.set_ylabel('Peso / Contribución al Riesgo', fontsize=16)
+ax2.set_title('Distribución de Pesos y Riesgo', fontsize=18, fontweight='bold')
 ax2.set_xticks(x_pos)
-ax2.set_xticklabels([f'Activo {i+1}\n(σ={v:.0%})' for i, v in enumerate(volatilities)], fontsize=10)
-ax2.legend(fontsize=10)
+ax2.set_xticklabels([f'Activo {i+1}\n(σ={v:.0%})' for i, v in enumerate(volatilities)], fontsize=13)
+ax2.legend(fontsize=13)
 ax2.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()

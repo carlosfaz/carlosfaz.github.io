@@ -31,7 +31,7 @@ colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
 labels = [f'$^{{{n}}}x$ (orden {n})' for n in orders]
 
 # Crear figura con 2 subgráficos
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
 
 # === Gráfico 1: Funciones de tetración truncada ===
 for i, n in enumerate(orders):
@@ -48,18 +48,19 @@ for i, n in enumerate(orders):
             except (OverflowError, ValueError):
                 y_values.append(np.nan)
         
-        ax1.plot(x_range, y_values, color=colors[i], linewidth=2, 
+        ax1.plot(x_range, y_values, color=colors[i], linewidth=3, 
                  alpha=0.8, label=labels[i], zorder=5-i)
     except Exception as e:
         print(f"Error calculando orden {n}: {e}")
 
-ax1.set_xlabel('$x$', fontsize=14)
-ax1.set_ylabel('piso(n)', fontsize=14)
-ax1.set_title('Tetración Truncada: $x^{x^{\\cdot^{\\cdot^x}}}$', fontsize=15, fontweight='bold')
-ax1.legend(fontsize=12, loc='upper left')
+ax1.set_xlabel('$x$', fontsize=18)
+ax1.set_ylabel('piso(n)', fontsize=18)
+ax1.set_title('Tetración Truncada: $x^{x^{\\cdot^{\\cdot^x}}}$', fontsize=20, fontweight='bold')
+ax1.legend(fontsize=15, loc='upper left')
 ax1.grid(True, alpha=0.3)
 ax1.set_xlim(0.1, 2.0)
 ax1.set_ylim(0, 50)
+ax1.tick_params(labelsize=13)
 
 # === Gráfico 2: Diagrama de la estructura recursiva ===
 ax2.axis('off')
@@ -80,17 +81,17 @@ def_box = FancyBboxPatch((1.5, 2.0), 7, 1.5,
                          linewidth=2, edgecolor='navy', facecolor='lightblue', alpha=0.5)
 ax2.add_patch(def_box)
 ax2.text(5, 2.75, r'piso(n) = x^piso(n-1)', 
-         fontsize=14, ha='center', va='center', fontweight='bold', color='navy')
+         fontsize=16, ha='center', va='center', fontweight='bold', color='navy')
 ax2.text(5, 2.3, r'con piso(1) = x', 
-         fontsize=12, ha='center', va='center', style='italic', color='navy')
+         fontsize=14, ha='center', va='center', style='italic', color='navy')
 
 # Flechas de recursión
 for i in range(len(tower_text) - 1):
     ax2.annotate('', xy=(5, tower_text[i+1][1] + 0.4), 
                  xytext=(5, tower_text[i][1] - 0.3),
-                 arrowprops=dict(arrowstyle='->', color='red', lw=2))
+                 arrowprops=dict(arrowstyle='->', color='red', lw=3))
     ax2.text(5.5, (tower_text[i][1] + tower_text[i+1][1]) / 2,
-             f'$x^{{(\\cdot)}}$', fontsize=12, color='red', 
+             f'$x^{{(\\cdot)}}$', fontsize=14, color='red', 
              va='center', fontweight='bold')
 
 # Dibujar nodos de la torre
@@ -101,13 +102,13 @@ for i, (x, y, text, label) in enumerate(tower_text):
                          linewidth=2, edgecolor=colors[i % len(colors)], 
                          facecolor='white', alpha=0.9)
     ax2.add_patch(box)
-    ax2.text(x, y, text, fontsize=14, ha='center', va='center', 
+    ax2.text(x, y, text, fontsize=16, ha='center', va='center', 
              color=colors[i % len(colors)], fontweight='bold')
-    ax2.text(x, y - 0.7, label, fontsize=10, ha='center', va='center', 
+    ax2.text(x, y - 0.7, label, fontsize=12, ha='center', va='center', 
              color='gray', style='italic')
 
 ax2.set_title('Estructura Recursiva de la Tetración Truncada', 
-              fontsize=15, fontweight='bold', pad=20)
+              fontsize=20, fontweight='bold', pad=20)
 
 # Añadir nota sobre convergencia
 note_text = (
@@ -115,7 +116,7 @@ note_text = (
     "la tetración infinita converge. Fuera de este intervalo, \n"
     "los valores crecen extremadamente rápido o divergen."
 )
-fig.text(0.5, 0.02, note_text, ha='center', fontsize=10, style='italic',
+fig.text(0.5, 0.02, note_text, ha='center', fontsize=12, style='italic',
          bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
