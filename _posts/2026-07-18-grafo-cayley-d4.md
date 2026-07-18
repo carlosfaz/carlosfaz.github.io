@@ -8,96 +8,233 @@ category: "Matemáticas"
 tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico", "Simetrías"]
 ---
 
-El grafo de Cayley presentado para el grupo diédrico $D_4$ es matemáticamente correcto y modela con total precisión la estructura del grupo de simetrías de un cuadrado (de orden 8). A continuación se desglosa la verificación formal de cada uno de sus componentes basados en la presentación algebraica:
+El siguiente grafo de Cayley representa el grupo diédrico
 
 $$
-D_4 = \langle r, f \mid r^4 = e, \, f^2 = e, \, fr = r^{-1}f \rangle
+D_4=\langle r,f\mid r^4=e,\;f^2=e,\;fr=r^{-1}f\rangle,
 $$
 
-## Definición de los Generadores y Relaciones
-
-- **Rotación ($r^4 = e$):** Representa una rotación de $90^\circ$ en sentido horario. Aplicarla cuatro veces consecutivas regresa el sistema al estado de identidad ($e$).
-- **Reflexión ($f^2 = e$):** Representa una simetría axial. Al ser un operador involutivo, aplicarlo dos veces consecutivas anula su efecto ($f \cdot f = e$).
-- **Relación no abeliana ($fr = r^{-1}f$ o $fr = r^3f$):** Esta relación define la interacción no conmutativa entre rotaciones y reflexiones. Como el orden de $r$ es 4, se tiene que $r^{-1} = r^3$.
-
-## Análisis de las Órbitas en el Grafo
-
-### El Ciclo Exterior (Rotaciones Puras, Camino Verde-Azul)
-
-La acción de la rotación se define multiplicando por la derecha por el generador $r$ (es decir, la transición es de la forma $x \xrightarrow{\cdot r} xr$). 
-
-Para los elementos sin reflexión (ciclo exterior), el avance sigue un sentido horario estándar:
+tomando como conjunto de generadores
 
 $$
-e \xrightarrow{\cdot r} r \xrightarrow{\cdot r} r^2 \xrightarrow{\cdot r} r^3 \xrightarrow{\cdot r} e
+S=\{r,f\},
 $$
 
-Esto coincide perfectamente con las flechas exteriores continuas de color azul-verde.
+y considerando que cada arista corresponde a **multiplicación por la derecha**.
 
-### El Ciclo Interior (Elementos Reflejados)
-
-Al multiplicar por la derecha por $r$ a un elemento que ya posee una componente de reflexión ($xf \xrightarrow{\cdot r} xfr$), la relación $fr = r^3f$ altera el sentido de la rotación:
-
-- **Partiendo de $f$:** 
-$$ f \cdot r = r^3f $$
-La flecha dirigida va desde el nodo $f$ hasta el nodo $r^3f$.
-
-- **Partiendo de $r^3f$:** 
-$$ r^3f \cdot r = r^3(fr) = r^3(r^3f) = r^6f = r^2f $$
-La flecha va desde $r^3f$ hasta $r^2f$ (ya que $r^4 = e$, por lo que $r^6 = r^2$).
-
-- **Partiendo de $r^2f$:** 
-$$ r^2f \cdot r = r^2(fr) = r^2(r^3f) = r^5f = rf $$
-La flecha va desde $r^2f$ hasta $rf$ (dado que $r^5 = r$).
-
-- **Partiendo de $rf$:** 
-$$ rf \cdot r = r(fr) = r(r^3f) = r^4f = f $$
-La flecha va desde $rf$ hasta $f$.
-
-Esta secuencia matemática genera el ciclo interno:
+Los ocho elementos del grupo son
 
 $$
-f \xrightarrow{\cdot r} r^3f \xrightarrow{\cdot r} r^2f \xrightarrow{\cdot r} rf \xrightarrow{\cdot r} f
+\{e,r,r^2,r^3,f,rf,r^2f,r^3f\}.
 $$
 
-El cual se desplaza de forma **antihoraria**, ilustrando visualmente cómo la reflexión invierte la orientación del plano.
+---
 
-### Los Puentes de Reflexión (Camino Naranja Punteado)
+## Generadores
 
-Las aristas punteadas representan la multiplicación por la derecha por el generador $f$ ($x \xrightarrow{\cdot f} xf$). Dado que $f$ es una involución ($f^2 = e$), estas conexiones son bidireccionales, actuando como puentes de doble sentido entre los ciclos interior y exterior:
+### Rotación
+
+El generador
+
+$$
+r
+$$
+
+representa una rotación de \(90^\circ\).
+
+Como
+
+$$
+r^4=e,
+$$
+
+las rotaciones forman un ciclo de longitud cuatro.
+
+---
+
+### Reflexión
+
+El generador
+
+$$
+f
+$$
+
+representa una reflexión.
+
+Al satisfacer
+
+$$
+f^2=e,
+$$
+
+es una involución.
+
+---
+
+### Relación no conmutativa
+
+La relación fundamental del grupo es
+
+$$
+fr=r^{-1}f=r^3f,
+$$
+
+que expresa que una reflexión invierte el sentido de las rotaciones.
+
+---
+
+# Acción del generador \(r\)
+
+Como las aristas representan multiplicación por la derecha,
+
+$$
+x\longrightarrow xr.
+$$
+
+## Ciclo exterior
+
+Sobre las rotaciones puras se obtiene
+
+$$
+e
+\longrightarrow
+r
+\longrightarrow
+r^2
+\longrightarrow
+r^3
+\longrightarrow
+e.
+$$
+
+Este es el ciclo exterior del grafo.
+
+---
+
+## Ciclo interior
+
+Para los elementos con reflexión,
 
 $$
 \begin{aligned}
-    e \cdot f = f &\iff f \cdot f = e \\
-    r \cdot f = rf &\iff rf \cdot f = r \\
-    r^2 \cdot f = r^2f &\iff r^2f \cdot f = r^2 \\
-    r^3 \cdot f = r^3f &\iff r^3f \cdot f = r^3
+f\cdot r
+&=r^3f,\\
+r^3f\cdot r
+&=r^2f,\\
+r^2f\cdot r
+&=rf,\\
+rf\cdot r
+&=f.
 \end{aligned}
 $$
 
-El grafo plasma con absoluta fidelidad estos pares de conexiones simétricas mediante los puentes naranjas.
+Por tanto,
 
-## Representación Visual del Grafo de Cayley
+$$
+f
+\longrightarrow
+r^3f
+\longrightarrow
+r^2f
+\longrightarrow
+rf
+\longrightarrow
+f.
+$$
 
-A continuación se presenta la representación gráfica del grafo de Cayley para $D_4$, generada directamente desde el código TikZ original:
+Obsérvese que el orden del ciclo interior es el inverso del exterior. Esto es una consecuencia directa de la relación
 
-<figure style="text-align: center; margin: 2em 0;">
-  <img src="/images/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  <figcaption style="margin-top: 0.5em; font-style: italic; color: #666; font-size: 0.9em;">
-    Grafo de Cayley del grupo diédrico $D_4 = \langle r, f \mid r^4 = e, f^2 = e, fr = r^{-1}f \rangle$. 
-    El ciclo exterior azul-verde representa las rotaciones puras del cuadrado, mientras que el ciclo interior refleja 
-    la inversión inducida por la relación no abeliana $fr=r^{-1}f$. Los puentes naranjas representan la acción involutiva de la reflexión.
-  </figcaption>
+$$
+fr=r^{-1}f,
+$$
+
+que invierte la orientación de la rotación cuando aparece una reflexión.
+
+---
+
+# Acción del generador \(f\)
+
+Las aristas punteadas representan
+
+$$
+x\longrightarrow xf.
+$$
+
+Dado que
+
+$$
+f^2=e,
+$$
+
+cada una de ellas puede recorrerse en ambos sentidos.
+
+Con el etiquetado utilizado en la figura se obtienen las parejas
+
+$$
+\begin{aligned}
+e &\longleftrightarrow f,\\
+r &\longleftrightarrow r^3f,\\
+r^2 &\longleftrightarrow r^2f,\\
+r^3 &\longleftrightarrow rf.
+\end{aligned}
+$$
+
+Estas conexiones enlazan el ciclo exterior con el interior y representan la acción involutiva del generador \(f\).
+
+---
+
+# Representación Visual del Grafo de Cayley
+
+<figure style="text-align:center;margin:2em 0;">
+<img
+src="/images/cayley-graph-d4.svg"
+alt="Grafo de Cayley del grupo diédrico D4"
+style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.12);">
+
+<figcaption style="margin-top:0.8em;font-style:italic;color:#666">
+
+Grafo de Cayley del grupo
+
+$$
+D_4=\langle r,f\mid r^4=e,\;f^2=e,\;fr=r^{-1}f\rangle.
+$$
+
+Las aristas continuas representan la acción del generador \(r\) mediante multiplicación por la derecha.
+
+El ciclo exterior corresponde a las rotaciones puras
+
+$$
+e,r,r^2,r^3,
+$$
+
+mientras que el ciclo interior
+
+$$
+f,r^3f,r^2f,rf
+$$
+
+aparece con orientación opuesta debido a la relación
+
+$$
+fr=r^{-1}f.
+$$
+
+Las aristas punteadas representan la acción involutiva del generador \(f\).
+
+</figcaption>
 </figure>
 
-## Conclusión
+---
 
-El grafo de Cayley para $D_4$ cumple de manera rigurosa con la estructura del grupo algebraico. Representa tanto el carácter no abeliano como las propiedades geométricas de simetría de forma clara y formal.
+# Conclusión
 
-Este análisis demuestra cómo la estructura algebraica abstracta se manifiesta visualmente en el grafo, donde:
+El grafo de Cayley reproduce fielmente la estructura algebraica del grupo diédrico \(D_4\).
 
-1. **El ciclo exterior** representa las rotaciones puras del cuadrado
-2. **El ciclo interior** ilustra cómo la reflexión invierte la orientación
-3. **Los puentes de reflexión** muestran la naturaleza involutiva de $f$
+En particular,
 
-La representación gráfica no es solo una ilustración, sino una herramienta poderosa para comprender la estructura del grupo y sus relaciones fundamentales.
+- el ciclo exterior representa las rotaciones;
+- el ciclo interior muestra cómo la relación \(fr=r^{-1}f\) invierte el sentido de la acción de \(r\);
+- las aristas punteadas representan la acción involutiva de \(f\).
+
+De este modo, la representación gráfica refleja de forma inmediata tanto la estructura cíclica de las rotaciones como el carácter no conmutativo del grupo.
