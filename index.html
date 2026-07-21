@@ -25,15 +25,15 @@ layout: default
 
           <div class="entry">
             {% if post.thumbnails %}
-              <!-- Opción 1: Múltiples thumbnails en tamaño ampliado (max-height: 260px) -->
+              <!-- Múltiples thumbnails en tamaño ampliado -->
               <div class="post-thumbnails-container" style="display: flex; gap: 1rem; align-items: center; justify-content: center; width: 100%; margin-bottom: 1rem; padding: 0.5rem 0;">
                 {% for img in post.thumbnails %}
-                  <img src="{{ img | prepend: site.baseurl }}" alt="{{ post.title }}" loading="lazy" style="max-height: 260px; width: 48%; object-fit: contain;">
+                  <img src="{{ img | prepend: site.baseurl }}" alt="{{ post.title }}" loading="lazy" style="max-height: 400px; width: auto; object-fit: contain;">
                 {% endfor %}
               </div>
             {% elsif post.thumbnail %}
               <!-- Thumbnail individual tradicional -->
-              <img src="{{ post.thumbnail | prepend: site.baseurl }}" alt="{{ post.title }}" loading="lazy" style="max-height: 200px; object-fit: cover; width: 100%; margin-bottom: 1rem;">
+              <img src="{{ post.thumbnail | prepend: site.baseurl }}" alt="{{ post.title }}" loading="lazy" style="max-height: 400px; object-fit: cover; width: 100%; margin-bottom: 1rem;">
             {% endif %}
 
             {{ post.excerpt | strip_html | truncate: 200 }}
