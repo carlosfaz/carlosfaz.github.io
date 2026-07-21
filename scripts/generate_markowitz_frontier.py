@@ -67,40 +67,56 @@ frontier_returns = w_mat @ expected_returns
 frontier_vols = np.sqrt(np.einsum("ij,jk,ik->i", w_mat, cov_matrix, w_mat))
 sharpe_ratios = (frontier_returns - risk_free_rate) / frontier_vols
 
-# Crear la figura
-fig, ax = plt.subplots(figsize=(14, 10))
+# Crear la figura con 2 subgráficos
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
 
+# === Gráfico 1: Frontera Eficiente ===
 # Scatter de portafolios aleatorios coloreados por Sharpe
-scatter = ax.scatter(frontier_vols, frontier_returns, c=sharpe_ratios,
-                     cmap='viridis', alpha=0.6, s=80, edgecolors='none')
+scatter = ax1.scatter(frontier_vols, frontier_returns, c=sharpe_ratios,
+                      cmap='viridis', alpha=0.6, s=60, edgecolors='none')
 
 # Portafolio de máximo Sharpe
-ax.scatter(optimal_vol, optimal_return, color='red', s=400, 
-           marker='*', edgecolors='black', linewidth=3, zorder=5, label='Máximo Sharpe')
+ax1.scatter(optimal_vol, optimal_return, color='red', s=300, 
+            marker='*', edgecolors='black', linewidth=3, zorder=5, label='Máximo Sharpe')
 
 # Línea de la tasa libre de riesgo
-ax.axhline(y=risk_free_rate, color='gray', linestyle='--', alpha=0.7, label=f'Tasa Libre de Riesgo ({risk_free_rate*100}%)')
+ax1.axhline(y=risk_free_rate, color='gray', linestyle='--', alpha=0.7, label=f'Tasa Libre de Riesgo ({risk_free_rate*100}%)')
 
 # Línea del Capital Allocation Line (CAL)
 vol_range = np.linspace(0, 0.25, 100)
 cal = risk_free_rate + optimal_sharpe * vol_range
-ax.plot(vol_range, cal, 'r-', alpha=0.5, linewidth=2, label='Capital Allocation Line')
+ax1.plot(vol_range, cal, 'r-', alpha=0.5, linewidth=2, label='Capital Allocation Line')
 
 # Configurar el gráfico
-ax.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=18)
-ax.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$)', fontsize=18)
-ax.set_title('Frontera Eficiente de Markowitz\nOptimización Moderna de Portafolios', fontsize=22, fontweight='bold')
-ax.legend(fontsize=16, loc='upper left')
-ax.grid(True, alpha=0.3)
+ax1.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=14)
+ax1.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$)', fontsize=14)
+ax1.set_title('Frontera Eficiente de Markowitz', fontsize=16, fontweight='bold')
+ax1.legend(fontsize=12, loc='upper left')
+ax1.grid(True, alpha=0.3)
 
 # Agregar barra de color
-cbar = plt.colorbar(scatter, ax=ax)
-cbar.set_label('Ratio de Sharpe', fontsize=16)
-cbar.ax.tick_params(labelsize=14)
+cbar = plt.colorbar(scatter, ax=ax1)
+cbar.set_label('Ratio de Sharpe', fontsize=12)
+cbar.ax.tick_params(labelsize=11)
 
 # Límites
-ax.set_xlim(0, 0.25)
-ax.set_ylim(0.02, 0.16)
+ax1.set_xlim(0, 0.25)
+ax1.set_ylim(0.02, 0.16)
+
+# === Gráfico 2: Distribución de Pesos Óptimos ===
+asset_labels = [f'Activo {i+1}' for i in range(n_assets)]
+bars = ax2.bar(asset_labels, optimal_weights, color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'])
+ax2.set_title('Pesos del Portafolio Óptimo', fontsize=16, fontweight='bold')
+ax2.set_ylabel('Peso en el Portafolio', fontsize=14)
+ax2.grid(True, alpha=0.3, axis='y')
+
+# Agregar etiquetas con porcentajes en las barras
+for bar, weight in zip(bars, optimal_weights):
+    height = bar.get_height()
+    ax2.text(bar.get_x() + bar.get_width()/2., height + 0.01,
+             f'{weight:.1%}', ha='center', va='bottom', fontsize=12, fontweight='bold')
+
+ax2.set_ylim(0, max(optimal_weights) + 0.08)
 
 plt.tight_layout()
 plt.savefig('images/markowitz-frontier.svg', format='svg', bbox_inches='tight')

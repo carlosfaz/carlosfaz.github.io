@@ -62,6 +62,16 @@ ax1.set_xlim(0.1, 2.0)
 ax1.set_ylim(0, 50)
 ax1.tick_params(labelsize=13)
 
+# Añadir nota sobre convergencia debajo del título
+note_text = (
+    "Nota: Para $x \\in (e^{-e}, e^{1/e}) \\approx (0.066, 1.44)$, \n"
+    "la tetración infinita converge. Fuera de este intervalo, \n"
+    "los valores crecen extremadamente rápido o divergen."
+)
+ax1.text(0.5, 0.92, note_text, transform=ax1.transAxes, ha='left', va='top',
+         fontsize=10, style='italic',
+         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+
 # === Gráfico 2: Diagrama de la estructura recursiva ===
 ax2.axis('off')
 ax2.set_xlim(0, 10)
@@ -109,15 +119,6 @@ for i, (x, y, text, label) in enumerate(tower_text):
 
 ax2.set_title('Estructura Recursiva de la Tetración Truncada', 
               fontsize=20, fontweight='bold', pad=20)
-
-# Añadir nota sobre convergencia
-note_text = (
-    "Nota: Para $x \\in (e^{-e}, e^{1/e}) \\approx (0.066, 1.44)$, \n"
-    "la tetración infinita converge. Fuera de este intervalo, \n"
-    "los valores crecen extremadamente rápido o divergen."
-)
-fig.text(0.5, 0.02, note_text, ha='center', fontsize=12, style='italic',
-         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
 plt.savefig('images/tetration-truncated.svg', format='svg', bbox_inches='tight')
