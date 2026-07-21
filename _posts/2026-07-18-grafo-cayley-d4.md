@@ -7,6 +7,7 @@ date: 2026-07-18
 category: "Matemáticas"
 tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico", "Simetrías"]
 thumbnail: "/svg-inkscape/cayley-graph-d4.svg"
+thumbnails: ["/svg-inkscape/cayley-graph-d4.svg", "/svg-inkscape/cayley-graph-d4_2.svg"]
 ---
 
 <div style="
