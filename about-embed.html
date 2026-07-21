@@ -45,5 +45,18 @@
             <p>Tu navegador no soporta SVG. Por favor, actualiza tu navegador.</p>
         </object>
     </div>
+    <script>
+        // Scroll automático hacia abajo al cargar la página
+        window.addEventListener('load', function() {
+            // Esperar un momento para que el contenido se renderice
+            setTimeout(function() {
+                // Hacer scroll suave hacia abajo (300px desde el top)
+                window.scrollTo({
+                    top: 300,
+                    behavior: 'smooth'
+                });
+            }, 500);
+        });
+    </script>
 </body>
 </html>
