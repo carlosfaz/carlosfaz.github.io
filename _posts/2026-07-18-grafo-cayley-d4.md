@@ -61,7 +61,7 @@ El grafo plasma con absoluta fidelidad estos pares de conexiones simétricas med
 A continuación se presenta la representación gráfica del grafo de Cayley para $D_4$, generada directamente desde el código TikZ original:
 
 <figure style="text-align: center; margin: 2em 0;">
-  <img src="/images/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <img src="/svg-inkscape/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
   <figcaption style="margin-top: 0.5em; font-style: italic; color: #666; font-size: 0.9em;">
     Grafo de Cayley del grupo diédrico $D_4 = \langle r, f \mid r^4 = e, f^2 = e, fr = r^{-1}f \rangle$. 
     El ciclo exterior azul-verde representa las rotaciones puras del cuadrado, mientras que el ciclo interior refleja 
