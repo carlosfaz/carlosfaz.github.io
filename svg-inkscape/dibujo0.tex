@@ -12,11 +12,11 @@
 \centering
 \begin{tikzpicture}[
     scale=2.2,
-    % Estilo de nodos exacto al original (black!80, minimum size=1.8em)
-    nodo/.style={circle, draw=black!80, fill=white, inner sep=1.5pt, minimum size=1.8em, font=\small},
-    % Estilos de aristas con grosor exacto de 1.1pt
-    flechaRotacion/.style={->, >=stealth, thick, color=teal, line width=1.1pt},
-    flechaReflexion/.style={<->, >=stealth, thick, color=orange!90!black, dashed, line width=1.1pt}
+    % Letra un punto más grande que la original (\normalsize en lugar de \small)
+    nodo/.style={circle, draw=black!80, fill=white, inner sep=2pt, minimum size=2em, font=\normalsize},
+    % Grosor ligeramente mayor (1.5pt en lugar de 1.1pt)
+    flechaRotacion/.style={->, >=stealth, color=teal, line width=1.5pt},
+    flechaReflexion/.style={<->, >=stealth, color=orange!90!black, dashed, line width=1.5pt}
 ]
 
     % --- DEFINICIÓN DE LOS VÉRTICES ---
@@ -52,15 +52,14 @@
     \draw[flechaReflexion] (r3) -- (rf);
 
 
-    % --- LEYENDA (ALEJADA Y ESTILO IGUALADO) ---
+    % --- LEYENDA ---
     \begin{scope}[shift={(-2.3, 1.4)}]
-        % Marco de leyenda idéntico al original (gray!30)
-        \draw[fill=white, draw=gray!30] (0,0) rectangle (1.45,-0.6);
-        \draw[flechaRotacion] (0.12,-0.2) -- (0.55,-0.2);
-        \node[right, font=\footnotesize] at (0.58,-0.2) {Rotación $r$};
+        \draw[fill=white, draw=gray!30] (0,0) rectangle (1.6,-0.65);
+        \draw[flechaRotacion] (0.12,-0.22) -- (0.55,-0.22);
+        \node[right, font=\small] at (0.58,-0.22) {Rotación $r$};
         
-        \draw[flechaReflexion] (0.12,-0.42) -- (0.55,-0.42);
-        \node[right, font=\footnotesize] at (0.58,-0.42) {Reflexión $f$};
+        \draw[flechaReflexion] (0.12,-0.45) -- (0.55,-0.45);
+        \node[right, font=\small] at (0.58,-0.45) {Reflexión $f$};
     \end{scope}
 
 \end{tikzpicture}
