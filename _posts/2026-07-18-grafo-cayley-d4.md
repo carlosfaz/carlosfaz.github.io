@@ -20,7 +20,7 @@ gap:2rem;
 
     <img src="/svg-inkscape/cayley-graph-d4.svg"
          alt="Grafo de Cayley del grupo diédrico D4 - Versión 1"
-         style="width:400px;height:auto;">
+         style="width:350px;height:auto;">
 
     <img src="/svg-inkscape/cayley-graph-d4_2.svg"
          alt="Grafo de Cayley del grupo diédrico D4 - Versión 2"
