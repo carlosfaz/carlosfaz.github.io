@@ -24,13 +24,7 @@ layout: default
           </div>
 
           <div class="entry">
-            {% if post.thumbnails %}
-              <div style="display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap;">
-                {% for thumb in post.thumbnails %}
-                  <img src="{{ thumb }}" alt="{{ post.title }}" loading="lazy" style="height:150px; width:auto; object-fit:cover; border-radius:4px;">
-                {% endfor %}
-              </div>
-            {% elsif post.thumbnail %}
+            {% if post.thumbnail %}
               <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy" style="max-height: 200px; object-fit: cover; width: 100%; margin-bottom: 1rem;">
             {% endif %}
             {{ post.excerpt | strip_html | truncate: 200 }}
