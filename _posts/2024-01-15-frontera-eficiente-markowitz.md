@@ -6,7 +6,7 @@ published: true
 date: 2024-04-16
 category: "Finanzas Cuantitativas"
 tags: ["Markowitz", "Portfolio Optimization", "Risk Management", "Python"]
-thumbnail: "/images/markowitz-frontier.png"
+thumbnail: "/images/markowitz-frontier.svg"
 ---
 
 La teoría moderna de portafolios, desarrollada por Harry Markowitz en 1952, revolucionó la forma en que entendemos la inversión y el riesgo. En este artículo exploraremos los fundamentos matemáticos y su implementación práctica.

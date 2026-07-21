@@ -120,10 +120,10 @@ fig.text(0.5, 0.02, note_text, ha='center', fontsize=12, style='italic',
          bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
-plt.savefig('images/tetration-truncated.png', dpi=200, bbox_inches='tight')
+plt.savefig('images/tetration-truncated.svg', format='svg', bbox_inches='tight')
 plt.close()
 
-print("Imagen guardada: images/tetration-truncated.png")
+print("Imagen guardada: images/tetration-truncated.svg")
 
 # Imprimir algunos valores de ejemplo
 print("\n=== Valores de ejemplo de la tetración truncada ===")

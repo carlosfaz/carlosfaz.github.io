@@ -6,7 +6,7 @@ published: true
 date: 2024-04-18
 category: "Gestión de Riesgos"
 tags: ["Risk Management", "VaR", "CVaR", "Expected Shortfall", "Stress Testing", "Monte Carlo", "Python"]
-thumbnail: "/images/risk-management-advanced.png"
+thumbnail: "/images/risk-management-advanced.svg"
 ---
 
 Imagina que saltas de un avión. El **Value at Risk (VaR)** es saber a qué altura se abre tu paracaídas. El **CVaR** es preguntarte: *"Si el paracaídas tiene un agujero, ¿qué tan fuerte me golpearé las piernas al llegar al suelo?"*.

@@ -131,10 +131,10 @@ fig.text(0.5, -0.02,
          ha='center', fontsize=12, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
-plt.savefig('images/risk-management-advanced.png', dpi=200, bbox_inches='tight')
+plt.savefig('images/risk-management-advanced.svg', format='svg', bbox_inches='tight')
 plt.close()
 
-print("Imagen guardada: images/risk-management-advanced.png")
+print("Imagen guardada: images/risk-management-advanced.svg")
 print(f"\n=== Resultados de VaR/CVaR ===")
 print(f"VaR Histórico (95%): {var_95:.2%}")
 print(f"CVaR (Expected Shortfall): {cvar_95:.2%}")

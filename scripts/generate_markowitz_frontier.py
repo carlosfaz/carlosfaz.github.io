@@ -103,10 +103,10 @@ ax.set_xlim(0, 0.25)
 ax.set_ylim(0.02, 0.16)
 
 plt.tight_layout()
-plt.savefig('images/markowitz-frontier.png', dpi=200, bbox_inches='tight')
+plt.savefig('images/markowitz-frontier.svg', format='svg', bbox_inches='tight')
 plt.close()
 
-print("Imagen guardada: images/markowitz-frontier.png")
+print("Imagen guardada: images/markowitz-frontier.svg")
 print(f"Portafolio óptimo de máximo Sharpe:")
 print(f"  Retorno: {optimal_return:.2%}")
 print(f"  Volatilidad: {optimal_vol:.2%}")
