@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre mí</title>
+
     <style>
         * {
             margin: 0;
@@ -13,50 +14,32 @@
 
         html, body {
             width: 100%;
-            height: 100%;
-            overflow: auto;
+            min-height: 100%;
+            overflow-y: auto;
             background: #f5f5f5;
         }
 
         .svg-container {
-            width: 100vw;
-            min-height: 100vh;
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            background: #f5f5f5;
-            overflow: auto;
             padding: 20px;
         }
 
-        .svg-container object {
+        .svg-container img {
             width: 80%;
             height: auto;
-            min-width: 80%;
-            transform: scale(0.8);
-            transform-origin: top center;
+            display: block;
             max-width: 100%;
         }
     </style>
 </head>
+
 <body>
+
     <div class="svg-container">
-        <object data="new-aboutme.svg" type="image/svg+xml">
-            <p>Tu navegador no soporta SVG. Por favor, actualiza tu navegador.</p>
-        </object>
+        <img src="new-aboutme.svg" alt="Sobre mí">
     </div>
-    <script>
-        // Scroll automático hacia abajo al cargar la página
-        window.addEventListener('load', function() {
-            // Esperar un momento para que el contenido se renderice
-            setTimeout(function() {
-                // Hacer scroll suave hacia abajo (300px desde el top)
-                window.scrollTo({
-                    top: 300,
-                    behavior: 'smooth'
-                });
-            }, 500);
-        });
-    </script>
+
 </body>
 </html>
