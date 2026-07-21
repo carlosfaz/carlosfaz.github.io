@@ -10,13 +10,8 @@ thumbnail: "/svg-inkscape/cayley-graph-d4.svg"
 ---
 
 <div style="display:flex; justify-content:center; gap:2em; flex-wrap:wrap; margin:2em 0;">
-    <img src="/svg-inkscape/cayley-graph-d4.svg"
-         alt="Grafo de Cayley del grupo diédrico D4 - Versión 1"
-         style="width:520px; max-width:100%; height:auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-
-    <img src="/svg-inkscape/cayley-graph-d4_2.svg"
-         alt="Grafo de Cayley del grupo diédrico D4 - Versión 2"
-         style="width:520px; max-width:100%; height:auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="/svg-inkscape/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4 - Versión 1" style="width:520px; max-width:100%; height:auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="/svg-inkscape/cayley-graph-d4_2.svg" alt="Grafo de Cayley del grupo diédrico D4 - Versión 2" style="width:520px; max-width:100%; height:auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
 
 El grafo de Cayley presentado para el grupo diédrico $D_4$ es matemáticamente correcto y modela con total precisión la estructura del grupo de simetrías de un cuadrado (de orden 8). A continuación se desglosa la verificación formal de cada uno de sus componentes basados en la presentación algebraica:
