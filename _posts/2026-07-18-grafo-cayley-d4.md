@@ -6,11 +6,20 @@ published: true
 date: 2026-07-18
 category: "Matemáticas"
 tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico", "Simetrías"]
+thumbnail: "/svg-inkscape/cayley-graph-d4.svg"
 ---
+
+<div style="text-align: center; margin: 1.5em 0;">
+  <img src="/svg-inkscape/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4 - Versión 1" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
+
+<div style="text-align: center; margin: 1.5em 0;">
+  <img src="/svg-inkscape/cayley-graph-d4_2.svg" alt="Grafo de Cayley del grupo diédrico D4 - Versión 2" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
 
 El grafo de Cayley presentado para el grupo diédrico $D_4$ es matemáticamente correcto y modela con total precisión la estructura del grupo de simetrías de un cuadrado (de orden 8). A continuación se desglosa la verificación formal de cada uno de sus componentes basados en la presentación algebraica:
 
-$D_4 = \langle r, f \mid r^4 = e,  f^2 = e,  fr = r^{-1}f \rangle$
+$D_4 = \langle r, f \mid r^4 = e,  f^2 = e, fr = r^{-1}f \rangle$
 
 ## Definición de los Generadores y Relaciones
 
@@ -55,19 +64,6 @@ Las aristas punteadas representan la multiplicación por la derecha por el gener
 $e \cdot f = f \iff f \cdot f = e$, $r \cdot f = rf \iff rf \cdot f = r$, $r^2 \cdot f = r^2f \iff r^2f \cdot f = r^2$, $r^3 \cdot f = r^3f \iff r^3f \cdot f = r^3$
 
 El grafo plasma con absoluta fidelidad estos pares de conexiones simétricas mediante los puentes naranjas.
-
-## Representación Visual del Grafo de Cayley
-
-A continuación se presenta la representación gráfica del grafo de Cayley para $D_4$, generada directamente desde el código TikZ original:
-
-<figure style="text-align: center; margin: 2em 0;">
-  <img src="/svg-inkscape/cayley-graph-d4.svg" alt="Grafo de Cayley del grupo diédrico D4" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  <figcaption style="margin-top: 0.5em; font-style: italic; color: #666; font-size: 0.9em;">
-    Grafo de Cayley del grupo diédrico $D_4 = \langle r, f \mid r^4 = e, f^2 = e, fr = r^{-1}f \rangle$. 
-    El ciclo exterior azul-verde representa las rotaciones puras del cuadrado, mientras que el ciclo interior refleja 
-    la inversión inducida por la relación no abeliana $fr=r^{-1}f$. Los puentes naranjas representan la acción involutiva de la reflexión.
-  </figcaption>
-</figure>
 
 ## Conclusión
 
