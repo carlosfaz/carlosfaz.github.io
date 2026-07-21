@@ -16,7 +16,7 @@ permalink: /about/
 }
 
 .svg-container img {
-    width: min(1800px, 160%);
+    width: min(3600px, 320%);
     height: auto;
     display: block;
 }
