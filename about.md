@@ -25,7 +25,7 @@ permalink: /about/
 
 .svg-container img {
     /* Ajusta este porcentaje si quieres que ocupe menos o más del ancho de la pantalla */
-    width: 90%; 
+    width: 80%; 
     max-width: 1200px; /* Un límite opcional para que no sea absurdamente gigante en monitores 4K */
     height: auto;
     display: block;
