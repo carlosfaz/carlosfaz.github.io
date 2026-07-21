@@ -27,7 +27,7 @@ layout: default
     <div class="post-tags">
       <span>Etiquetas:</span>
       {% for tag in page.tags %}
-        <a href="{{ site.baseurl }}/tags/{{ tag | slugify }}" class="tag">{{ tag }}</a>
+        <a href="{{ site.baseurl }}/tags/?tag={{ tag | slugify: 'pretty' }}" class="tag">{{ tag }}</a>
       {% endfor %}
     </div>
   {% endif %}
