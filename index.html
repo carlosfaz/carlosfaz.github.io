@@ -24,9 +24,18 @@ layout: default
           </div>
 
           <div class="entry">
-            {% if post.thumbnail %}
-              <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy" style="max-height: 200px; object-fit: cover; width: 100%; margin-bottom: 1rem;">
+            {% if post.thumbnails %}
+              <!-- Contenedor flex para mostrar múltiples thumbnails (2 imágenes lado a lado) -->
+              <div class="post-thumbnails-container" style="display: flex; gap: 1rem; align-items: center; justify-content: center; width: 100%; margin-bottom: 1rem; padding: 0.5rem 0;">
+                {% for img in post.thumbnails %}
+                  <img src="{{ img | prepend: site.baseurl }}" alt="{{ post.title }}" loading="lazy" style="max-height: 180px; width: 48%; object-fit: contain;">
+                {% endfor %}
+              </div>
+            {% elsif post.thumbnail %}
+              <!-- Imagen individual tradicional -->
+              <img src="{{ post.thumbnail | prepend: site.baseurl }}" alt="{{ post.title }}" loading="lazy" style="max-height: 200px; object-fit: cover; width: 100%; margin-bottom: 1rem;">
             {% endif %}
+
             {{ post.excerpt | strip_html | truncate: 200 }}
           </div>
           
