@@ -4,35 +4,20 @@ title: Sobre mí
 permalink: /about/
 ---
 
-<div class="about-embed-container">
-  <iframe src="{{ site.baseurl }}/about-embed.html" 
-          style="border: none;"
-          onload="this.style.height = (this.contentWindow.document.body.scrollHeight + 50) + 'px'">
-  </iframe>
+<div class="svg-container">
+    <img src="{{ site.baseurl }}/new-aboutme.svg" alt="Sobre mí">
 </div>
 
 <style>
-  .about-embed-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: #f5f5f5; 
-    z-index: 1000;
-  }
-  
-  .about-embed-container iframe {
-    width: 100%;
-    height: 100%;
+.svg-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.svg-container img {
+    width: min(900px, 80%);
+    height: auto;
     display: block;
-    border: none;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+}
 </style>
