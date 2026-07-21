@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=/tags/?tag=python">
-    <title>Redireccionando...</title>
-</head>
-<body>
-    <p>Redireccionando a <a href="/tags/?tag=python">la página de tags</a>...</p>
-    <script>
-        window.location.href = '/tags/?tag=python';
-    </script>
-</body>
-</html>
+---
+layout: tag
+title: "Tag: Python"
+tag: "Python"
+permalink: /tags/python/
+---
+
+{% assign python_posts = site.tags["Python"] %}
+{% assign page.posts = python_posts %}
