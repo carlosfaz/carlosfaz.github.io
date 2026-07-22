@@ -1,12 +1,12 @@
 """
 Genera la imagen de Gestión de Riesgos Avanzada.
-Muestra: distribución de retornos con VaR/CVaR, simulación Monte Carlo,
-y comparación de métodos de VaR.
+Muestra: distribución de retornos con VaR/CVaR y simulación Monte Carlo.
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+from scipy.stats import gaussian_kde
 
 # Configuración
 np.random.seed(42)
@@ -21,9 +21,8 @@ returns = np.random.standard_t(df, n_simulations) * 0.02  # escala para ~2% dail
 var_95 = np.percentile(returns, (1 - confidence_level) * 100)
 cvar_95 = returns[returns <= var_95].mean()
 
-# Crear figura con 3 subgráficos
-fig, axes = plt.subplots(1, 3, figsize=(24, 8))
-ax1, ax2, ax3 = axes
+# Crear figura con 2 subgráficos
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
 
 # === Gráfico 1: Distribución de retornos con VaR y CVaR ===
 # Histograma
@@ -40,14 +39,11 @@ ax1.axvline(x=cvar_95, color='orange', linestyle='-', linewidth=3,
             label=f'CVaR 95% = {cvar_95:.2%}')
 
 # Ajustar densidad KDE
-from scipy.stats import gaussian_kde
 kde = gaussian_kde(returns)
 
 # Sombrear la cola izquierda (pérdidas extremas)
 x_sorted = np.sort(returns)
-# Crear máscara para valores menores o iguales a VaR
 tail_mask = x_sorted <= var_95
-# Calcular densidad KDE solo para la cola
 tail_x = x_sorted[tail_mask]
 tail_density = kde(tail_x)
 ax1.fill_between(tail_x, 0, tail_density, alpha=0.3, color='red')
@@ -75,10 +71,9 @@ for i in range(n_paths):
     path = initial_price * np.cumprod(1 + path_returns)
     ax2.plot(path, alpha=0.3, linewidth=0.5, color='steelblue')
 
-# Trayectoria destacada (una que tiene un drawdown significativo)
+# Trayectoria destacada (escenario de stress)
 np.random.seed(123)
 stress_path_returns = np.random.normal(daily_mean, daily_vol * 1.5, n_days)
-# Insertar un crash en el día 150
 stress_path_returns[145:155] -= 0.03
 stress_path = initial_price * np.cumprod(1 + stress_path_returns)
 ax2.plot(stress_path, 'r-', linewidth=3, alpha=0.8, label='Escenario de Stress')
@@ -102,30 +97,7 @@ ax2.grid(True, alpha=0.3)
 ax2.set_xlim(0, n_days)
 ax2.tick_params(labelsize=12)
 
-# === Gráfico 3: Comparación de métodos de VaR ===
-methods = ['Histórico', 'Paramétrico\n(Normal)', 'Monte Carlo', 'CVaR\n(Expected Shortfall)']
-
-# Calcular VaR por diferentes métodos
-var_historical = np.percentile(returns, 5)
-var_parametric = stats.norm.ppf(0.05, loc=np.mean(returns), scale=np.std(returns))
-var_monte_carlo = np.percentile(returns, 5)  # Similar al histórico en este caso
-cvar_value = returns[returns <= var_historical].mean()
-
-values = [var_historical, var_parametric, var_monte_carlo, cvar_value]
-colors = ['steelblue', 'orange', 'green', 'red']
-
-bars = ax3.barh(methods, [-v for v in values], color=colors, alpha=0.8, edgecolor='black', linewidth=1.5)
-ax3.set_xlabel('Pérdida Máxima Esperada', fontsize=16)
-ax3.set_title('Comparación de Métodos de VaR (95% Confianza)', fontsize=18, fontweight='bold')
-ax3.grid(True, alpha=0.3, axis='x')
-ax3.tick_params(labelsize=12)
-
-# Añadir valores en las barras
-for bar, val in zip(bars, values):
-    ax3.text(-val + 0.001, bar.get_y() + bar.get_height()/2, 
-             f'{val:.2%}', va='center', ha='left', fontsize=13, fontweight='bold')
-
-# Nota explicativa
+# Nota explicativa al pie de la figura
 fig.text(0.5, -0.02, 
          'El CVaR siempre es mayor (más conservador) que el VaR, ya que mide la pérdida promedio en la cola de la distribución.',
          ha='center', fontsize=12, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
