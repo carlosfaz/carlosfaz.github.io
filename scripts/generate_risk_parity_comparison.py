@@ -107,14 +107,14 @@ ax1.scatter(rp_vol, rp_return, color='blue', s=300, marker='D',
             edgecolors='black', linewidth=3, zorder=5, label='Risk Parity')
 ax1.axhline(y=risk_free_rate, color='gray', linestyle='--', alpha=0.5, label='Tasa Libre de Riesgo')
 
-ax1.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=16)
-ax1.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$', fontsize=16)
-ax1.set_title('Frontera Eficiente: Markowitz vs Risk Parity', fontsize=18, fontweight='bold')
-ax1.legend(fontsize=13)
+ax1.set_xlabel('Volatilidad Anualizada ($\sigma_p$)', fontsize=18)
+ax1.set_ylabel('Retorno Esperado Anualizado ($E[R_p]$', fontsize=18)
+ax1.set_title('Frontera Eficiente: Markowitz vs Risk Parity', fontsize=20, fontweight='bold')
+ax1.legend(fontsize=16)
 ax1.grid(True, alpha=0.3)
 ax1.set_xlim(0, 0.22)
 ax1.set_ylim(0.04, 0.15)
-ax1.tick_params(labelsize=13)
+ax1.tick_params(labelsize=16)
 
 # Gráfico 2: Comparación de pesos y contribución al riesgo
 x_pos = np.arange(n_assets)
@@ -128,14 +128,14 @@ ax2.bar(x_pos + width/2, rp_weights, width, label='Risk Parity Pesos', alpha=0.8
 ax2.axhline(y=rp_total_vol/n_assets, color='blue', linestyle=':', alpha=0.7, 
             label=f'Risk Parity TRC Objetivo ({rp_total_vol/n_assets:.2%})')
 
-ax2.set_xlabel('Activos', fontsize=16)
-ax2.set_ylabel('Peso / Contribución al Riesgo', fontsize=16)
-ax2.set_title('Distribución de Pesos y Riesgo', fontsize=18, fontweight='bold')
+ax2.set_xlabel('Activos', fontsize=18)
+ax2.set_ylabel('Peso / Contribución al Riesgo', fontsize=18)
+ax2.set_title('Distribución de Pesos y Riesgo', fontsize=20, fontweight='bold')
 ax2.set_xticks(x_pos)
-ax2.set_xticklabels([f'Activo {i+1}\n(σ={v:.0%})' for i, v in enumerate(volatilities)], fontsize=13)
-ax2.legend(fontsize=13)
+ax2.set_xticklabels([f'Activo {i+1}\n(σ={v:.0%})' for i, v in enumerate(volatilities)], fontsize=16)
+ax2.legend(fontsize=16)
 ax2.grid(True, alpha=0.3, axis='y')
-ax2.tick_params(labelsize=13)
+ax2.tick_params(labelsize=16)
 
 plt.tight_layout()
 plt.savefig('images/risk-parity-comparison.svg', format='svg', bbox_inches='tight')

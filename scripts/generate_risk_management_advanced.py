@@ -50,12 +50,12 @@ ax1.fill_between(tail_x, 0, tail_density, alpha=0.3, color='red')
 x_range = np.linspace(returns.min(), returns.max(), 200)
 ax1.plot(x_range, kde(x_range), 'k-', linewidth=2, alpha=0.8, label='Densidad KDE')
 
-ax1.set_xlabel('Retornos Diarios', fontsize=16)
-ax1.set_ylabel('Densidad', fontsize=16)
-ax1.set_title('Value at Risk (VaR) vs Expected Shortfall (CVaR)', fontsize=18, fontweight='bold')
-ax1.legend(fontsize=13)
+ax1.set_xlabel('Retornos Diarios', fontsize=18)
+ax1.set_ylabel('Densidad', fontsize=18)
+ax1.set_title('Value at Risk (VaR) vs Expected Shortfall (CVaR)', fontsize=20, fontweight='bold')
+ax1.legend(fontsize=16)
 ax1.grid(True, alpha=0.3)
-ax1.tick_params(labelsize=13)
+ax1.tick_params(labelsize=16)
 
 # === Gráfico 2: Simulación Monte Carlo ===
 # Simular trayectoria de precios
@@ -87,20 +87,20 @@ ax2.annotate(f'Máx Drawdown: {max_drawdown:.1%}',
              xy=(np.argmin(stress_path), stress_path.min()),
              xytext=(100, stress_path.min() + 5),
              arrowprops=dict(arrowstyle='->', color='red', lw=3),
-             fontsize=14, color='red', fontweight='bold')
+             fontsize=16, color='red', fontweight='bold')
 
-ax2.set_xlabel('Días de Trading', fontsize=16)
-ax2.set_ylabel('Precio del Activo ($)', fontsize=16)
-ax2.set_title('Simulación Monte Carlo con Escenario de Stress', fontsize=18, fontweight='bold')
-ax2.legend(fontsize=13)
+ax2.set_xlabel('Días de Trading', fontsize=18)
+ax2.set_ylabel('Precio del Activo ($)', fontsize=18)
+ax2.set_title('Simulación Monte Carlo con Escenario de Stress', fontsize=20, fontweight='bold')
+ax2.legend(fontsize=16)
 ax2.grid(True, alpha=0.3)
 ax2.set_xlim(0, n_days)
-ax2.tick_params(labelsize=13)
+ax2.tick_params(labelsize=16)
 
 # Nota explicativa al pie de la figura
 fig.text(0.5, -0.02, 
          'El CVaR siempre es mayor (más conservador) que el VaR, ya que mide la pérdida promedio en la cola de la distribución.',
-         ha='center', fontsize=13, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+         ha='center', fontsize=16, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
 plt.savefig('images/risk-management-advanced.svg', format='svg', bbox_inches='tight')

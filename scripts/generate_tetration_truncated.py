@@ -34,14 +34,14 @@ for i, n in enumerate(orders):
     except Exception as e:
         print(f"Error calculando orden {n}: {e}")
 
-ax1.set_xlabel('$x$', fontsize=18)
-ax1.set_ylabel('piso(n)', fontsize=18)
-ax1.set_title('Tetración Truncada: $x^{x^{\\cdot^{\\cdot^x}}}$', fontsize=20, fontweight='bold')
-ax1.legend(fontsize=15, loc='upper left')
+ax1.set_xlabel('$x$', fontsize=20)
+ax1.set_ylabel('piso(n)', fontsize=20)
+ax1.set_title('Tetración Truncada: $x^{x^{\\cdot^{\\cdot^x}}}$', fontsize=22, fontweight='bold')
+ax1.legend(fontsize=16, loc='upper left')
 ax1.grid(True, alpha=0.3)
 ax1.set_xlim(0.1, 2.0)
 ax1.set_ylim(0, 50)
-ax1.tick_params(labelsize=13)
+ax1.tick_params(labelsize=16)
 
 note_text = (
     "Nota: Para $x \\in (e^{-e}, e^{1/e}) \\approx (0.066, 1.44)$,\n"
@@ -49,7 +49,7 @@ note_text = (
     "los valores crecen extremadamente rápido o divergen."
 )
 ax1.text(0.98, 0.50, note_text, transform=ax1.transAxes, ha='right', va='center',
-         fontsize=13, style='italic',
+         fontsize=16, style='italic',
          bbox=dict(boxstyle='round,pad=0.5', facecolor='wheat', alpha=0.6, edgecolor='orange'))
 
 x_conv = np.linspace(np.exp(-np.e) + 1e-5, np.exp(1/np.e), 400)
@@ -63,14 +63,14 @@ ax2.axvline(x_upper, color='darkgreen', linestyle='--', linewidth=2, label=f'Lí
 
 ax2.axvspan(x_lower, x_upper, color='green', alpha=0.1)
 
-ax2.set_xlabel('$x$', fontsize=18)
-ax2.set_ylabel(r'$h(x) = x^{x^{x^{\cdot^{\cdot^{\cdot}}}}}$', fontsize=18)
-ax2.set_title('Límite Infinito de la Torre de Potencias', fontsize=20, fontweight='bold')
-ax2.legend(fontsize=13, loc='upper left')
+ax2.set_xlabel('$x$', fontsize=20)
+ax2.set_ylabel(r'$h(x) = x^{x^{x^{\cdot^{\cdot^{\cdot}}}}}$', fontsize=20)
+ax2.set_title('Límite Infinito de la Torre de Potencias', fontsize=22, fontweight='bold')
+ax2.legend(fontsize=16, loc='upper left')
 ax2.grid(True, alpha=0.3)
 ax2.set_xlim(0.0, 2.0)
 ax2.set_ylim(0, 4)
-ax2.tick_params(labelsize=13)
+ax2.tick_params(labelsize=16)
 
 plt.tight_layout()
 plt.savefig('images/tetration-truncated.svg', format='svg', bbox_inches='tight')
