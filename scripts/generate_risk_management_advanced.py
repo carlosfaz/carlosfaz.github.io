@@ -55,7 +55,7 @@ ax1.set_ylabel('Densidad', fontsize=16)
 ax1.set_title('Value at Risk (VaR) vs Expected Shortfall (CVaR)', fontsize=18, fontweight='bold')
 ax1.legend(fontsize=13)
 ax1.grid(True, alpha=0.3)
-ax1.tick_params(labelsize=12)
+ax1.tick_params(labelsize=13)
 
 # === Gráfico 2: Simulación Monte Carlo ===
 # Simular trayectoria de precios
@@ -95,12 +95,12 @@ ax2.set_title('Simulación Monte Carlo con Escenario de Stress', fontsize=18, fo
 ax2.legend(fontsize=13)
 ax2.grid(True, alpha=0.3)
 ax2.set_xlim(0, n_days)
-ax2.tick_params(labelsize=12)
+ax2.tick_params(labelsize=13)
 
 # Nota explicativa al pie de la figura
 fig.text(0.5, -0.02, 
          'El CVaR siempre es mayor (más conservador) que el VaR, ya que mide la pérdida promedio en la cola de la distribución.',
-         ha='center', fontsize=12, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+         ha='center', fontsize=13, style='italic', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 plt.tight_layout()
 plt.savefig('images/risk-management-advanced.svg', format='svg', bbox_inches='tight')

@@ -114,6 +114,7 @@ ax1.legend(fontsize=13)
 ax1.grid(True, alpha=0.3)
 ax1.set_xlim(0, 0.22)
 ax1.set_ylim(0.04, 0.15)
+ax1.tick_params(labelsize=13)
 
 # Gráfico 2: Comparación de pesos y contribución al riesgo
 x_pos = np.arange(n_assets)
@@ -134,6 +135,7 @@ ax2.set_xticks(x_pos)
 ax2.set_xticklabels([f'Activo {i+1}\n(σ={v:.0%})' for i, v in enumerate(volatilities)], fontsize=13)
 ax2.legend(fontsize=13)
 ax2.grid(True, alpha=0.3, axis='y')
+ax2.tick_params(labelsize=13)
 
 plt.tight_layout()
 plt.savefig('images/risk-parity-comparison.svg', format='svg', bbox_inches='tight')
