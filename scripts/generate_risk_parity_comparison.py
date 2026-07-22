@@ -1,17 +1,17 @@
 """
-Genera la imagen de comparaciรณn entre Markowitz (Max Sharpe) y Risk Parity.
-Muestra dos grรกficos lado a lado: la frontera eficiente y la comparaciรณn
-de contribuciรณn al riesgo entre ambos enfoques.
+Genera la imagen de comparación entre Markowitz (Max Sharpe) y Risk Parity.
+Muestra dos gráficos lado a lado: la frontera eficiente y la comparación
+de contribución al riesgo entre ambos enfoques.
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 
-# Configuraciรณn
+# Configuración
 np.random.seed(42)
 
-# Parรกmetros del mercado (4 activos para claridad visual)
+# Parámetros del mercado (4 activos para claridad visual)
 n_assets = 4
 risk_free_rate = 0.05
 
@@ -21,7 +21,7 @@ expected_returns = np.array([0.10, 0.12, 0.08, 0.15])
 # Volatilidades anualizadas
 volatilities = np.array([0.15, 0.20, 0.10, 0.25])
 
-# Matriz de correlaciรณn
+# Matriz de correlación
 correlation_matrix = np.array([
     [1.00, 0.30, 0.20, 0.10],
     [0.30, 1.00, 0.40, 0.20],
@@ -32,7 +32,7 @@ correlation_matrix = np.array([
 # Matriz de covarianza
 cov_matrix = np.outer(volatilities, volatilities) * correlation_matrix
 
-# Funciรณn objetivo de Risk Parity
+# Función objetivo de Risk Parity
 def risk_parity_objective(w, cov):
     pv = np.sqrt(w.T @ cov @ w)
     rc = w * (cov @ w) / pv
@@ -80,7 +80,7 @@ mw_vol = np.sqrt(mw_weights.T @ cov_matrix @ mw_weights)
 mw_return = np.sum(expected_returns * mw_weights)
 mw_sharpe = (mw_return - risk_free_rate) / mw_vol
 
-# Calcular contribuciรณn al riesgo (TRC) para cada portafolio
+# Calcular contribución al riesgo (TRC) para cada portafolio
 def calculate_trc(weights, cov):
     pv = np.sqrt(weights.T @ cov @ weights)
     trc = weights * (cov @ weights) / pv
@@ -89,10 +89,10 @@ def calculate_trc(weights, cov):
 mw_trc, mw_total_vol = calculate_trc(mw_weights, cov_matrix)
 rp_trc, rp_total_vol = calculate_trc(rp_weights, cov_matrix)
 
-# Crear figura con 2 subgrรกficos
+# Crear figura con 2 subgráficos
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
 
-# Grรกfico 1: Frontera eficiente con ambos portafolios
+# Gráfico 1: Frontera eficiente con ambos portafolios
 n_portfolios = 400
 w_mat = np.random.dirichlet(np.ones(n_assets), size=n_portfolios)
 frontier_returns = w_mat @ expected_returns
@@ -115,7 +115,7 @@ ax1.grid(True, alpha=0.3)
 ax1.set_xlim(0, 0.22)
 ax1.set_ylim(0.04, 0.15)
 
-# Grรกfico 2: Comparaciรณn de pesos y contribuciรณn al riesgo
+# Gráfico 2: Comparación de pesos y contribución al riesgo
 x_pos = np.arange(n_assets)
 width = 0.35
 
@@ -123,15 +123,15 @@ width = 0.35
 ax2.bar(x_pos - width/2, mw_weights, width, label='Markowitz Pesos', alpha=0.8, color='red', edgecolor='black', linewidth=1.5)
 ax2.bar(x_pos + width/2, rp_weights, width, label='Risk Parity Pesos', alpha=0.8, color='blue', edgecolor='black', linewidth=1.5)
 
-# Lรญneas de contribuciรณn al riesgo objetivo
+# Líneas de contribución al riesgo objetivo
 ax2.axhline(y=rp_total_vol/n_assets, color='blue', linestyle=':', alpha=0.7, 
             label=f'Risk Parity TRC Objetivo ({rp_total_vol/n_assets:.2%})')
 
 ax2.set_xlabel('Activos', fontsize=16)
-ax2.set_ylabel('Peso / Contribuciรณn al Riesgo', fontsize=16)
-ax2.set_title('Distribuciรณn de Pesos y Riesgo', fontsize=18, fontweight='bold')
+ax2.set_ylabel('Peso / Contribución al Riesgo', fontsize=16)
+ax2.set_title('Distribución de Pesos y Riesgo', fontsize=18, fontweight='bold')
 ax2.set_xticks(x_pos)
-ax2.set_xticklabels([f'Activo {i+1}\n(ฯ�={v:.0%})' for i, v in enumerate(volatilities)], fontsize=13)
+ax2.set_xticklabels([f'Activo {i+1}\n(σ={v:.0%})' for i, v in enumerate(volatilities)], fontsize=13)
 ax2.legend(fontsize=13)
 ax2.grid(True, alpha=0.3, axis='y')
 
