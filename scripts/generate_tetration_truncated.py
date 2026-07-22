@@ -1,46 +1,27 @@
-"""
-Genera la imagen de Tetración Truncada.
-Muestra: la función piso(n) para diferentes valores de n,
-y una visualización de la torre de potencias.
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyBboxPatch
-import matplotlib.patches as patches
+from scipy.special import lambertw
 
-# Configuración
 x_range = np.linspace(0.1, 2.0, 500)
 
-# Función de tetración truncada (piso)
 def tetration_truncated(x, n):
-    """
-    Calcula la tetración truncada de orden n: x^x^...^x (n veces)
-    piso(1) = x
-    piso(2) = x^x
-    piso(3) = x^(x^x)
-    """
     if n == 1:
         return x
     else:
         return x ** tetration_truncated(x, n - 1)
 
-# Calcular valores para diferentes órdenes
 orders = [1, 2, 3, 4]
 colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
 labels = [f'$^{{{n}}}x$ (orden {n})' for n in orders]
 
-# Crear figura con 2 subgráficos
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
 
-# === Gráfico 1: Funciones de tetración truncada ===
 for i, n in enumerate(orders):
     try:
         y_values = []
         for x in x_range:
             try:
                 val = tetration_truncated(x, n)
-                # Limitar valores extremos para visualización
                 if np.isfinite(val) and val < 100:
                     y_values.append(val)
                 else:
@@ -62,76 +43,37 @@ ax1.set_xlim(0.1, 2.0)
 ax1.set_ylim(0, 50)
 ax1.tick_params(labelsize=13)
 
-# Añadir nota sobre convergencia debajo del título
 note_text = (
-    "Nota: Para $x \\in (e^{-e}, e^{1/e}) \\approx (0.066, 1.44)$, \n"
-    "la tetración infinita converge. Fuera de este intervalo, \n"
+    "Nota: Para $x \\in (e^{-e}, e^{1/e}) \\approx (0.066, 1.44)$,\n"
+    "la tetración infinita converge. Fuera de este intervalo,\n"
     "los valores crecen extremadamente rápido o divergen."
 )
-ax1.text(0.5, 0.92, note_text, transform=ax1.transAxes, ha='left', va='top',
-         fontsize=10, style='italic',
-         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+ax1.text(0.98, 0.50, note_text, transform=ax1.transAxes, ha='right', va='center',
+         fontsize=13, style='italic',
+         bbox=dict(boxstyle='round,pad=0.5', facecolor='wheat', alpha=0.6, edgecolor='orange'))
 
-# === Gráfico 2: Diagrama de la estructura recursiva ===
-ax2.axis('off')
-ax2.set_xlim(0, 10)
-ax2.set_ylim(0, 10)
+x_conv = np.linspace(np.exp(-np.e) + 1e-5, np.exp(1/np.e), 400)
+h_x = -lambertw(-np.log(x_conv)).real / np.log(x_conv)
 
-# Dibujar la torre de potencias para n=4
-tower_text = [
-    (5, 8.5, r'$x$', 'Orden 4: $x^{x^{x^x}}$'),
-    (5, 7.0, r'$x^x$', 'Orden 3: $x^{x^x}$'),
-    (5, 5.5, r'$x^{x^x}$', 'Orden 2: $x^x$'),
-    (5, 4.0, r'$x^{x^{x^x}}$', 'Orden 1: $x$'),
-]
+ax2.plot(x_conv, h_x, color='purple', linewidth=3.5, label=r'Límite $n \to \infty$ ($h(x)$)')
 
-# Caja de definición recursiva
-def_box = FancyBboxPatch((1.5, 2.0), 7, 1.5,
-                         boxstyle="round,pad=0.1,rounding_size=0.2",
-                         linewidth=2, edgecolor='navy', facecolor='lightblue', alpha=0.5)
-ax2.add_patch(def_box)
-ax2.text(5, 2.75, r'piso(n) = x^piso(n-1)', 
-         fontsize=16, ha='center', va='center', fontweight='bold', color='navy')
-ax2.text(5, 2.3, r'con piso(1) = x', 
-         fontsize=14, ha='center', va='center', style='italic', color='navy')
+x_lower, x_upper = np.exp(-np.e), np.exp(1/np.e)
+ax2.axvline(x_lower, color='darkred', linestyle='--', linewidth=2, label=f'Límite inf. ($e^{{-e}} \\approx 0.066$)')
+ax2.axvline(x_upper, color='darkgreen', linestyle='--', linewidth=2, label=f'Límite sup. ($e^{{1/e}} \\approx 1.445$)')
 
-# Flechas de recursión
-for i in range(len(tower_text) - 1):
-    ax2.annotate('', xy=(5, tower_text[i+1][1] + 0.4), 
-                 xytext=(5, tower_text[i][1] - 0.3),
-                 arrowprops=dict(arrowstyle='->', color='red', lw=3))
-    ax2.text(5.5, (tower_text[i][1] + tower_text[i+1][1]) / 2,
-             f'$x^{{(\\cdot)}}$', fontsize=14, color='red', 
-             va='center', fontweight='bold')
+ax2.axvspan(x_lower, x_upper, color='green', alpha=0.1)
 
-# Dibujar nodos de la torre
-for i, (x, y, text, label) in enumerate(tower_text):
-    # Caja para cada nivel
-    box = FancyBboxPatch((x - 1.5, y - 0.4), 3, 0.8,
-                         boxstyle="round,pad=0.1,rounding_size=0.1",
-                         linewidth=2, edgecolor=colors[i % len(colors)], 
-                         facecolor='white', alpha=0.9)
-    ax2.add_patch(box)
-    ax2.text(x, y, text, fontsize=16, ha='center', va='center', 
-             color=colors[i % len(colors)], fontweight='bold')
-    ax2.text(x, y - 0.7, label, fontsize=12, ha='center', va='center', 
-             color='gray', style='italic')
-
-ax2.set_title('Estructura Recursiva de la Tetración Truncada', 
-              fontsize=20, fontweight='bold', pad=20)
+ax2.set_xlabel('$x$', fontsize=18)
+ax2.set_ylabel(r'$h(x) = x^{x^{x^{\cdot^{\cdot^{\cdot}}}}}$', fontsize=18)
+ax2.set_title('Límite Infinito de la Torre de Potencias', fontsize=20, fontweight='bold')
+ax2.legend(fontsize=13, loc='upper left')
+ax2.grid(True, alpha=0.3)
+ax2.set_xlim(0.0, 2.0)
+ax2.set_ylim(0, 4)
+ax2.tick_params(labelsize=13)
 
 plt.tight_layout()
 plt.savefig('images/tetration-truncated.svg', format='svg', bbox_inches='tight')
 plt.close()
 
 print("Imagen guardada: images/tetration-truncated.svg")
-
-# Imprimir algunos valores de ejemplo
-print("\n=== Valores de ejemplo de la tetración truncada ===")
-x_test = 1.5
-for n in orders:
-    try:
-        val = tetration_truncated(x_test, n)
-        print(f"piso({n}) en x={x_test}: {val:.4f}")
-    except:
-        print(f"piso({n}) en x={x_test}: Overflow")
