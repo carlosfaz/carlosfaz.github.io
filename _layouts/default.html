@@ -14,12 +14,6 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url | prepend: site.baseurl }}">
     <meta property="og:site_name" content="{{ site.name }}">
     
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@{{ site.footer-links.twitter }}">
-    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}">
-    <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
 
     {% if page.use_math %}
@@ -73,6 +67,5 @@
       </div>
     </div>
 
-    {% include analytics.html %}
   </body>
 </html>

@@ -5,11 +5,9 @@ Un blog moderno y profesional construido con Jekyll y GitHub Pages, optimizado p
 ## 🚀 Características
 
 - **Diseño moderno y responsive** - Se adapta perfectamente a todos los dispositivos
-- **SEO optimizado** - Meta tags, Open Graph y Twitter Cards integrados
+- **SEO optimizado** - Meta tags y Open Graph integrados
 - **Rendimiento optimizado** - CSS y JS minimalistas, lazy loading
 - **Accesibilidad** - Navegación por teclado, atributos ARIA
-- **Sistema de comentarios** - Integración con Disqus
-- **Analíticas** - Google Analytics listo para configurar
 - **Syntax highlighting** - Resaltado de código con Rouge
 - **Soporte matemático** - MathJax para fórmulas LaTeX
 - **Iconos SVG** - Iconos vectoriales modernos y escalables
@@ -27,10 +25,7 @@ Un blog moderno y profesional construido con Jekyll y GitHub Pages, optimizado p
 .
 ├── _config.yml           # Configuración del sitio
 ├── _includes/            # Componentes reutilizables
-│   ├── meta.html         # Meta tags
-│   ├── svg-icons.html    # Iconos SVG
-│   ├── analytics.html    # Google Analytics
-│   ├── disqus.html       # Sistema de comentarios
+│   ├── svg-icons.html    # Iconos SVG (GitHub y email)
 │   └── mathjax_support.html
 ├── _layouts/             # Plantillas
 │   ├── default.html      # Layout principal
@@ -40,11 +35,13 @@ Un blog moderno y profesional construido con Jekyll y GitHub Pages, optimizado p
 ├── _sass/                # Estilos Sass
 │   ├── _variables.scss   # Variables y mixins
 │   ├── _reset.scss       # Reset CSS
-│   ├── _highlights.scss  # Syntax highlighting
-│   └── _svg-icons.scss   # Estilos de iconos
+│   └── _highlights.scss  # Syntax highlighting
 ├── images/               # Recursos de imágenes
+├── scripts/              # Scripts Python que generan las imágenes
+├── tags/                 # Página de tags
 ├── index.html            # Página principal
 ├── about.md              # Página "Sobre mí"
+├── portfolio.md          # Portfolio interactivo
 ├── 404.md                # Página de error 404
 └── style.scss            # Estilos principales
 ```
@@ -61,18 +58,10 @@ description: Tu descripción profesional
 avatar: URL_de_tu_avatar
 url: https://tusuario.github.io
 
-# Redes sociales
+# Enlaces del footer
 footer-links:
-  github: tu_usuario
-  twitter: tu_usuario
-  linkedin: tu_usuario
   email: tu@email.com
-
-# Disqus para comentarios
-disqus: tu_shortname
-
-# Google Analytics
-google_analytics: G-XXXXXXXXXX
+  github: tu_usuario
 ```
 
 ### Colores y tipografía
@@ -135,14 +124,11 @@ Contenido de la página...
 ### Localmente
 
 ```bash
-# Instalar Jekyll y dependencias
-bundle install
-
-# Servidor de desarrollo
-bundle exec jekyll serve
+# Servidor de desarrollo con recarga automática
+jekyll serve --livereload
 
 # Compilar para producción
-bundle exec jekyll build
+jekyll build
 ```
 
 ## 📊 Métricas y SEO
@@ -151,7 +137,6 @@ El blog incluye:
 
 - ✅ Meta descripción automática
 - ✅ Open Graph tags
-- ✅ Twitter Card tags
 - ✅ Sitemap automático (`jekyll-sitemap`)
 - ✅ Feed RSS (`jekyll-feed`)
 - ✅ URLs amigables
@@ -166,10 +151,6 @@ Usa `use_math: true` en el front matter para habilitar MathJax:
 ```latex
 $$E = mc^2$$
 ```
-
-### Comentarios
-
-Los posts incluyen automáticamente la sección de comentarios de Disqus (si está configurado).
 
 ### Syntax highlighting
 

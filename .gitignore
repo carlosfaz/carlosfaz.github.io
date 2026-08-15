@@ -1,0 +1,10 @@
+# Archivos autogenerados por Jekyll al servir el sitio (no son codigo fuente)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Dependencias de Ruby (viven fuera del repo, en ~/.local/share/gem)
+.bundle/
+vendor/bundle/
+Gemfile.lock
