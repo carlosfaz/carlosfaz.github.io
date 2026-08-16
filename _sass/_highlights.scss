@@ -1,84 +1,137 @@
+// ============================================================
+// Tema Dracula para bloques de código (Rouge)
+// Paleta oficial: https://draculatheme.com
+// ============================================================
 
+$code-bg:        #282a36;  // Background
+$code-border:    #44475a;  // Current Line
+$code-text:      #f8f8f2;  // Foreground
+$code-comment:   #6272a4;  // Comment
+$code-keyword:   #ff79c6;  // Pink
+$code-string:    #f1fa8c;  // Yellow
+$code-number:    #bd93f9;  // Purple
+$code-function:  #50fa7b;  // Green
+$code-class:     #8be9fd;  // Cyan
+
+// Contenedor del bloque de código
 .highlight {
-  background-color: #efefef;
-  padding: 7px 7px 7px 10px;
-  border: 1px solid #ddd;
-  -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  box-shadow: 3px 3px rgba(0,0,0,0.1);
-  margin: 20px 0 20px 0;
-  overflow: scroll;
+  background-color: $code-bg;
+  border: 1px solid $code-border;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 24px 0;
+  overflow-x: auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+
+  pre {
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  code {
+    color: $code-text;
+    background: transparent;
+    font-size: 0.88em;
+    line-height: 1.65;
+  }
 }
 
-code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+// Fuente monoespaciada moderna
+code, pre, .highlight {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }
 
-.highlight .c { color: #586E75 } /* Comment */
-.highlight .err { color: #93A1A1 } /* Error */
-.highlight .g { color: #93A1A1 } /* Generic */
-.highlight .k { color: #859900 } /* Keyword */
-.highlight .l { color: #93A1A1 } /* Literal */
-.highlight .n { color: #93A1A1 } /* Name */
-.highlight .o { color: #859900 } /* Operator */
-.highlight .x { color: #CB4B16 } /* Other */
-.highlight .p { color: #93A1A1 } /* Punctuation */
-.highlight .cm { color: #586E75 } /* Comment.Multiline */
-.highlight .cp { color: #859900 } /* Comment.Preproc */
-.highlight .c1 { color: #586E75 } /* Comment.Single */
-.highlight .cs { color: #859900 } /* Comment.Special */
-.highlight .gd { color: #2AA198 } /* Generic.Deleted */
-.highlight .ge { color: #93A1A1; font-style: italic } /* Generic.Emph */
-.highlight .gr { color: #DC322F } /* Generic.Error */
-.highlight .gh { color: #CB4B16 } /* Generic.Heading */
-.highlight .gi { color: #859900 } /* Generic.Inserted */
-.highlight .go { color: #93A1A1 } /* Generic.Output */
-.highlight .gp { color: #93A1A1 } /* Generic.Prompt */
-.highlight .gs { color: #93A1A1; font-weight: bold } /* Generic.Strong */
-.highlight .gu { color: #CB4B16 } /* Generic.Subheading */
-.highlight .gt { color: #93A1A1 } /* Generic.Traceback */
-.highlight .kc { color: #CB4B16 } /* Keyword.Constant */
-.highlight .kd { color: #268BD2 } /* Keyword.Declaration */
-.highlight .kn { color: #859900 } /* Keyword.Namespace */
-.highlight .kp { color: #859900 } /* Keyword.Pseudo */
-.highlight .kr { color: #268BD2 } /* Keyword.Reserved */
-.highlight .kt { color: #DC322F } /* Keyword.Type */
-.highlight .ld { color: #93A1A1 } /* Literal.Date */
-.highlight .m { color: #2AA198 } /* Literal.Number */
-.highlight .s { color: #2AA198 } /* Literal.String */
-.highlight .na { color: #93A1A1 } /* Name.Attribute */
-.highlight .nb { color: #B58900 } /* Name.Builtin */
-.highlight .nc { color: #268BD2 } /* Name.Class */
-.highlight .no { color: #CB4B16 } /* Name.Constant */
-.highlight .nd { color: #268BD2 } /* Name.Decorator */
-.highlight .ni { color: #CB4B16 } /* Name.Entity */
-.highlight .ne { color: #CB4B16 } /* Name.Exception */
-.highlight .nf { color: #268BD2 } /* Name.Function */
-.highlight .nl { color: #93A1A1 } /* Name.Label */
-.highlight .nn { color: #93A1A1 } /* Name.Namespace */
-.highlight .nx { color: #555 } /* Name.Other */
-.highlight .py { color: #93A1A1 } /* Name.Property */
-.highlight .nt { color: #268BD2 } /* Name.Tag */
-.highlight .nv { color: #268BD2 } /* Name.Variable */
-.highlight .ow { color: #859900 } /* Operator.Word */
-.highlight .w { color: #93A1A1 } /* Text.Whitespace */
-.highlight .mf { color: #2AA198 } /* Literal.Number.Float */
-.highlight .mh { color: #2AA198 } /* Literal.Number.Hex */
-.highlight .mi { color: #2AA198 } /* Literal.Number.Integer */
-.highlight .mo { color: #2AA198 } /* Literal.Number.Oct */
-.highlight .sb { color: #586E75 } /* Literal.String.Backtick */
-.highlight .sc { color: #2AA198 } /* Literal.String.Char */
-.highlight .sd { color: #93A1A1 } /* Literal.String.Doc */
-.highlight .s2 { color: #2AA198 } /* Literal.String.Double */
-.highlight .se { color: #CB4B16 } /* Literal.String.Escape */
-.highlight .sh { color: #93A1A1 } /* Literal.String.Heredoc */
-.highlight .si { color: #2AA198 } /* Literal.String.Interpol */
-.highlight .sx { color: #2AA198 } /* Literal.String.Other */
-.highlight .sr { color: #DC322F } /* Literal.String.Regex */
-.highlight .s1 { color: #2AA198 } /* Literal.String.Single */
-.highlight .ss { color: #2AA198 } /* Literal.String.Symbol */
-.highlight .bp { color: #268BD2 } /* Name.Builtin.Pseudo */
-.highlight .vc { color: #268BD2 } /* Name.Variable.Class */
-.highlight .vg { color: #268BD2 } /* Name.Variable.Global */
-.highlight .vi { color: #268BD2 } /* Name.Variable.Instance */
-.highlight .il { color: #2AA198 } /* Literal.Number.Integer.Long */
+// Código inline dentro del texto (estilo GitHub sobre fondo claro)
+p code, li code, td code, h1 code, h2 code, h3 code, h4 code {
+  background-color: #eff1f3;
+  border-radius: 6px;
+  padding: 0.15em 0.45em;
+  font-size: 0.85em;
+  color: #24292f;
+}
+
+// --- Texto base y puntuación ---
+.highlight .n,
+.highlight .nx,
+.highlight .nl,
+.highlight .nn,
+.highlight .p,
+.highlight .w    { color: $code-text }
+.highlight .na   { color: $code-function } // Name.Attribute (verde, como en Dracula)
+.highlight .py   { color: $code-function } // Name.Property
+
+// --- Comentarios ---
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs,
+.highlight .sd   { color: $code-comment; font-style: italic }
+.highlight .cp   { color: $code-comment } // Comment.Preproc
+
+// --- Palabras clave ---
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .ow   { color: $code-keyword }  // def, return, import, lambda, in...
+.highlight .kc,
+.highlight .kt   { color: $code-number }   // True, False, None / tipos
+
+// --- Cadenas de texto ---
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sh,
+.highlight .sx,
+.highlight .sr   { color: $code-string }
+.highlight .se,
+.highlight .si,
+.highlight .ss   { color: $code-string; font-weight: bold }
+
+// --- Números ---
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il,
+.highlight .l,
+.highlight .ld   { color: $code-number }
+
+// --- Funciones y clases ---
+.highlight .nf   { color: $code-function } // Nombre de función (verde)
+.highlight .nc   { color: $code-class }    // Nombre de clase (cyan)
+.highlight .nd   { color: $code-function } // Decoradores (verde)
+.highlight .nb,
+.highlight .bp   { color: $code-class }    // print, len, range... (cyan)
+.highlight .no,
+.highlight .ni,
+.highlight .ne   { color: $code-class }
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi   { color: $code-text }     // Variables
+.highlight .nt   { color: $code-function } // Tags
+
+// --- Operadores ---
+.highlight .o    { color: $code-keyword }
+
+// --- Genéricos / errores ---
+.highlight .err,
+.highlight .gr   { color: #ff5555 }        // Dracula Red
+.highlight .gd   { color: #ff5555; background-color: rgba(255, 85, 85, 0.1) }
+.highlight .gi   { color: #56d364; background-color: rgba(86, 211, 100, 0.1) }
+.highlight .gh,
+.highlight .gu   { color: $code-class; font-weight: bold }
+.highlight .ge   { font-style: italic }
+.highlight .gs   { font-weight: bold }
+.highlight .go,
+.highlight .gp,
+.highlight .gt,
+.highlight .g,
+.highlight .x    { color: $code-text }
