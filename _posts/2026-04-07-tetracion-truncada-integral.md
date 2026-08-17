@@ -5,7 +5,7 @@ use_math: true
 published: true
 date: 2026-04-07
 category: "Matemáticas"
-tags: ["Tetración", "Integrales", "Series Infinitas", "Función Gamma"]
+tags: ["Tetración", "Análisis Matemático"]
 thumbnail: "/images/tetration-truncated.svg"
 ---
 

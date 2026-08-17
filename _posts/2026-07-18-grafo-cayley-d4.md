@@ -5,7 +5,7 @@ use_math: true
 published: true
 date: 2026-07-18
 category: "Matemáticas"
-tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico", "Simetrías"]
+tags: ["Teoría de Grupos", "Grafos de Cayley", "Grupo Dihédrico"]
 thumbnails: 
   - "/svg-inkscape/cayley-graph-d4.svg"
   - "/svg-inkscape/cayley-graph-d4_2.svg"

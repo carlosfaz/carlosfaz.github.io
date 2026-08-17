@@ -5,7 +5,7 @@ use_math: true
 published: true
 date: 2024-04-17
 category: "Risk Parity"
-tags: ["Risk Parity", "Portfolio Optimization", "Risk Management", "Python", "Diversification"]
+tags: ["Finanzas Cuantitativas", "Portafolios", "Python"]
 thumbnail: "/images/risk-parity-comparison.svg"
 ---
 

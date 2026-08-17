@@ -5,7 +5,7 @@ use_math: true
 published: true
 date: 2024-04-18
 category: "Gestión de Riesgos"
-tags: ["Risk Management", "VaR", "CVaR", "Expected Shortfall", "Stress Testing", "Monte Carlo", "Python"]
+tags: ["Gestión de Riesgos", "Monte Carlo", "Python"]
 thumbnail: "/images/risk-management-advanced.svg"
 ---
 

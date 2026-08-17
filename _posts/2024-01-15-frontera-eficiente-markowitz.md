@@ -5,7 +5,7 @@ use_math: true
 published: true
 date: 2024-04-16
 category: "Finanzas Cuantitativas"
-tags: ["Markowitz", "Portfolio Optimization", "Risk Management", "Python"]
+tags: ["Finanzas Cuantitativas", "Portafolios", "Python"]
 thumbnail: "/images/markowitz-frontier.svg"
 ---
 
