@@ -65,3 +65,4 @@ gems:
 exclude:
   - LICENSE
   - README.md
+  - nueva_imp.tex

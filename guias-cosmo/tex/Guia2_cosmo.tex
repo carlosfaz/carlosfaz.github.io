@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{\textbf{Introducción a la Cosmología \\ Guía 2: Ecuaciones de Friedmann}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema 1}
+Considere el ansatz de una métrica espacialmente homogénea e isótropa,
+\begin{equation}
+  ds^2=N^2(t)dt^2-a^2(t)\left(\frac{dr^2}{1-kr^2}+r^2\left(d\theta^2+\sin^2\theta\,d\phi^2\right)\right),
+\end{equation}
+y considere el tensor de energía-momento de un fluido ideal de densidad de energía $\rho$ y presión $p$, $T^{\mu\nu}=\text{diag}(\rho,-p,-p,-p)$. A partir de las ecuaciones de Einstein obtenga qué ecuaciones deben satisfacer $N$ y $a$. Muestre que se puede asumir $N=1$ sin pérdida de generalidad, y que en ese caso el factor de escala satisface las ecuaciones de Friedmann,
+\begin{equation}
+  \left(\frac{\dot a}{a}\right)^2=\frac{8\pi G}{3}\rho-\frac{k}{a^2} \label{eq:friedmann1}
+\end{equation}
+y
+\begin{equation}
+  \frac{\ddot a}{a}=-\frac{4\pi G}{3}(\rho+3p), \label{eq:friedmann2}
+\end{equation}
+donde $\dot f=df/dt$. Proponga una interpretación física para la primera de estas dos ecuaciones. Verifique que añadir el término de constante cosmológica $\Lambda g_{\mu\nu}$ al lado derecho de las ecuaciones de Einstein corresponde a añadir el término $\Lambda/3$ al lado derecho de las dos ecuaciones de Friedmann.
+
+\section*{Problema 2}
+Muestre que las ecuaciones de Friedmann implican
+\begin{equation}
+  \dot H=-4\pi G(\rho+p)+\frac{k}{a^2},
+\end{equation}
+donde $H=\dot a/a$ es la llamada función de Hubble. Muestre también que las ecuaciones de Friedmann son equivalentes al sistema formado por \eqref{eq:friedmann1} y
+\begin{equation}
+  \dot\rho=-3H(\rho+p). \label{eq:continuidad}
+\end{equation}
+Discuta la interpretación física de esta última ecuación y su límite no relativista. Pruebe a partir de ella que, si la ecuación de estado del fluido tiene la forma $p=w\rho$, donde $w$ es una constante, entonces $\rho=\rho_*\,a^{-3(1+w)}$, donde $\rho_*$ es una constante.
+
+\section*{Problema 3}
+Considere las siguientes ecuaciones de estado: (i) $p=0$ (fluido tipo polvo), y (ii) $p=\rho/3$ (fluido tipo radiación). Discuta la interpretación física de cada una de ellas y encuentre la solución correspondiente, $a(t)$, de las ecuaciones de Friedmann con $\Lambda=0$ y $k=0$.
+
+\section*{Problema 4}
+Obtenga la solución, $a(t)$, de las ecuaciones de Friedmann con $\Lambda$ genérica y $k=0$ correspondientes a la ecuación de estado $p=-\rho$.
+
+\section*{Problema 5}
+Considere las ecuaciones de Friedmann sin constante cosmológica. Determine la densidad de energía crítica, $\rho_c(t)$, para la cual el universo es plano ($k=0$). Pruebe que para $\rho>\rho_c$ el universo es cerrado ($k=1$) y para $\rho<\rho_c$ el universo es abierto ($k=-1$).
+
+\section*{Problema 6}
+Considere las ecuaciones de Friedmann sin constante cosmológica y con una ecuación de estado de la forma $p=w\rho$, donde $w$ es una constante. Pruebe que para $w>-1/3$ un universo cerrado recolapsa después de alcanzar un radio máximo, mientras que un universo plano o abierto se expande sin límite. Estudie el comportamiento del factor de escala para $w\leq-1/3$.
+
+\section*{Problema 7}
+Obtenga el tensor de energía-momento correspondiente al campo electromagnético (tensor de Maxwell) en un espacio-tiempo curvo y calcule su traza. Discuta el resultado en relación a la ecuación de estado de radiación (problema 3) y a la ecuación de estado de un gas de bosones sin masa.
+
+\section*{Problema 8}
+Obtenga el tensor de energía-momento de un campo escalar $\varphi$ (Klein--Gordon) en un espacio-tiempo curvo, y evalúelo en una configuración homogénea ($\varphi=\varphi(t)$). Suponiendo que durante un lapso de tiempo considerable el campo mantiene una densidad de energía cinética $(\dot\varphi)^2/2$ despreñable en comparación con su densidad de energía potencial $V(\varphi)$, obtenga la ecuación de estado del fluido que emularía la presencia de este campo en el espacio-tiempo. Compare este resultado con lo visto en el problema 4. Luego considere la ecuación de Klein--Gordon para un campo homogéneo formulada sobre la geometría de Robertson--Walker y verifique que dicha ecuación contiene un término que puede ser interpretado como un término de fricción.
+
+\section*{Problema 9}
+Considere un universo que se expande de acuerdo con la ley $a(t)\propto t^{\lambda}$, con $0<\lambda<1$. A partir del valor actual de la función de Hubble, $H_0=H(t_0)$, obtenga una cota para la edad del universo. Discuta cómo la hipótesis de una dinámica radicalmente distinta en el universo muy temprano podría invalidar esta cota.
+
+\section*{Problema 10}
+Muestre que las ecuaciones de Friedmann con un fluido tipo polvo ($p=0$) admiten una solución estática ($a$ constante) en presencia de una constante cosmológica (tal como lo pensó Einstein) o, equivalentemente, de un fluido con las características del estudiado en el problema 4 (tal como lo pensó Schrödinger). Muestre, no obstante, que esta solución es inestable ante perturbaciones del campo gravitatorio.
+
+\section*{Problema 11}
+Además de la solución de Friedmann--Lemaître--Robertson--Walker, existen muchas otras soluciones a las ecuaciones de Einstein que tienen una interpretación cosmológica. Entre ellas, existen soluciones que describen universos homogéneos pero no isótropos, tales como los que pertenecen a la denominada clasificación de universos tipo Bianchi, o el llamado universo de Kantowski--Sachs. En 1949, Gödel obtuvo una solución a las ecuaciones de Einstein que describe un universo homogéneo pero no isótropo. La peculiaridad más sobresaliente del universo de Gödel es que, en él, es posible viajar al pasado y regresar al punto de partida. Describa qué haría usted si viviera en un universo de Gödel.
+
+\end{document}

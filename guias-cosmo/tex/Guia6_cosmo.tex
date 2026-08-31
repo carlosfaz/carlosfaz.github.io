@@ -1,0 +1,55 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{\textbf{Introducción a la Cosmología \\ Guía 6: Anisotropías del CMB}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema 1}
+Asumiendo que la radiación de fondo es perfectamente isótropa, obtenga la distribución angular de su temperatura según un observador no comóvil con el flujo de Hubble.
+
+\section*{Problema 2}
+Considere un universo espacialmente plano dominado por polvo. Obtenga la evolución de pequeñas perturbaciones de este universo en la aproximación newtoniana.
+
+\section*{Problema 3}
+Sea $P$ una distribución de probabilidad sobre funciones en la 2-esfera. Dada una tal función $f$ y dados $l\in\mathbb{N}$, $m\in\{-l,\ldots,l\}$ sea $a_{lm}(f)$ el coeficiente $(l,m)$ de la expansión de $f$ en armónicos esféricos. Pruebe que si $P$ es isótropa entonces
+\begin{equation}
+  \langle a_{lm}^*\,a_{l'm'}\rangle_P=\delta_{ll'}\,\delta_{mm'}\,C_l
+\end{equation}
+para todo $l,m,l',m'$, donde $C_l$ es un número real no negativo.
+
+\section*{Problema 4}
+Las cantidades que se miden para estimar los coeficientes $C_l$ asociados a la anisotropía de la temperatura del CMB son
+\begin{equation}
+  \bar C_l(\delta T)=\frac{1}{2l+1}\sum_{m=-l}^{l}a_{lm}^*(\delta T)\,a_{lm}(\delta T).
+\end{equation}
+La diferencia cuadrática media entre $\bar C_l$ y $C_l$ se denomina \emph{variancia cósmica}. Asumiendo que la distribución de probabilidad para la anisotropía de la temperatura del CMB es gaussiana, pruebe que la variancia cósmica es
+\begin{equation}
+  \langle(\bar C_l-C_l)^2\rangle=\frac{2}{2l+1}C_l^2,
+\end{equation}
+y por lo tanto es importante a multipolos pequeños. \emph{Ayuda}: use que para una distribución de probabilidad gaussiana se tiene $\langle x_1x_2x_3x_4\rangle=\langle x_1x_2\rangle\langle x_3x_4\rangle+\langle x_1x_3\rangle\langle x_2x_4\rangle+\langle x_1x_4\rangle\langle x_2x_3\rangle$ (teorema de Wick).
+
+\section*{Problema 5}
+A partir del efecto Sachs-Wolfe pruebe que
+\begin{equation}
+  \frac{\delta T}{T_0}(\eta_0,0,\hat n)+\varphi(\eta_0,0)=\frac{\delta T}{T_0}(\eta_r,\hat n(\eta_0-\eta_r),\hat n)+\varphi(\eta_r,\hat n(\eta_0-\eta_r)),
+\end{equation}
+donde $\eta_r$ es el tiempo conforme de recombinación y $\varphi$ es el potencial gravitatorio. Escribiendo el lado derecho de esta ecuación como una integral de Fourier, teniendo en cuenta que $(\delta T/T_0)_k(\eta_r,\hat n)\simeq-(2/3)\varphi_k(\eta_r)$ para $k\eta_r\ll1$ y asumiendo que el potencial gravitatorio en el instante de recombinación tiene el espectro de Harrison-Zel'dovich,
+\begin{equation}
+  \langle\varphi_k^*(\eta_r)\,\varphi_{k'}(\eta_r)\rangle=(2\pi)^3P(k)\,\delta(k-k'), \qquad P(k)=N^2/k^3,
+\end{equation}
+pruebe que para $l\ll100$ se tiene
+\begin{equation}
+  l(l+1)C_l\simeq\frac{8\pi^2}{9}N^2T_0^2,
+\end{equation}
+y por lo tanto $l(l+1)C_l$ es aproximadamente constante en este límite.
+
+\end{document}

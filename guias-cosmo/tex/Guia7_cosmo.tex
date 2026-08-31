@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{\textbf{Introducción a la Cosmología \\ Guía 7: Inflación}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema 1}
+Considere la densidad lagrangiana de una teoría de campos que consiste en un campo escalar real $\varphi$ sobre un espacio-tiempo de métrica $g_{\mu\nu}$; es decir,
+\begin{equation}
+  \sqrt{-g}\,L=\frac{1}{2}\sqrt{-g}\,g^{\mu\nu}\partial_\mu\varphi\,\partial_\nu\varphi+\left(m^2+\xi R\right)\varphi^2+\lambda\varphi^4,
+\end{equation}
+donde $R$ es el escalar de curvatura del espacio-tiempo y $g$ representa el determinante de la métrica, $g=\det(g_{\mu\nu})$. Calcule la ecuación de movimiento del campo escalar (ecuación de Klein-Gordon) para una métrica genérica y, luego, evalúe dicha ecuación en el caso en el cual tanto la métrica $g_{\mu\nu}$ como el campo $\varphi$ tienen configuraciones isótropas y homogéneas.
+
+\section*{Problema 2}
+Para la densidad lagrangiana del problema anterior, calcule el tensor de energía-momentos asociado al campo $\varphi$ en el caso $\xi=0$. Haga esto de dos maneras diferentes; primero, considerando la definición
+\begin{equation}
+  T_{\mu\nu}=-\frac{\partial L}{\partial(\partial^\mu\varphi)}\,\partial_\nu\varphi+L\,g_{\mu\nu},
+\end{equation}
+y luego considerando la definición
+\begin{equation}
+  \tilde T_{\mu\nu}=\frac{2}{\sqrt{-g}}\frac{\delta}{\delta g^{\mu\nu}}\left(\int d^4x\,\sqrt{-g}\,L\right).
+\end{equation}
+Compare ambos resultados.
+
+\section*{Problema 3}
+A partir de la siguiente densidad lagrangiana,
+\begin{equation}
+  L=\frac{1}{16\pi G}R-\frac{1}{2}g^{\mu\nu}\partial_\mu\varphi\,\partial_\nu\varphi-\frac{3}{4}M^4\left[1-e^{-\sqrt{8\pi G/3}\,\varphi}\right]^2,
+\end{equation}
+donde $M$ es una constante con unidades de energía, discuta la validez del régimen de \emph{slow-roll approximation} en función de la forma del potencial y de las condiciones iniciales para el inflatón.
+
+\section*{Problema 4}
+Considere el caso en el que el inflatón es simplemente un campo libre (sin potencial de auto-interacción $V(\varphi)$ ni acoplamiento con el escalar de curvatura) de masa $m$. Esto es, considere el caso $\lambda=0$, $\xi=0$ en la densidad lagrangiana del problema 1. Para este caso, calcule el número de \emph{e-foldings} en términos del valor que el campo inflatón toma en el momento en el que comienza inflación ($t=t_i$) y en el momento que finaliza inflación ($t=t_f$).
+
+\section*{Problema 5}
+Pruebe que el problema del horizonte y el problema de la platitud se resuelven si $\dot a(t_i)>\dot a(t_0)$, donde $t_i$ y $t_0$ son el instante de inicio de inflación y el instante actual respectivamente. Asumiendo que la temperatura al inicio de la era decelerada es cercana a la temperatura de Planck pruebe que, para que se cumpla esta condición, inflación debe tener un mínimo de unos $70$ \emph{e-foldings}.
+
+\section*{Problema 6}
+Muestre que la condición
+\begin{equation}
+  \epsilon\equiv-\frac{\dot H}{H^2}<1
+\end{equation}
+corresponde a pedir que el universo se encuentre en una fase acelerada. Asimismo, muestre que esto equivale a la condición
+\begin{equation}
+  w\equiv\frac{p}{\rho}<-\frac13
+\end{equation}
+sobre la densidad de energía, $\rho$, y la presión, $p$.
+
+\section*{Problema 7}
+Considere una teoría de gravedad generalizada cuya acción tiene la forma
+\begin{equation}
+  S=\frac{1}{16\pi G}\int d^4x\,\sqrt{-g}\left(R-2\Lambda+M^2R^2\right)
+\end{equation}
+donde $M$ es una constante de acoplamiento con unidades de energía. La teoría de la Relatividad General de Einstein corresponde al caso particular $M^2=0$. Escriba las ecuaciones de campo para esta teoría y verifique que, si $\Lambda=0$, estas ecuaciones no admiten la métrica de de Sitter como solución.
+
+\end{document}

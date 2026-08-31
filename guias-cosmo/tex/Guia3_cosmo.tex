@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{\textbf{Introducción a la Cosmología \\ Guía 3: Termodinámica y era leptónica}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema 1}
+Para un gas de bosones o fermiones en equilibrio térmico, pruebe que la función de partición grancanónica $Z$ satisface
+\begin{equation}
+  \log Z=\frac{pV}{T},
+\end{equation}
+donde $p$ es la presión, $V$ el volumen y $T$ la temperatura del gas. Usando este resultado obtenga la ecuación
+\begin{equation}
+  S=\frac{E+pV-\mu N}{T},
+\end{equation}
+donde $S$ es la entropía, $E$ la energía, $\mu$ el potencial químico y $N$ el número de partículas del gas. Pruebe también las relaciones
+\begin{equation}
+  \left.\frac{\partial p}{\partial\mu}\right|_T=\frac{N}{V}, \qquad \left.\frac{\partial p}{\partial T}\right|_{\mu}=\frac{S}{V}.
+\end{equation}
+A partir de estos resultados deduzca la primera ley de la Termodinámica.
+
+\section*{Problema 2}
+Para un gas de fermiones y antifermiones sin masa en equilibrio térmico, pruebe la relación
+\begin{equation}
+  n-\bar n=\frac{g\,T^2\,\mu}{6}\left[1+\left(\frac{\mu}{\pi T}\right)^2\right],
+\end{equation}
+donde $n$ es la densidad de partículas, $\bar n$ la de antipartículas y $g$ el número de grados de libertad internos. Pruebe también que
+\begin{equation}
+  s+\bar s=\frac{7\pi^2}{90}\,g\,T^3\left[1+\frac{15}{7}\left(\frac{\mu}{\pi T}\right)^2\right],
+\end{equation}
+donde $s$ es la densidad de entropía de las partículas y $\bar s$ la de las antipartículas. \emph{Ayuda}: use el resultado
+\begin{equation}
+  \int_0^\infty \frac{x^p\,dx}{e^x+1}=p!\left(1-\frac{1}{2^p}\right)\zeta(p+1),
+\end{equation}
+donde $\zeta$ es la función zeta de Riemann.
+
+\section*{Problema 3}
+Para un gas de bosones o fermiones no relativista en equilibrio térmico, pruebe que la densidad de partículas satisface la ecuación
+\begin{equation}
+  n=g\left(\frac{Tm}{2\pi}\right)^{3/2}\exp\left(-\frac{m-\mu}{T}\right),
+\end{equation}
+donde $m$ es la masa de las partículas. ¿Por qué el resultado es el mismo para bosones y fermiones?
+
+\section*{Problema 4}
+La era leptónica es el período de la historia del universo correspondiente a temperaturas por debajo de los $100\,\text{MeV}$ y por encima del MeV. Durante la era leptónica la materia ordinaria del universo es un gas en equilibrio formado por fotones, protones, neutrones, electrones y las tres especies de neutrinos, además de las correspondientes antipartículas. Obtenga las ecuaciones que deben satisfacer los potenciales químicos de los trece tipos de partícula arriba mencionados como consecuencia de la conservación del número bariónico, los tres números leptónicos y la carga eléctrica.
+
+\section*{Problema 5}
+Explique por qué las ecuaciones de conservación del número bariónico, los números leptónicos, la carga eléctrica y la entropía permiten determinar la evolución con el factor de escala de la temperatura y todos los potenciales químicos, y a partir de ellos de todas las variables termodinámicas, en términos de seis constantes.
+
+\section*{Problema 6}
+Sabiendo que la razón barión-entropía (densidad de número bariónico sobre densidad de entropía) y las razones leptón-entropía son todas del orden de $10^{-9}$ y que el universo es eléctricamente neutro, estime la evolución con el factor de escala de la temperatura y de todos los potenciales químicos durante la era leptónica.
+
+\section*{Problema 7}
+Las principales reacciones responsables del equilibrio térmico entre los neutrinos electrónicos y el resto del gas durante la era leptónica son
+\begin{equation}
+  e^++e^-\leftrightarrow \nu_e+\bar\nu_e \qquad e^\pm+\nu_e\rightarrow e^\pm+\nu_e \qquad e^\pm+\bar\nu_e\rightarrow e^\pm+\bar\nu_e.
+\end{equation}
+Sabiendo que la sección eficaz de estos procesos es
+\begin{equation}
+  \sigma=O(1)\,G_F^2\,(p_1+p_2)^2,
+\end{equation}
+donde $p_1$ y $p_2$ son los 4-momentos de las partículas incidentes y $G_F=1.17\times10^{-5}\,\text{GeV}^{-2}$ es la constante de Fermi, estime la temperatura a la que se desacoplan los neutrinos electrónicos. ¿Qué pasa con las otras dos especies de neutrinos?
+
+\section*{Problema 8}
+Calcule la temperatura actual del fondo de neutrinos primordiales sabiendo que la temperatura actual del fondo de fotones es de $2.73\,\text{K}$, asumiendo que los neutrinos no tienen masa. Si las dos temperaturas evolucionan de forma inversamente proporcional al factor de escala y en el momento del desacoplo eran iguales (porque ambas especies estaban en equilibrio térmico), ¿por qué hoy son diferentes?
+
+\section*{Problema 9}
+Pruebe que la temperatura de un gas no relativista en equilibrio térmico, pero que no interactúa con las especies relativistas, evoluciona con el factor de escala de acuerdo con la ley $T\propto 1/a^2$. Estime la temperatura actual de los neutrinos asumiendo que tienen una masa del orden de $0.1\,\text{eV}$.
+
+\section*{Problema 10}
+Exprese la densidad de energía de la materia ultra-relativista después de la aniquilación electrón-positrón en términos de la temperatura de los fotones. Encuentre el redshift para el cual ésta coincide con la densidad de energía de la materia (ordinaria) no relativista.
+
+\end{document}
