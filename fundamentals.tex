@@ -1,0 +1,252 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\renewcommand{\contentsname}{Contenido}
+\usepackage{geometry}
+\geometry{top=2.2cm,bottom=2.4cm,left=2.2cm,right=2.2cm}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=accent,urlcolor=accent]{hyperref}
+
+% Paleta del propio dashboard
+\definecolor{accent}{HTML}{2563EB}
+\definecolor{pos}{HTML}{16A34A}
+\definecolor{neg}{HTML}{DC2626}
+\definecolor{warn}{HTML}{D97706}
+\definecolor{muted}{HTML}{64748B}
+
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{2.4ex}{1.2ex}
+\titlespacing*{\subsection}{0pt}{1.8ex}{0.8ex}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\linespread{1.07}
+
+% Frase guía bajo el título de cada pestaña
+\newcommand{\quees}[1]{\par\noindent{\color{muted}\itshape #1}\par\smallskip}
+% Par concepto: explicación
+\newcommand{\dato}[2]{\item \textbf{#1}: #2}
+
+\begin{document}
+
+% ======================= PORTADA =======================
+\begin{titlepage}
+\centering
+\vspace*{3.5cm}
+{\color{accent}\rule{\textwidth}{2pt}}\\[1.6em]
+{\Huge\bfseries Fundamentals}\\[0.5em]
+{\Large Conceptos financieros del reporte Proventus}\\[0.9em]
+{\large\color{muted} Qué significa cada número y cada término, en palabras sencillas}\\[1.6em]
+{\color{accent}\rule{\textwidth}{2pt}}\\[3em]
+{\color{muted} Ordenados por pestaña:\; Resumen general, Performance, Riesgo, Optimización,\\
+Posiciones, Histórico, indicadores del activo y fundamentales de empresa.}\\[3em]
+{\small \today}
+\vfill
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ======================= 1. RESUMEN GENERAL =======================
+\section{Resumen general}
+\quees{Los conceptos de la pantalla principal: el estado de tu cartera hoy.}
+
+\subsection{Dinero y resultado}
+\begin{itemize}
+  \dato{Valor de mercado}{lo que valen hoy todas tus acciones juntas.}
+  \dato{Invertido}{el dinero que has puesto de tu bolsillo.}
+  \dato{P\&L no realizado}{ganancia o pérdida que llevas sin vender todavía («en papel»). P\&L = \emph{profit and loss}, ganancias y pérdidas.}
+\end{itemize}
+
+\subsection{Riesgo y premio}
+\begin{itemize}
+  \dato{Sharpe}{cuánto te pagan por cada unidad de riesgo que aguantas. Mayor que 1 = bueno; mayor que 2 = muy bueno.}
+  \dato{Sortino}{igual que el Sharpe, pero solo castiga las caídas, no las subidas.}
+  \dato{Calmar}{ganancia anual dividida entre la peor caída.}
+  \dato{Máx. drawdown}{la peor caída del periodo, de pico a valle.}
+  \dato{Ulcer Index}{cuánto dolor sostenido hubo: pesan más las caídas profundas y largas.}
+  \dato{VaR 95}{la pérdida que no se supera el 95\,\% de los días; lo que podrías perder en un mal día.}
+  \dato{CAGR}{crecimiento anual compuesto: el ritmo constante al que crece tu dinero.}
+  \dato{Volatilidad}{cuánto se mueve tu cartera en un año; más movimiento = más riesgo.}
+\end{itemize}
+
+\subsection{Comparación con el mercado}
+\begin{itemize}
+  \dato{Benchmark}{índice de referencia para compararte: SPY (S\&P 500), QQQ (Nasdaq 100) y DIA (Dow Jones).}
+  \dato{Base 100}{truco para comparar curvas: todas empiezan en 100.}
+  \dato{Alpha}{lo que le ganas al índice gracias a tu propia selección de acciones.}
+  \dato{Beta}{cuánto te mueves respecto al mercado. 1 = igual; 1.35 = un 35\,\% más brusco que él.}
+  \dato{R\textsuperscript{2}}{qué parte de tus movimientos explica el mercado, de 0 a 1.}
+  \dato{TWR}{rentabilidad «limpia», quitando el efecto de meter o sacar dinero.}
+\end{itemize}
+
+\subsection{Diversificación y concentración}
+\begin{itemize}
+  \dato{Ratio de diversificación}{cuánto te protege combinar acciones. 1 = no protege nada; más alto = mejor.}
+  \dato{N efectivo}{en cuántas acciones «de verdad» está repartido tu dinero. 11.1 de 13 = tus 13 acciones se comportan como 11.}
+  \dato{Concentración}{el peso de tu posición más grande.}
+  \dato{Top 3}{lo que suman tus tres posiciones mayores.}
+  \dato{HHI}{termómetro de concentración: por encima de 0.25 la cartera está muy concentrada.}
+\end{itemize}
+
+\subsection{Estadísticas del diagnóstico}
+\begin{itemize}
+  \dato{Días ganadores}{porcentaje de días que la cartera cerró en positivo.}
+  \dato{Profit factor}{dólares ganados por cada dólar perdido. Mayor que 1 = rentable.}
+  \dato{Correlación media}{si tus acciones se mueven juntas. Cerca de 1 = todas a la vez: diversificación de mentira.}
+  \dato{Asimetría}{si las sorpresas suelen ser buenas (positiva) o malas (negativa).}
+  \dato{Curtosis}{si hay más días extremos de los que predice la campana normal.}
+  \dato{Probabilidad de ganancia}{porcentaje de futuros simulados (Monte Carlo) que acaban el año en ganancia.}
+\end{itemize}
+
+% ======================= 2. PERFORMANCE =======================
+\section{Performance}
+\quees{Los conceptos sobre cómo ha rendido tu cartera en el tiempo.}
+\begin{itemize}
+  \dato{Retorno total}{lo ganado (o perdido) en todo el periodo analizado.}
+  \dato{Mejor y peor día}{tus dos jornadas más extremas, en porcentaje.}
+  \dato{Omega}{ganancias totales divididas entre pérdidas totales. Mayor que 1 = ganas más de lo que pierdes.}
+  \dato{Volatilidad bajista}{cuánto se mueve tu cartera solo en las caídas; es el riesgo «malo».}
+  \dato{Underwater}{en cada fecha, cuánto falta para recuperar el máximo anterior. Todo lo que está bajo cero es una caída sin recuperar.}
+  \dato{Campana normal}{la referencia teórica de cómo «deberían» repartirse los días. Si tus puntas reales sobresalen, hay más sustos de los esperados.}
+  \dato{Métricas móviles}{Sharpe, beta y volatilidad recalculados en ventanas deslizantes: sirven para ver si tu ventaja es estable o va y viene.}
+  \dato{Estacionalidad mensual}{lo ganado cada mes; la última columna es el año completo.}
+  \dato{Tracking error}{cuánto te separas del índice de referencia.}
+  \dato{Information ratio (IR)}{el exceso de retorno que consigues por cada unidad de tracking error: premio por separarte acertando.}
+  \dato{Captura alcista}{porcentaje de las subidas del índice que logras aprovechar. Ideal: por encima de 100.}
+  \dato{Captura bajista}{porcentaje de las bajadas del índice que sufres. Ideal: por debajo de 100.}
+  \dato{Episodio de drawdown}{una caída concreta: cuándo empezó, su fondo, cuánto duró y cuánto tardó en recuperarse. «En curso» = aún no se ha recuperado.}
+\end{itemize}
+
+% ======================= 3. RIESGO =======================
+\section{Riesgo}
+\quees{Los conceptos sobre cuánto puedes perder y de dónde viene el peligro.}
+
+\subsection{Riesgo de cola (los malos días)}
+\begin{itemize}
+  \dato{VaR}{la pérdida máxima esperada en un día malo, con un nivel de confianza: al 95\,\% es un día malo normal (1 de cada 20); al 99\,\%, uno extremo (1 de cada 100). Se da en porcentaje y en dólares.}
+  \dato{CVaR (Expected Shortfall)}{cuando el día sí rompe el VaR, esta es la pérdida media. Responde a «y si pasa, ¿cuánto duele?».}
+  \dato{VaR Cornish-Fisher}{el VaR corregido por asimetría y colas gruesas, porque la bolsa da más sustos de los que dice la campana normal.}
+\end{itemize}
+
+\subsection{Correlación y estructura}
+\begin{itemize}
+  \dato{Matriz de correlación}{mapa de calor entre pares de acciones: rojo = se mueven juntas; cian = independientes.}
+  \dato{PCA (descomposición factorial)}{en cuántos «sabores» se reparte tu riesgo. Si el factor 1 explica demasiado, casi todo tu riesgo es uno solo: el mercado.}
+  \dato{Cargas del factor 1}{qué acciones siguen más ese riesgo dominante.}
+\end{itemize}
+
+\subsection{Atribución (quién aporta el riesgo)}
+\begin{itemize}
+  \dato{Contribución al riesgo}{porcentaje de la volatilidad total que aporta cada acción.}
+  \dato{Component VaR}{el VaR total repartido entre las acciones: quién es el culpable del riesgo.}
+  \dato{$\Delta$ Riesgo $-$ Peso}{si una acción aporta más riesgo del que representa en dinero, domina tus sustos: es candidata natural a recortar.}
+  \dato{Beta vs cartera}{cuánto se mueve una acción respecto a tu propia cartera.}
+\end{itemize}
+
+\subsection{Monte Carlo}
+\begin{itemize}
+  \dato{Simulación Monte Carlo}{4\,000 futuros posibles a 12 meses, construidos remuestreando el comportamiento real de tu cartera (\emph{bootstrap}).}
+  \dato{Escenario mediano}{el valor en el centro de todos los futuros simulados.}
+  \dato{P5 (escenario adverso)}{el 5\,\% peor de los futuros: el mal final razonable.}
+  \dato{P95 (escenario favorable)}{el 5\,\% mejor de los futuros: el buen final razonable.}
+\end{itemize}
+
+% ======================= 4. OPTIMIZACIÓN =======================
+\section{Optimización}
+\quees{Los conceptos de las «recetas» automáticas para mejorar la cartera. Son una referencia, no una predicción.}
+\begin{itemize}
+  \dato{Frontera eficiente (Markowitz)}{las mejores combinaciones posibles de riesgo y retorno: para cada nivel de riesgo, la cartera que más gana.}
+  \dato{Portafolio de máximo Sharpe}{el mejor punto de la frontera: la combinación que más paga por cada unidad de riesgo.}
+  \dato{CML (Capital Market Line)}{la línea que une el interés sin riesgo con el portafolio de máximo Sharpe; marca el límite teórico de lo alcanzable.}
+  \dato{GMV (mínima varianza)}{la combinación más tranquila posible: la de menor volatilidad.}
+  \dato{Tasa libre de riesgo}{lo que paga el dinero «seguro» (aquí 5\,\%): el punto de partida para exigir premio al riesgo.}
+  \dato{Retorno esperado}{lo que sugiere el histórico para cada acción; es una referencia, no una promesa.}
+  \dato{Risk Parity (paridad de riesgo)}{repartir el \emph{riesgo} en partes iguales entre las acciones, no el dinero: a las nerviosas les toca menos peso y a las tranquilas, más. Suele suavizar las caídas a costa de ganar un poco menos.}
+  \dato{Reasignación sugerida}{para cada acción, la acción indicada por el optimizador: \textbf{Aumentar}, \textbf{Reducir} o \textbf{Mantener}.}
+\end{itemize}
+
+% ======================= 5. POSICIONES =======================
+\section{Posiciones}
+\quees{Los conceptos del detalle operativo, acción por acción.}
+\begin{itemize}
+  \dato{Precio medio}{lo que pagaste de media por cada acción de ese valor.}
+  \dato{Coste total}{lo que pagaste en total: unidades por precio medio.}
+  \dato{Valor actual}{lo que vale hoy esa posición: unidades por último precio.}
+  \dato{P\&L y rentabilidad}{valor actual menos coste, en dólares y en porcentaje sobre lo pagado.}
+  \dato{Peso}{qué porcentaje de tu dinero está en esa acción.}
+  \dato{Rango de 120 días}{el mínimo y el máximo de precio de los últimos 120 días de mercado.}
+  \dato{vs Máx}{cuánto le falta al precio actual para alcanzar su máximo de 120 días.}
+  \dato{Mapa de exposición (treemap)}{cada cuadro es una acción: el tamaño es el dinero invertido y el color dice si gana (\textcolor{pos}{verde}) o pierde (\textcolor{neg}{rojo}).}
+\end{itemize}
+
+% ======================= 6. HISTÓRICO =======================
+\section{Histórico}
+\quees{Los conceptos del diario real de tu cartera, con tus aportes de dinero incluidos.}
+\begin{itemize}
+  \dato{Retorno TWR}{tu rentabilidad quitando el efecto de meter o sacar dinero: mide la calidad de la gestión, no el momento de los aportes.}
+  \dato{TWR anualizado}{ese mismo rendimiento llevado a ritmo anual.}
+  \dato{Drawdown realizado}{las caídas reales que ha sufrido tu cartera tal y como las viviste.}
+  \dato{Brecha capital--valor}{la distancia entre lo que has metido y lo que vale: tu ganancia acumulada.}
+\end{itemize}
+
+% ======================= 7. INDICADORES DEL ACTIVO =======================
+\section{Indicadores de la ficha de cada activo}
+\quees{Los conceptos técnicos que ves al abrir cualquier acción (V, TSM, MU, GOOGL, BRK-B, AMZN, GE, LLY, VSTS, JPM\ldots).}
+\begin{itemize}
+  \dato{RSI 14}{termómetro de 0 a 100 sobre las últimas 14 sesiones. Por encima de 70 = \emph{sobrecompra} (quizá caro); por debajo de 30 = \emph{sobreventa} (quizá barato); en medio = rango neutro.}
+  \dato{Medias móviles (SMA 20 y 50)}{el promedio del precio de los últimos 20 y 50 días: marcan la tendencia. Precio por encima = tendencia sana; por debajo = débil.}
+  \dato{Volumen}{cuántas acciones cambiaron de manos en el día. Verde = día de subida; rojo = día de bajada.}
+  \dato{Perfil de volumen}{a qué precios se negoció más la acción en el periodo.}
+  \dato{POC (punto de control)}{el precio más negociado de todos (la barra ámbar): suele actuar de imán para el precio.}
+  \dato{Drawdown del activo}{las caídas de esa acción desde su propio máximo.}
+  \dato{Contribución al riesgo}{cuánto del riesgo total de tu cartera pone esa acción.}
+\end{itemize}
+
+% ======================= 8. FUNDAMENTALES DE EMPRESA =======================
+\section{Fundamentales de empresa}
+\quees{Los datos de la compañía que aparecen al final de cada ficha (fuente: Yahoo Finance).}
+
+\subsection{Valoración (si está cara o barata)}
+\begin{itemize}
+  \dato{P/E (Trailing)}{cuántos dólares pagas por cada dólar de beneficio anual de la empresa. Alto = el mercado espera mucho de ella.}
+  \dato{PEG Ratio}{el P/E ajustado por su crecimiento. Por debajo de 1 suele considerarse barata para lo que crece.}
+  \dato{Price/Sales}{lo que pagas por cada dólar de ventas.}
+  \dato{Price/Book}{lo que pagas frente a lo que vale la empresa «en libros» (sus activos menos sus deudas).}
+\end{itemize}
+
+\subsection{Calidad del negocio}
+\begin{itemize}
+  \dato{ROE}{beneficio que genera por cada 100 dólares de patrimonio. Cuanto mayor, mejor negocio.}
+  \dato{ROA}{beneficio que genera por cada 100 dólares de activos.}
+  \dato{Rev. Growth}{cuánto crecen las ventas al año.}
+  \dato{Profit Margin}{de cada 100 dólares que vende, cuántos le quedan de beneficio.}
+  \dato{Operating Margin}{lo mismo, pero contando solo el negocio (sin intereses ni impuestos).}
+\end{itemize}
+
+\subsection{Salud financiera}
+\begin{itemize}
+  \dato{Debt/Equity}{deuda por cada dólar propio. Alto = muy apalancada.}
+  \dato{Current Ratio}{si puede pagar sus deudas de corto plazo con lo que tiene a mano. Mayor que 1 = puede.}
+  \dato{Quick Ratio}{lo mismo pero sin contar inventarios: el examen más exigente de liquidez.}
+\end{itemize}
+
+\subsection{Para el accionista}
+\begin{itemize}
+  \dato{Div. Yield}{porcentaje anual que paga en dividendos sobre el precio actual.}
+  \dato{Div. Rate}{dólares de dividendo que paga al año por acción.}
+  \dato{EPS}{beneficio por acción: lo que «gana» cada título.}
+  \dato{Book Value}{valor en libros por acción: lo que valdría cada título si la empresa se liquidara en papel.}
+  \dato{Beta (de la empresa)}{cuánto se mueve la acción frente al mercado: 1 = igual que él.}
+\end{itemize}
+
+\vspace{1.2em}
+\begin{center}
+\colorbox{accent}{\parbox{0.92\textwidth}{\color{white}\centering
+Todos estos números se calculan con datos del pasado:\\
+son una brújula para entender tu cartera, no una bola de cristal.}}
+\end{center}
+
+\end{document}
