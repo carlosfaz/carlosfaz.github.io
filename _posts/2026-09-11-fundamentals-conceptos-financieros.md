@@ -3,7 +3,7 @@ layout: post
 title: "Fundamentals: qué significa cada número de tu cartera"
 use_math: true
 published: true
-date: 2026-11-09
+date: 2026-09-11
 category: "Finanzas Cuantitativas"
 tags: ["Finanzas Cuantitativas", "Gestión de Riesgos", "Inversión"]
 thumbnail: "/images/fundamentals.svg"
